@@ -1,0 +1,9 @@
+- article page
+- back link to previous category
+- route to resources
+- refactor views
+- edition pic / default pic
+- edition header - pattern
+- english article name
+
+
