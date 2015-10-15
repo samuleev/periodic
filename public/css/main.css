@@ -1,0 +1,88 @@
+@charset "UTF-8";
+/*
+Sheet Name: www.hupm.mil.gov.ua
+Author: Artem Khrienov
+Description: Style sheets for pereodic-app
+Version: 1.0
+*/
+/* -----------------------------------------------------------------------------
+ * Bootstrap Block Grid
+ * https://gist.github.com/ChrisTM/8346916#file-block-grid-less
+ * -------------------------------------------------------------------------- */
+
+  /* -----------------------------------------------------------------------------
+ * Main Stylesheets
+ * -------------------------------------------------------------------------- */
+body{
+    font-family: Arial, Helvetica, sans-serif,Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #777777;
+    font-size: 14px;
+}
+
+ /* -----------------------------------------------------------------------------
+ * Header
+ * -------------------------------------------------------------------------- */
+.vw-site-header-background {
+    background-size: cover;
+    background-image: url('../img/header-bgd.jpg');
+    min-height:200px;
+}
+.vw-site-header {
+    padding: 5px 0;
+    /*margin-bottom: 90px;*/
+    background: rgba(255,255,255,0.6);
+    color: #575757;
+}
+.vw-site-header-inner {
+    display: table;
+}
+.vw-site-logo-wrapper{
+    display: table-cell;
+    vertical-align: middle;
+}
+.hups-85-years-block {
+    padding: 0 10px 0 0;
+    text-transform: uppercase;
+    color: #e86340;
+    font-weight: bold;
+    float: left;
+    text-align: center;
+}
+.hups-85-date {
+    font-size: 10px !important;
+    line-height: 10px;
+}
+.hups-85-years-num {
+    font-size: 60px !important;
+    line-height: 45px;
+}
+.hups-logo {
+    width: 74px;
+    height: 74px;
+    margin: 4px 21px 0 0;
+    background: #F7F7F7;
+    float: left;
+    background: url("../img/hups-logo.png") no-repeat;
+}
+.vw-site-logo-link {
+    display: inline-block;
+    color:#444444;
+}
+.vw-site-logo-link:hover{
+	text-decoration: none;
+	color:#444444;
+}
+.vw-site-title {
+	margin-top: 14px;
+    margin-bottom: 0;
+    text-transform:uppercase;
+    font-size: 2.441em;
+}
+.vw-site-tagline {
+    font-size: 13px;
+    text-transform:uppercase;
+    line-height: 1.2em;
+    margin-top: 10px;
+}

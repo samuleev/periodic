@@ -5,6 +5,8 @@
     <title>Document</title>
     <!-- Bootstrap 3.3.2 -->
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Main Stylesheets -->
+    <link href="{{ asset('/css/main.css') }}" rel="stylesheet" type="text/css" />
     <style>
         div { font-size: 12px; }
 
