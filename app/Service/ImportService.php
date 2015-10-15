@@ -77,7 +77,7 @@ class ImportService {
     {
         foreach ($lines as $index => $line)
         {
-            self::importStartingSpecialArticle($line, $editionId, $index);
+            self::importStartingSpecialArticle(trim($line), $editionId, $index);
         }
     }
 
@@ -88,17 +88,50 @@ class ImportService {
         {
             throw new Exception("Can not find article name in line: ".$line);
         }
-        dd($articleName);
+
+        $engName = self::getArticleEngName($line);
+
+        $pages = self::getPages($line);
+
+        dd($pages);
     }
 
-    private static function getArticleName($line){
-        $start = stripos($line, "[");
-        $end = stripos($line, "]");
-        if ($start === FALSE || $end === FALSE)
+    private static function getPages($line)
+    {
+        $pages = new stdClass();
+
+        $start = strrpos($line, ' ');
+        if($start === FALSE)
         {
-            throw new Exception("Can not find article name in line: ".$line);
+            $pages->start = null;
+            $pages->end = null;
+            return $pages;
         }
+
+        $pagesString = substr($line, $start + 1, strlen($line) - $start);
+
+        if (strrpos($pagesString, '-'))
+        {
+            $elements = explode('-', $pagesString);
+            $pages->start = $elements[0];
+            $pages->end = $elements[1];
+        }
+        else
+        {
+            $pages->start = $pagesString;
+            $pages->end = null;
+        }
+        return $pages;
+    }
+
+    private static function getArticleName($line)
+    {
         return self::findSubStringBetween($line, "[", "]");
+    }
+
+    private static function getArticleEngName($line)
+    {
+        return self::findSubStringBetween($line, "{", "}");
     }
 
     private static function findSubStringBetween($string, $openingString, $closingSting)
@@ -109,7 +142,7 @@ class ImportService {
         {
             return null;
         }
-        $startCount = count($openingString);
+        $startCount = strlen($openingString);
         return substr($string, $start + $startCount, $end - $start - $startCount);
     }
 
