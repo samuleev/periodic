@@ -9,13 +9,12 @@
 							<span class="hups-85-years-num">85</span><br>
 							<span style="hups-85-years">років</span>
 						</div>
-						<div class="hups-logo">
-							<a href="http://www.hups.mil.gov.ua" alt="Офіційний сайт Харківського університету Повітряних Сил"></a>
-						</div>
+						<a href="http://www.hups.mil.gov.ua" alt="Офіційний сайт Харківського університету Повітряних Сил"><div class="hups-logo">			
+						</div></a>
 						<a class="vw-site-logo-link" href="http://www.hups.mil.gov.ua">
 							<!-- Site Logo -->		
 							<h1 class="vw-site-title">Харківський університет Повітряних Сил</h1>			
-							<h2 class="vw-site-tagline">Офіційний сайт Харківського університету Повітряних Сил імені Івана Кожедуба</h2>
+							<h2 class="vw-site-tagline">Архiв наукових видань Харківського університету Повітряних Сил імені Івана Кожедуба</h2>
 						</a>
 					</div>
 				</div>
