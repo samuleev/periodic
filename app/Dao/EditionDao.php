@@ -23,10 +23,8 @@ class EditionDao implements Dao {
 
     static function listNumbersInYear($journalId, $issueYear)
     {
-        //DB::enableQueryLog();
         $editions = DB::table('journal_edition')->
         where('journal_id', $journalId)->where('issue_year', $issueYear)->orderby('number_in_year')->get();
-        //dd(DB::getQueryLog());
         return $editions;
     }
 
@@ -43,6 +41,6 @@ class EditionDao implements Dao {
 
     static function persist($valueObject)
     {
-        // TODO: Implement persist() method.
+        return DB::table('journal_edition')->insertGetId(get_object_vars($valueObject));
     }
 }

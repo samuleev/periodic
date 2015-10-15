@@ -24,7 +24,7 @@ class ArticleDao implements Dao {
 
     static function persist($valueObject)
     {
-        // TODO: Implement persist() method.
+        return DB::table('article')->insertGetId(get_object_vars($valueObject));
     }
 
 }

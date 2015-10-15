@@ -20,6 +20,6 @@ class AuthorDao implements Dao {
 
     static function persist($valueObject)
     {
-        // TODO: Implement persist() method.
+        return DB::table('author')->insertGetId(get_object_vars($valueObject));
     }
 }

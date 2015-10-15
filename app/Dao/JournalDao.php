@@ -20,9 +20,7 @@ class JournalDao implements Dao
 
     static function findByName($name)
     {
-        DB::enableQueryLog();
         $journal = DB::table('journal')->where('name', $name)->get();
-        //dd(DB::getQueryLog());
         if (count($journal) == 0)
         {
             return null;
@@ -32,7 +30,7 @@ class JournalDao implements Dao
 
     static function persist($valueObject)
     {
-        // TODO: Implement persist() method.
+        throw new \Exception('Not implemented yet');
     }
 
 }

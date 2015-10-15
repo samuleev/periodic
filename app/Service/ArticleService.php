@@ -16,18 +16,18 @@ class ArticleService {
         $articleRows = array();
         $articleRows[] = $articleRow;
 
-        $articles = ArticleService::getEnrichedArticles($articleRows);
+        $articles = self::getEnrichedArticles($articleRows);
 
         return $articles[0];
     }
 
     public static function enrichFileSize(Article $article, stdClass $journal, stdClass $edition)
     {
-        $path = ArticleService::getFilePath($article, $journal, $edition);
+        $path = self::getFilePath($article, $journal, $edition);
 
         $bytes = filesize($path);
 
-        $article->setFileSize(ArticleService::formatSizeUnits($bytes));
+        $article->setFileSize(self::formatSizeUnits($bytes));
     }
 
     public static function getFilePath(Article $article, stdClass $journal, stdClass $edition) {
@@ -66,16 +66,16 @@ class ArticleService {
 
     public static function getEnrichedArticles(array $articleRows)
     {
-        $articleIds = ArticleService::getArticleIds($articleRows);
-        $articleToAuthors = ArticleService::getArticleToAuthors($articleIds);
+        $articleIds = self::getArticleIds($articleRows);
+        $articleToAuthors = self::getArticleToAuthors($articleIds);
 
-        $topicIds = ArticleService::getGroupedTopicsIds($articleRows);
+        $topicIds = self::getGroupedTopicsIds($articleRows);
         $topics = TopicService::getByIds($topicIds);
 
         $articles = array();
         foreach($articleRows as $articleRow)
         {
-            $article = ArticleService::enrichArticle($articleRow, $articleToAuthors, $topics);
+            $article = self::enrichArticle($articleRow, $articleToAuthors, $topics);
             $articles[] = $article;
         }
         return $articles;
