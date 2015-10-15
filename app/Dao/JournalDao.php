@@ -18,18 +18,21 @@ class JournalDao implements Dao
         return DB::table('journal')->orderby('sort_order')->get();
     }
 
+    static function findByName($name)
+    {
+        DB::enableQueryLog();
+        $journal = DB::table('journal')->where('name', $name)->get();
+        //dd(DB::getQueryLog());
+        if (count($journal) == 0)
+        {
+            return null;
+        }
+        return $journal[0];
+    }
+
     static function persist($valueObject)
     {
         // TODO: Implement persist() method.
     }
 
-    static function update($valueObject)
-    {
-        // TODO: Implement update() method.
-    }
-
-    static function delete($valueObject)
-    {
-        // TODO: Implement delete() method.
-    }
 }

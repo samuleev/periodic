@@ -17,3 +17,4 @@ Route::get('/journal/{id}/{selectedYear}', array('uses' => 'EditionController@in
 Route::get('/edition/{id}', array('uses' => 'EditionController@show', 'as' => 'edition.details'))->where('id', '[1-9][0-9]*');
 Route::get('/article/{id}', array('uses' => 'ArticleController@show', 'as' => 'article.details'))->where('id', '[1-9][0-9]*');
 Route::get('/article/{id}/download', array('uses' => 'ArticleController@download', 'as' => 'article.download'))->where('id', '[1-9][0-9]*');
+Route::get('/import', array('uses' => 'ImportController@import', 'as' => 'import.main'));

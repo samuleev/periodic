@@ -10,8 +10,4 @@ interface Dao {
 
     static function persist($valueObject);
 
-    static function update($valueObject);
-
-    static function delete($valueObject);
-
 }
