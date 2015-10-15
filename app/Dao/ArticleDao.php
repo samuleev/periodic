@@ -27,13 +27,4 @@ class ArticleDao implements Dao {
         // TODO: Implement persist() method.
     }
 
-    static function update($valueObject)
-    {
-        // TODO: Implement update() method.
-    }
-
-    static function delete($valueObject)
-    {
-        // TODO: Implement delete() method.
-    }
 }
