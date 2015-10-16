@@ -9,6 +9,13 @@
                 {{{$message}}}
             </div>
         </div>
+        @if(isset($trace))
+        <div class="row top10">
+            <div class="col-md-12">
+                {{{$trace}}}
+            </div>
+        </div>
+        @endif
     </div>
 @else
     <p>Error: no messages from backend</p>

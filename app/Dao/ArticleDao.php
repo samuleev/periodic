@@ -2,6 +2,7 @@
 
 namespace App\Dao;
 
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 class ArticleDao implements Dao {
@@ -22,9 +23,25 @@ class ArticleDao implements Dao {
         return DB::table('article')->orderby('article_id')->get();
     }
 
-    static function persist($valueObject)
+    static function persist($article)
     {
-        return DB::table('article')->insertGetId(get_object_vars($valueObject));
+        self::checkArticleExists($article->journal_edition_id, $article->name);
+        return DB::table('article')->insertGetId(get_object_vars($article));
     }
 
+    private static function checkArticleExists($editionId, $name)
+    {
+        if (count(self::findByEditionAndName($editionId, $name)) != 0)
+        {
+            throw new Exception("Article '" .$name. "' already exists in edition: '" .$editionId);
+        }
+    }
+
+    private static function findByEditionAndName($editionId, $name)
+    {
+        return DB::table('article')
+            ->where('journal_edition_id', $editionId)
+            ->where('name', $name)
+            ->orderby('sort_order')->get();
+    }
 }

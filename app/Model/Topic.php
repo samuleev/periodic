@@ -6,7 +6,6 @@ class Topic {
 
     private $id;
     private $name;
-    private $order;
     private $visible;
 
     public function getId()
@@ -27,16 +26,6 @@ class Topic {
     public function setName($name)
     {
         $this->name = $name;
-    }
-
-    public function getOrder()
-    {
-        return $this->order;
-    }
-
-    public function setOrder($order)
-    {
-        $this->order = $order;
     }
 
     public function getVisible()

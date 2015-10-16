@@ -1,0 +1,222 @@
+-- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
+--
+-- Host: localhost    Database: periodic
+-- ------------------------------------------------------
+-- Server version	5.6.17
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `article`
+--
+
+DROP TABLE IF EXISTS `article`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `article` (
+  `article_id` int(11) NOT NULL AUTO_INCREMENT,
+  `topic_id` int(11) NOT NULL,
+  `journal_edition_id` int(11) NOT NULL,
+  `content_file` varchar(256) DEFAULT NULL,
+  `start_page` int(11) DEFAULT NULL,
+  `end_page` int(11) DEFAULT NULL,
+  `name` varchar(256) NOT NULL,
+  `description` varchar(2048) DEFAULT NULL,
+  `keywords` varchar(2048) DEFAULT NULL,
+  `sort_order` int(11) DEFAULT NULL,
+  `name_eng` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`article_id`),
+  UNIQUE KEY `edition_sort_order` (`journal_edition_id`,`sort_order`),
+  KEY `article_topic_fk` (`topic_id`),
+  CONSTRAINT `article_topic_fk` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`topic_id`),
+  CONSTRAINT `article_journal_edition_fk` FOREIGN KEY (`journal_edition_id`) REFERENCES `journal_edition` (`journal_edition_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `article`
+--
+
+LOCK TABLES `article` WRITE;
+/*!40000 ALTER TABLE `article` DISABLE KEYS */;
+INSERT INTO `article` VALUES (1,1,3,'1.pdf',NULL,NULL,'Титул',NULL,NULL,2,NULL),(2,1,3,'2.pdf',NULL,NULL,'Зміст',NULL,NULL,1,NULL),(3,3,3,'3.pdf',3,6,'Внешняя баллистика составного боеприпаса как тела с дискретно-переменной массой',NULL,NULL,3,NULL),(4,3,3,'4.pdf',7,11,'Підвищення ефективності виконання снайперських вогневих завдань силами безпеки шляхом визначення раціональних характеристик оптичного прицілу',NULL,NULL,4,NULL),(5,3,3,'5.pdf',12,15,'Рациональный синтез средств оптической и акустической разведки для системы управления огнем объекта бронетанковой техники',NULL,NULL,5,NULL),(6,3,3,'6.pdf',16,20,'Роль і місце броньованих автомобілів у сучасних збройних конфліктах',NULL,NULL,6,NULL),(7,4,3,'7.pdf',83,87,'Особливості розрахунку стрибка з криловим парашутом',NULL,NULL,7,NULL),(8,4,3,'8.pdf',88,91,'Метод оцінки інтенсивності відеопотоку у розрахунку на базовий кадр',NULL,NULL,8,NULL),(9,5,3,'9.pdf',153,159,'Критерії травмування організму людини при ударному та вибуховому навантаженнях',NULL,NULL,9,NULL),(10,6,3,'10.pdf',179,185,'Как собрать с миру по нитке на \"плащ-невидимку по-украински\"',NULL,NULL,10,NULL),(11,6,3,'11.pdf',186,190,'Комплексний підхід до навчання вогневій підготовці з використанням інноваційних технологій',NULL,NULL,11,NULL),(12,1,3,'12.pdf',191,193,'Наші автори',NULL,NULL,12,NULL),(13,1,3,'13.pdf',194,NULL,'Алфавітний покажчик',NULL,NULL,13,NULL),(106,1,35,'1.pdf',NULL,NULL,'Титул',NULL,NULL,1,NULL),(107,1,35,'2.pdf',157,158,'Зміст',NULL,NULL,2,NULL),(108,9,35,'3.pdf',3,6,'Об особенностях построения инвариантной системы наведения и стабилизации танковой пушки',NULL,NULL,3,'About the features of construction of the invariant system of guidance and stabilization of tank gun'),(109,9,35,'4.pdf',7,9,'Визначення основних тенденцій та перспективних напрямків розвитку і модернізації реактивних систем залпового вогню',NULL,NULL,4,'Identification of major trends and perspective directions of development and modernization reactive systems of volley fire'),(110,9,35,'5.pdf',10,12,'Аналіз тактико-технічних характеристик основних радіолокаційних засобів існуючої системи контролю повітряного простору України',NULL,NULL,5,'The analysis of tactic-technical characteristics of radar-tracking means of the existing monitoring system of air space of Ukraine'),(111,9,35,'6.pdf',13,20,'Основні аспекти опису задачі про оптимальну швидкодію керування рухом ракети',NULL,NULL,6,'The basic aspects of description to problem of optimal high-speed to moving by operating of rocket'),(112,9,35,'7.pdf',21,24,'Індивідуальний захист саперів від дії осколків і куль',NULL,NULL,7,'Individual protection of sappers from the action of the fragments and bullets'),(113,9,35,'8.pdf',25,31,'Урахування ергономічних показників при конструюванні бронешоломів',NULL,NULL,8,'An account of ergonomics indexes is at constructing of combat helmets'),(114,9,35,'9.pdf',31,35,'Перспективи розвитку засобів повітряного нападу як об’єктів радіолокаційного виявлення',NULL,NULL,9,'Prospects of development of means of the air attack as objects of radar-tracking detection'),(115,9,35,'10.pdf',35,41,'Метод визначення оптимального плану розподілу й відповідних оптимальних маршрутів руху виїзних метрологічних груп при метрологічному обслуговуванні  військових частин та підрозділів',NULL,NULL,10,'Method of determination of optimum plan of distributing and proper optimum routes of motion of departure metrology groups at metrology maintenance of military parts and subdivisions'),(116,9,35,'11.pdf',41,44,'Спосіб обчислення часу висування бойової машини із зони «затінення» в зону прямої видимості цілі',NULL,NULL,11,'Method of calculation of time of fighting machine advancement from the “shading” area to line-of-sight range to target'),(117,9,35,'12.pdf',44,49,'Методика оцінки воєнно-економічної ефективності перспективних типів бойових броньованих машин',NULL,NULL,12,'Method of estimation of military and economic efficiency perspective types of armoured combat vehicles'),(118,9,35,'13.pdf',50,54,'Аналіз характеристик радіолокаційних станцій контрбатарейної боротьби',NULL,NULL,13,'The analysis of characteristics of radar stations'),(119,9,35,'14.pdf',54,57,'Вибір штурмової гвинтівки на основі методу аналізу ієрархій',NULL,NULL,14,'A choice an assault rifle on the basis of analytic hierarchy process'),(120,10,35,'15.pdf',58,62,'Вплив розкиду значень балістичного коефіцієнту поражаючого елементу кінетичної зброї на ефективність виконання вогневих завдань силами безпеки',NULL,NULL,15,'Dispersion influence of ballistic coefficient senses of a hit element of the kinetic weapon on the implementation efficiency of fire tasks of safety forces'),(121,10,35,'16.pdf',63,67,'Обґрунтування показників бойових можливостей міжвидових тактичних груп',NULL,NULL,16,'Substantiation of metrics of fighting possibilities interspecific tactical groups'),(122,10,35,'17.pdf',67,72,'Особенности методики расчёта турбулентных характеристик вихревых следов',NULL,NULL,17,'Calculation method features of vortex wake turbulent characteristics'),(123,10,35,'18.pdf',73,76,'Побудова функціональних перевірних тестів для безконтактного індукційного методу діагностування',NULL,NULL,18,'Building a functional screening tests for non-contact induction method of diagnosis'),(124,10,35,'19.pdf',76,81,'Методика оценки потенциальной помехоустойчивости обзорных РЛС при воздействии комбинированных помех',NULL,NULL,19,'Method of estimation of potential antijammingness survey radar at influence of the combined hindrances'),(125,10,35,'20.pdf',82,85,'Применение вейвлет-разложения для реализации некогерентного накопления при обнаружении сигналов с неизвестной протяженностью',NULL,NULL,20,'Application of wavelet decomposition for the implementation of incoherent accumulation at detection signals with unknown length'),(126,10,35,'21.pdf',85,88,'Дослідження будови інтегрованої інформаційної системи та її елементів',NULL,NULL,21,'Studying the structure of an integrated information system and its elements'),(127,10,35,'22.pdf',89,93,'Дослідження якості управління потоками інформації у телекомунікаційній мережі критичного призначення',NULL,NULL,22,'Quality research of information management in the telecommunications network of critical use'),(128,10,35,'23.pdf',94,97,'Обґрунтування тривалостей доводочних робіт та випробувань зразків зенітного ракетного озброєння при відновлювальних середніх і капітальних ремонтах',NULL,NULL,23,'Grounding the terms of refinements jobs and tests for SAM troops armaments during midterm repairs and over haunts'),(129,10,35,'24.pdf',98,102,'Учет замираний и рассеивания по времени и частоте в модели дискретного радиолокационного канала',NULL,NULL,24,'Account of stopping beating and dispersion on time and frequency in models of discrete radio-location channel'),(130,10,35,'25.pdf',103,106,'Исследование процесса разработки программного обеспечения инфотелекоммуникационных систем',NULL,NULL,25,'Study of software development infotelecommunication systems'),(131,10,35,'26.pdf',107,109,'Температурна стійкість гідравлічних мастильних матеріалів при  їх модифікації присадками різноманітного призначення',NULL,NULL,26,'Hydraulic lubricants temperature resistance during their modification various purposes additives'),(132,10,35,'27.pdf',110,116,'Модели и методы градационной коррекции цифрового изображения',NULL,NULL,27,'Models and methods for gray-scale transformation of digital images'),(133,10,35,'28.pdf',117,125,'Методика побудови нечітких баз знань інтелектуальних систем управління вузлами мобільних радіомереж класу MANET',NULL,NULL,28,'The method of fuzzy knowledge bases construction for intellectual nodal control systems in the MANET'),(134,10,35,'29.pdf',125,132,'Implementation of wireless heterogeneous network based on LTE core virtualization for military communication systems',NULL,NULL,29,NULL),(135,10,35,'30.pdf',133,136,'Выбор признаков для сегментации текстурных областей изображений, близких по значениям цвета и структуре',NULL,NULL,30,'A choice of signs for segmentation of texture areas of images which have similar values of color and structure'),(136,10,35,'31.pdf',137,142,'Математична модель обертального руху снарядів з гіроскопічною стабілізацією',NULL,NULL,31,'Mathematical model of rotational motion shells with gyroscopic stabilization'),(137,10,35,'32.pdf',143,146,'Мультиагентная модель анализа процессов управления ресурсными потоками проектов предприятия',NULL,NULL,32,'Agent-based model for analyze the management process of projects resource flows'),(138,10,35,'33.pdf',147,150,'Закономерности трансформации иприта в эмульгированное состояние',NULL,NULL,33,'Patterns of transformation of mustards (dichloroethyl sulfide) to the emulsified state'),(139,10,35,'34.pdf',150,153,'Особенности выбора средств индивидуальной защиты для работы спасателей в условиях, которые существенно отличаются от наихудших условий пожара',NULL,NULL,34,'Comparative analysis of the flow patterns of air reserve for rescuers in SCBA'),(140,1,35,'35.pdf',154,155,'Наші автори',NULL,NULL,35,'Authors'),(141,1,35,'36.pdf',156,NULL,'Алфавітний покажчик',NULL,NULL,36,'Index');
+/*!40000 ALTER TABLE `article` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `article_to_author`
+--
+
+DROP TABLE IF EXISTS `article_to_author`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `article_to_author` (
+  `author_id` int(11) NOT NULL DEFAULT '0',
+  `article_id` int(11) NOT NULL DEFAULT '0',
+  `sort_order` int(11) DEFAULT NULL,
+  PRIMARY KEY (`author_id`,`article_id`),
+  KEY `article_to_author_article_fk` (`article_id`),
+  CONSTRAINT `article_to_author_author_fk` FOREIGN KEY (`author_id`) REFERENCES `author` (`author_id`),
+  CONSTRAINT `article_to_author_article_fk` FOREIGN KEY (`article_id`) REFERENCES `article` (`article_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `article_to_author`
+--
+
+LOCK TABLES `article_to_author` WRITE;
+/*!40000 ALTER TABLE `article_to_author` DISABLE KEYS */;
+INSERT INTO `article_to_author` VALUES (1,3,1),(2,3,2),(2,5,1),(3,3,3),(4,4,1),(5,6,1),(7,7,1),(8,7,2),(9,8,1),(10,8,2),(11,8,3),(12,9,1),(13,9,2),(14,9,3),(15,10,1),(16,10,2),(17,10,3),(18,11,60),(19,11,30),(20,11,20),(21,11,40),(22,11,50);
+/*!40000 ALTER TABLE `article_to_author` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `author`
+--
+
+DROP TABLE IF EXISTS `author`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `author` (
+  `author_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name_short` varchar(45) NOT NULL,
+  PRIMARY KEY (`author_id`),
+  UNIQUE KEY `author_pk` (`name_short`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `author`
+--
+
+LOCK TABLES `author` WRITE;
+/*!40000 ALTER TABLE `author` DISABLE KEYS */;
+INSERT INTO `author` VALUES (7,'Алєксєєв В. М.'),(1,'Анипко О. Б.'),(4,'Біленко О. І.'),(12,'Бісик С. П.'),(9,'Бараннік В. В.'),(2,'Бирюков И. Ю.'),(15,'Боряк К. Ф.'),(5,'Будяну Р. Г.'),(20,'Гришин М. В.'),(13,'Давидовський Л. С.'),(17,'Дяченко А. Ф.'),(8,'Корольова О. В'),(22,'Кравчук А. М.'),(19,'Лавров О. Ю.'),(16,'Ленков С. В.'),(11,'Отман Шаді О. Ю.'),(21,'Руденко М. М.'),(10,'Рябуха Ю. М.'),(18,'Семенюк В. І.'),(14,'Схабицький В. Р.'),(3,'Сыщук С. И.');
+/*!40000 ALTER TABLE `author` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `journal`
+--
+
+DROP TABLE IF EXISTS `journal`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `journal` (
+  `journal_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) DEFAULT NULL,
+  `name_eng` varchar(256) DEFAULT NULL,
+  `issn` varchar(45) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  `subject` varchar(2048) DEFAULT NULL,
+  `founders` varchar(256) DEFAULT NULL,
+  `founded` int(11) DEFAULT NULL,
+  `gov_registration` varchar(256) DEFAULT NULL,
+  `gov_registration_file` varchar(256) DEFAULT NULL,
+  `dak_registration` varchar(256) DEFAULT NULL,
+  `chief_editor` varchar(256) DEFAULT NULL,
+  `executive_secretary` varchar(256) DEFAULT NULL,
+  `editorial_board` varchar(2048) DEFAULT NULL,
+  `period` varchar(45) DEFAULT NULL,
+  `picture_file` varchar(256) DEFAULT NULL,
+  `prefix` varchar(45) DEFAULT NULL,
+  `dak_spec` varchar(100) DEFAULT NULL,
+  `sort_order` int(11) DEFAULT NULL,
+  `materials_accept` varchar(512) DEFAULT NULL,
+  `quotation` int(11) DEFAULT NULL,
+  `h_index` int(11) DEFAULT NULL,
+  `i10` int(11) DEFAULT NULL,
+  `icv` varchar(10) DEFAULT NULL,
+  `google_scholar` varchar(100) DEFAULT NULL,
+  `index_update` date DEFAULT NULL,
+  PRIMARY KEY (`journal_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `journal`
+--
+
+LOCK TABLES `journal` WRITE;
+/*!40000 ALTER TABLE `journal` DISABLE KEYS */;
+INSERT INTO `journal` VALUES (1,'Системи озброєння і військова техніка','Systems of arms and military equipment','1997-9568','Науковий журнал','у науковому журналі відображаються досягнення в розробці систем озброєння та військової техніки, намічені перспективи їх розвитку, вказані шляхи удосконалення експлуатаційної бази озброєння та напрямки розробок у військовій галузі','Харківський університет Повітряних Сил імені Івана Кожедуба',2005,'КВ № 9401 від 9.12.2004 р.','soivt_svidotstvo.jpg','Постанова № 1-05/4 від 14.10.2009 р.','Стасєв Юрій Володимирович (д-р техн. наук, проф.)','Кучук Г. А. (д-р техн. наук, проф.)','Аніпко О. Б. (д-р техн. наук, проф.), Більчук В. М. (д-р техн. наук, проф.), Городнов В. П. (д-р військ. наук, проф.), Демідов Б. О. (д-р техн. наук, проф.), Дробаха Г. А. (д-р військ. наук, проф.), Єрмаков Г. В. (д-р техн. наук, проф.), Єрмошин М. О. (д-р військ. наук, проф.), Карлов В. Д. (д-р техн. наук, проф.), Козелков С. В. (д-р техн. наук, проф.), Кононов Б. Т. (д-р техн. наук, проф.), Костенко П. Ю. (д-р техн. наук, проф.), Краснобаєв В. А. (д-р техн. наук, проф.), Ланецький Б. М. (д-р техн. наук, проф.), Леонтьєв О. Б. (д-р техн. наук, проф.), Лещенко С. П. (д-р техн. наук, проф.), Раковський Х. В. (д-р техн. наук, проф.), Смірнов Є. Б. (д-р військ. наук, проф.), Шарий В. О. (д-р військ. наук, проф.), Шмаков О. М. (д-р військ. наук, проф.)','щоквартально','soivt.jpg','soivt','технічні науки, військові науки',20,'2(42) – надрукований;<br/>3(43) – прийом завершено, друк у жовтні;<br/>4(44) – прийом триває, друк у грудні',631,9,7,NULL,'https://scholar.google.com.ua/citations?hl=ru&btnA=1&user=NV1Ji44AAAAJ','2015-07-24'),(2,'Наука і техніка Повітряних Сил Збройних Сил України','Science and Technology of the Air Force of Ukraine','2223-456X','Науковий журнал','відображені результати фундаментальних, пошукових та прикладних наукових досліджень','Харківський університет Повітряних Сил імені Івана Кожедуба Міністерства оборони України',2009,'КВ № 13620-2594Р від 26.12.2007 р.','nitps_svidotstvo.jpg','Постанова № 8-08/5-з від 1.07.2010 р.','Пєвцов Геннадій Володимирович (д-р техн. наук, проф.)','Воробйов О. В. (канд. техн. наук)','Городнов В. П. (д-р військ. наук, проф.), Демідов Б. О. (д-р техн. наук, проф.), Дробаха Г. А. (д-р військ. наук, проф.), Єрмошин М. О. (д-р військ. наук, проф.), Загорка О. М. (д-р військ. наук, проф.), Казаков Є. Л. (д-р техн. наук, проф.), Калкаманов С. А. (д-р техн. наук, проф.), Карлов В. Д. (д-р техн. наук, проф.), Коваль В. В. (канд. техн. наук, старш. наук. співроб.), Ланецький Б. М. (д-р техн. наук, проф.), Леонтьєв О. Б. (д-р техн. наук, проф.), Лещенко С. П. (д-р техн. наук, проф.), Петрушенко М. М. (д-р техн. наук, старш. наук. співроб.), Романенко І. О. (д-р техн. наук, проф.), Романченко І. С. (д-р військ. наук, проф.), Рубан І. В. (д-р техн. наук, проф.), Седишев Ю. М. (д-р техн. наук, проф.), Семон Б. Й. (д-р техн. наук, проф.), Сотніков О. М. (д-р техн. наук, проф.), Сухаревський О. І. (д-р техн. наук, проф.), Ткаченко В. І. (д-р військ. наук, проф.), Турсунходжаєв Х. А. (д-р техн. наук, проф.), Чепков І. Б. (д-р техн. наук, проф.), Шмаков О. М. (д-р військ. наук, проф.)','щоквартально','nitps.jpg','nitps','технічні науки, військові науки',10,'2(19) – надрукований;<br/>3(20) – прийом завершено, друк у жовтні;<br/>4(21) – прийом триває, друк у грудні',205,5,1,NULL,'https://scholar.google.com.ua/citations?hl=ru&user=GOehjGUAAAAJ','2015-07-24'),(9,'Системи обробки інформації','Information processing systems','1681-7710','Збірник наукових праць','у збірнику публікуються результати досліджень з розробки нових інформаційних технологій як для рішення традиційних задач збору, обробки та відображення даних, так і для побудови систем обробки інформації у різних проблемних галузях','Харківський університет Повітряних Сил імені Івана Кожедуба Міністерства оборони України',1996,'КВ № 9500 від 13.01.2005 р.','soi_svidotstvo.jpg','Постанова № 1-05/4 від 14.10.2009 р.','Стасєв Юрій Володимирович (д-р техн. наук, проф.)','Кучук Г. А. (д-р техн. наук, проф.)','Більчук В. М. (д-р техн. наук, проф.), Голкін Д. В. (д-р техн. наук, проф.), Горобець М. М. (д-р фіз.-мат. наук, проф.), Євдокімов В. Ф. (чл.-кор. Нац. акад. наук України, д-р техн. наук, проф.), Іванов В. К. (д-р фіз.-мат. наук, старш. наук. співроб.), Карлов В. Д. (д-р техн. наук, проф.), Качанов П. О. (д-р техн. наук, проф.), Козелков С. В. (д-р техн. наук, проф.), Коноваленко О. О. (акад. Нац. акад. наук України, д-р фіз-мат. наук, проф.), Кононов Б. Т. (д-р техн. наук, проф.), Краснобаєв В. А. (д-р техн. наук, проф.), Купченко Л. Ф. (д-р техн. наук, проф.), Лосєв Ю. І. (д-р техн. наук, проф.), Порошин С. М. (д-р техн. наук, проф.), Потій О. В. (д-р техн. наук, проф.), Рубан І. В. (д-р техн. наук, проф.), Смеляков С. В. (д-р фіз.-мат. наук, проф.), Тимочко О. І. (д-р техн. наук, проф.), Харченко В. С. (д-р техн. наук, проф.)','раз на два місяці','soi.jpg','soi','технічні науки',40,'8(133) – надрукований;<br/>9(134) – надрукований;<br/>10(135) – прийом завершено, друк на початку жовтня;<br/>11(136) – прийом триває, друк у листопаді.',1989,12,26,'5.39','http://scholar.google.com.ua/citations?hl=ru&user=VZJ15S0AAAAJ','2015-07-24'),(10,'Харківського університету Повітряних Сил','Scientific works of Kharkiv Air Force University','2073-7378','Збірник наукових праць','концепція збірника передбачає відображення наукових та практичних досягнень за такими напрямами: збройна боротьба: теорія, забезпечення, досвід; літальні апарати: аеродинаміка, силові установки, обладнання та озброєння; радіотехніка, радіолокація, електроніка; зв’язок; кібернетика та системний аналіз; механіка, машинознавство та електропостачання; метрологія та вимірювальна техніка; організація виробництва та управління проектами; запобігання та ліквідація надзвичайних ситуацій; охорона правопорядку; актуальні питання навчання','Харківський університет Повітряних Сил імені Івана Кожедуба Міністерства оборони України',2005,'КВ № 9498 від 13.01.2005 р.','zhups_svidotstvo.jpg','Постанова № 1-05/4 від 14.10.2009 р.','Стасєв Юрій Володимирович (д-р техн. наук, проф.)','Кучук Г. А. (д-р техн. наук, проф.)','Городнов В. П. (д-р військ. наук, проф.), Дробаха Г. А. (д-р військ. наук, проф.), Єрмаков Г. В. (д-р техн. наук, проф.), Єрмошин М. О. (д-р військ. наук, проф.), Калкаманов С. А. (д-р техн. наук, проф.), Карлов В. Д. (д-р техн. наук, проф.), Корнієнко С. В. (д-р техн. наук, проф.), Леонтьєв О. Б. (д-р техн. наук, проф.), Літвінов В. В. (д-р техн. наук, проф.), Романенко І. О. (д-р техн. наук, проф.), Рубан І. В. (д-р техн. наук, проф.), Седишев Ю. М. (д-р техн. наук, проф.), Смірнов Є. Б. (д-р військ. наук, проф.), Сотніков О. М. (д-р техн. наук, проф.), Ткаченко В. І. (д-р військ. наук, проф.), Турсунходжаєв Х. А. (д-р техн. наук, проф.), Шарий В. О. (д-р військ. наук, проф.), Шмаков О. М. (д-р військ. наук, проф.)','щоквартально','zhups.jpg','zhups','технічні науки, військові науки',30,'3(44) – надрукований;<br/>4(45) – прийом триває, друк у листопаді.',370,7,4,NULL,'http://scholar.google.com.ua/citations?hl=ru&btnA=1&user=n98J_wkAAAAJ','2015-07-24');
+/*!40000 ALTER TABLE `journal` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `journal_edition`
+--
+
+DROP TABLE IF EXISTS `journal_edition`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `journal_edition` (
+  `journal_edition_id` int(11) NOT NULL AUTO_INCREMENT,
+  `journal_id` int(11) NOT NULL,
+  `number` int(11) NOT NULL,
+  `picture_file` varchar(256) DEFAULT NULL,
+  `visible` int(11) DEFAULT '1',
+  `number_in_year` int(11) NOT NULL,
+  `issue_year` int(11) NOT NULL,
+  PRIMARY KEY (`journal_edition_id`),
+  UNIQUE KEY `journal_number` (`journal_id`,`number`),
+  UNIQUE KEY `journal_year_number` (`journal_id`,`number_in_year`,`issue_year`),
+  CONSTRAINT `journal_edition_journal_fk` FOREIGN KEY (`journal_id`) REFERENCES `journal` (`journal_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `journal_edition`
+--
+
+LOCK TABLES `journal_edition` WRITE;
+/*!40000 ALTER TABLE `journal_edition` DISABLE KEYS */;
+INSERT INTO `journal_edition` VALUES (2,1,42,'',1,2,2015),(3,1,41,'title.jpg',1,1,2015),(4,1,37,'',1,1,2014),(5,1,38,'',1,2,2014),(35,1,40,NULL,1,4,2014);
+/*!40000 ALTER TABLE `journal_edition` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `topic`
+--
+
+DROP TABLE IF EXISTS `topic`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `topic` (
+  `topic_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) DEFAULT NULL,
+  `visible` int(11) DEFAULT NULL,
+  PRIMARY KEY (`topic_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `topic`
+--
+
+LOCK TABLES `topic` WRITE;
+/*!40000 ALTER TABLE `topic` DISABLE KEYS */;
+INSERT INTO `topic` VALUES (1,'special',0),(3,'Військово-технічні проблеми',1),(4,'Теоретичні основи розробки систем озброєння',1),(5,'Безпека життєдіяльності та ліквідація наслідків надзвичайних ситуацій',1),(6,'Загальні питання',1),(9,'!!!Військово-технічні проблеми',1),(10,'!!!!!!!!!!!!Теоретичні основи розробки систем озброєння',1);
+/*!40000 ALTER TABLE `topic` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-10-16 14:12:34
