@@ -6,7 +6,11 @@
 
             <div class="row top10">
                 <div class="col-md-2">
+                    @if(null !== $edition->getPictureFile())
                     <img src={{{ url('/data/'.$edition->getJournal()->prefix.'/'.$edition->getNumber().'/'.$edition->getPictureFile()) }}} />
+                    @else
+                    <img src={{{ url('/data/'.$edition->getJournal()->prefix.'/'.$edition->getJournal()->default_edition_picture) }}} />
+                    @endif
                 </div>
                 <div class="col-md-10">
                     {{{ $edition->getJournal()->type}}}

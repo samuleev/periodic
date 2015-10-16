@@ -6,4 +6,4 @@
 - edition header - pattern
 - english article name
 
-
+- human readable message if importing existing edition
