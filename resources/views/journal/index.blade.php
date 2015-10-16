@@ -2,7 +2,7 @@
 
 @section('content')
     @if(count($journals))
-        <div class="container">
+        <div class="container main-content">
             @foreach($journals as $index =>  $journal)
                 @if($index % 2 == 0)
                     <div class="row top10">
