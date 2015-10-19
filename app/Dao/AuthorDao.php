@@ -22,4 +22,16 @@ class AuthorDao implements Dao {
     {
         return DB::table('author')->insertGetId(get_object_vars($valueObject));
     }
+
+    public static function findByName($name)
+    {
+        $author = DB::table('author')
+            ->where('name_short', $name)
+            ->orderby('author_id')->get();
+        if (count($author) == 0)
+        {
+            return null;
+        }
+        return $author[0];
+    }
 }

@@ -32,7 +32,8 @@ class ArticleController extends Controller {
         $journal = JournalDao::findById($edition->journal_id);
 
         $original_filename = ArticleService::getFilePath($article, $journal, $edition);
-        $new_filename = $journal->prefix . '_' . $edition->issue_year . '_' . $edition->number_in_year . '_' . $article->getOrder();
+        $new_filename = $journal->prefix . '_' . $edition->issue_year . '_'
+            . $edition->number_in_year . '_' . $article->getOrder() . '.pdf';
 
         $headers = array(
             "Content-Type: application/pdf"

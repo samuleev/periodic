@@ -57,9 +57,8 @@ class CommonArticleImporter extends BaseArticleImporter {
     private static function importSingleArticle($line, $editionId, $index, $topic)
     {
         $article = self::createArticle($line, $editionId, $index, $topic);
-        ArticleDao::persist($article);
-
-        //create and persist authors
+        $articleId = ArticleDao::persist($article);
+        AuthorImporter::import($line, $articleId);
     }
 
     private static function createArticle($line, $editionId, $index, $topic)

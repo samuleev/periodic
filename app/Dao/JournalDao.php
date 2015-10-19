@@ -2,6 +2,7 @@
 
 namespace App\Dao;
 
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 class JournalDao implements Dao
@@ -30,7 +31,7 @@ class JournalDao implements Dao
 
     static function persist($valueObject)
     {
-        throw new \Exception('Not implemented yet');
+        throw new Exception('Not implemented yet');
     }
 
 }

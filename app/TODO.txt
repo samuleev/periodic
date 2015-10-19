@@ -1,9 +1,6 @@
-- article page
-- back link to previous category
-- route to resources
 - refactor views
-- edition pic / default pic
 - edition header - pattern
 - english article name
 
 - human readable message if importing existing edition
+- bred crumps: "if isset" chain
