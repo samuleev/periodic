@@ -48,7 +48,7 @@ class AuthorImporter {
 
     private static function getAuthorNames($line)
     {
-        $authorSubString = trim(substr($line, 0, strrpos($line, '[')));
+        $authorSubString = trim(substr($line, 0, strpos($line, '[')));
         return explode(',',  $authorSubString);
     }
 

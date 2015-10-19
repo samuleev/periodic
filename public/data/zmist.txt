@@ -1,39 +1,46 @@
-﻿Системи озброєння і військова техніка, 2014, № 4(40)
+Збірник наукових праць Харківського університету Повітряних Сил, 2015, випуск 1(42)
 [Титул]
-[Зміст] 157-158
-/Військово-технічні проблеми
-Александрова Т. Е., Лазаренко А. А., Зейн А. В. [Об особенностях построения инвариантной системы наведения и стабилизации танковой пушки] {About the features of construction of the invariant system of guidance and stabilization of tank gun} 3-6
-Варава В. В., Толмачов О. М. [Визначення основних тенденцій та перспективних напрямків розвитку і модернізації реактивних систем залпового вогню] {Identification of major trends and perspective directions of development and modernization reactive systems of volley fire} 7-9
-Висоцький О. В. [Аналіз тактико-технічних характеристик основних радіолокаційних засобів існуючої системи контролю повітряного простору України] {The analysis of tactic-technical characteristics of radar-tracking means of the existing monitoring system of air space of Ukraine} 10-12
-Грабчак В. І., Іваник Є. Г., Цибуля С. А. [Основні аспекти опису задачі про оптимальну швидкодію керування рухом ракети] {The basic aspects of description to problem of optimal high-speed to moving by operating of rocket} 13-20
-Іванець Г. В., Стецюк Є. І., Іванець М. Г. [Індивідуальний захист саперів від дії осколків і куль] {Individual protection of sappers from the action of the fragments and bullets} 21-24
-Квітковський Ю. В., Василькова К. Ю. [Урахування ергономічних показників при конструюванні бронешоломів] {An account of ergonomics indexes is at constructing of combat helmets} 25-31
-Ковалевський С. М., Худов Г. В., Боровий В. І. [Перспективи розвитку засобів повітряного нападу як об’єктів радіолокаційного виявлення] {Prospects of development of means of the air attack as objects of radar-tracking detection} 31-35
-Кононов В. Б., Шевяков Ю. І., Філістєєв Д. А., Бурцева В. В. [Метод визначення оптимального плану розподілу й відповідних оптимальних маршрутів руху виїзних метрологічних груп при метрологічному обслуговуванні  військових частин та підрозділів] {Method of determination of optimum plan of distributing and proper optimum routes of motion of departure metrology groups at metrology maintenance of military parts and subdivisions} 35-41
-Корольов В. М., Заєць Я. Г., Щавінський Ю. В. [Спосіб обчислення часу висування бойової машини із зони «затінення» в зону прямої видимості цілі] {Method of calculation of time of fighting machine advancement from the “shading” area to line-of-sight range to target} 41-44
-Купріненко О. М. [Методика оцінки воєнно-економічної ефективності перспективних типів бойових броньованих машин] {Method of estimation of military and economic efficiency perspective types of armoured combat vehicles} 44-49
-Лісогорський Б. А., Худов Г. В. [Аналіз характеристик радіолокаційних станцій контрбатарейної боротьби] {The analysis of characteristics of radar stations} 50-54
-Сидоренко І. І., Пономаренко М. О. [Вибір штурмової гвинтівки на основі методу аналізу ієрархій] {A choice an assault rifle on the basis of analytic hierarchy process} 54-57
-/Теоретичні основи розробки систем озброєння
-Біленко О. І. [Вплив розкиду значень балістичного коефіцієнту поражаючого елементу кінетичної зброї на ефективність виконання вогневих завдань силами безпеки] {Dispersion influence of ballistic coefficient senses of a hit element of the kinetic weapon on the implementation efficiency of fire tasks of safety forces} 58-62
-Гузченко С. В., Ярош С. П. [Обґрунтування показників бойових можливостей міжвидових тактичних груп] {Substantiation of metrics of fighting possibilities interspecific tactical groups} 63-67
-Еременко С. М., Соловьев О. В., Прусак П. В., Кобрина Н. В. [Особенности методики расчёта турбулентных характеристик вихревых следов] {Calculation method features of vortex wake turbulent characteristics} 67-72
-Жердев М. К., Кузавков В. В. [Побудова функціональних перевірних тестів для безконтактного індукційного методу діагностування] {Building a functional screening tests for non-contact induction method of diagnosis} 73-76
-Зюкин В. Ф., Белавин А. В., Свистунов Д. Ю. [Методика оценки потенциальной помехоустойчивости обзорных РЛС при воздействии комбинированных помех] {Method of estimation of potential antijammingness survey radar at influence of the combined hindrances} 76-81
-Кобзев А. В., Мурзин М. В. [Применение вейвлет-разложения для реализации некогерентного накопления при обнаружении сигналов с неизвестной протяженностью] {Application of wavelet decomposition for the implementation of incoherent accumulation at detection signals with unknown length} 82-85
-Коваленко А. С., Смірнов О. А., Коваленко О. В. [Дослідження будови інтегрованої інформаційної системи та її елементів] {Studying the structure of an integrated information system and its elements} 85-88
-Лаврут О. О. [Дослідження якості управління потоками інформації у телекомунікаційній мережі критичного призначення] {Quality research of information management in the telecommunications network of critical use} 89-93
-Ланецький Б. М., Доска О. М. [Обґрунтування тривалостей доводочних робіт та випробувань зразків зенітного ракетного озброєння при відновлювальних середніх і капітальних ремонтах] {Grounding the terms of refinements jobs and tests for SAM troops armaments during midterm repairs and over haunts} 94-97
-Леонов И. Г., Коржов А. Н., Куц В. С., Пичугин И. М. [Учет замираний и рассеивания по времени и частоте в модели дискретного радиолокационного канала] {Account of stopping beating and dispersion on time and frequency in models of discrete radio-location channel} 98-102
-Лысенко И. А., Смирнов А. А., Полищук Л. И. [Исследование процесса разработки программного обеспечения инфотелекоммуникационных систем] {Study of software development infotelecommunication systems} 103-106
-Сігайло Г. П., Кравцов А. Г., Варваров В. В. [Температурна стійкість гідравлічних мастильних матеріалів при  їх модифікації присадками різноманітного призначення] {Hydraulic lubricants temperature resistance during their modification various purposes additives} 107-109
-Смеляков К. С., Дроб Е. М., Водолажко О. В. [Модели и методы градационной коррекции цифрового изображения] {Models and methods for gray-scale transformation of digital images} 110-116
-Сова О. Я., Жук П. В., Міночкін Д. А., Симоненко О. А. [Методика побудови нечітких баз знань інтелектуальних систем управління вузлами мобільних радіомереж класу MANET] {The method of fuzzy knowledge bases construction for intellectual nodal control systems in the MANET} 117-125
-Strykhalyuk B. M., Kahalo I. O., Brych M. V., Beshley M. I.,  Seliuchenko M. O. [Implementation of wireless heterogeneous network based on LTE core virtualization for military communication systems] 125-132
-Шитова О. В., Пухляк А. Н. [Выбор признаков для сегментации текстурных областей изображений, близких по значениям цвета и структуре] {A choice of signs for segmentation of texture areas of images which have similar values of color and structure} 133-136
-Грабчак В. І., Бондаренко С. В., Стеців С. В. [Математична модель обертального руху снарядів з гіроскопічною стабілізацією] {Mathematical model of rotational motion shells with gyroscopic stabilization} 137-142
-Кийко С. Г. [Мультиагентная модель анализа процессов управления ресурсными потоками проектов предприятия] {Agent-based model for analyze the management process of projects resource flows} 143-146
-Азаренко Е. В., Столярчук Ю. Ю. [Закономерности трансформации иприта в эмульгированное состояние] {Patterns of transformation of mustards (dichloroethyl sulfide) to the emulsified state} 147-150
-Стрелец В. М. [Особенности выбора средств индивидуальной защиты для работы спасателей в условиях, которые существенно отличаются от наихудших условий пожара] {Comparative analysis of the flow patterns of air reserve for rescuers in SCBA} 150-153
-[Наші автори] {Authors} 154-155
-[Алфавітний покажчик] {Index} 156
+[Зміст] 161-162
+/Збройна боротьба: теорія, забезпечення, досвід
+Іванець Г. В., М. П. Букін, Стецюк Є. І. [Дослідження дії ударної хвилі на організм саперів при несанкціонованому вибуху ручних протипіхотних гранат] {Investigation of the effect of shock waves on the body sapper unauthorized explosion antipersonnel grenades} 3-6
+Поляков C. Ю., Ленкин В. М., Королев С. С., Змиевской Г. А. [Пути усовершенствования противодействия тепловизионной разведке] {The ways to improve counteraction thermal imaging exploration} 7-15
+Смірнов Є. Б., Таран І. А., Астахов О. О. [Принципи застосування цільового управління органами військового управління] {Principles of using the management by objectives by military authorities} 16-21
+/Літальні апарати: аеродинаміка, силові установки, обладнання та озброєння
+Варваров В. В., Усачева О. А., Кравцов А. Г. [Ускоренные методы оценки эффективности технологических решений для повышения износостойкости агрегатов гидравлических систем авиационной техники] {Speed-up methods of estimation of efficiency of technological decisions for rise of wear proof of aggregates of hydraulic systems of aviation technique} 22-24
+Обод І. І., Свид І. В., Штих І. А. [Просторовий метод підвищення завадостійкості запитальних систем спостереження повітряного простору] {Spatial methods increased noise immunity inquire airspace surveillance systems} 25-27
+/Зв’язок, радіотехніка, радіолокація, акустика та навігація
+Василишин В. И., Богданов А. Д. [Анализ эффективности метода углового разрешения источников коррелированных сигналов с псевдослучайной пространственной обработкой] {Performance analysis of the method of angular resolution of the correlated signal sources with pseudorandom spatial processing} 28-30
+Кобзев А. В., Мурзин М. В. [Сравнительный анализ показателей обнаружения сигналов радиосредств с энергетической скрытностью излучения при двух способах обработки] {Comparative analysis indicators of signal detection of radio means with the energy stealth radiation in two ways of processing} 31-33
+/Кібернетика та системний аналіз
+Кеберле Н. Г. [Методика верификации темпоральных ограничений целостности на архиве версий онтологии] {Temporal integrity constraints verification technique over ontology versions archive} 34-38
+Коваленко А. С., Смірнов О. А., Коваленко О. В. [Обґрунтування набору даних для оцінки технічного стану інтегрованої інформаційної системи] {Rationale datasets to evaluate the technical condition of integrated information system} 39-41
+Кораблёв Н. М., Кушнарёв М. В., Лебедев О. Г. [Обнаружение и анализ вредоносных программ с использованием мультиагентного подхода] {Detection and analysis of malware using multi-agent approach} 42-47
+Краснобаев В. А., Янко А. С., Кошман С. А., Сомов С. А., Бендес Ю. П. [Исследование производительности компьютерной системы обработки целочисленных данных, функционирующей в системе остаточных классов] {Research of capability of computer system of integer data processing, which function in residue number system} 48-52
+Лужецький В. А., Савицька Л. А. [Моделі і методи адаптивного ущільнення даних на основі лінійної форми Фібоначчі] {Models and methods for adaptive data compression based on linear Fibonacci form} 53-57
+Малюга В. Г., Грідіна В. В., Козак О. М. [Структурний аналіз складних ієрархічних систем в процесі планування вогневого ураження] {Structural analysis of the difficult hierarchical systems in the process of planning of fire defeat} 58-60
+Морозов О. О. [Задача синтезу стратегій розгортання ремонтних органів угрупувань військ (сил)] {The task of synthesis strategies expander repair organs of groupings of troops (forces)} 61-63
+Морозова О. И. [Применение искусственного интеллекта для управления асинхронным двигателем с частотным преобразователем] {The applications of artificial intelligence for controlling the asynchronous engine with frequency converter} 64-68
+Олейник И. В., Поспелов Л. А. [Соловьёва О. И. [Программно-математическое обеспечение ВЧ-гипертермии] {Programmatic mathematical providing of VCH- hyperthermia} 69-79
+Воробьев О. В., Осколков А. П., Балакирева С. М. [Регулирование трафика в информационно-телекоммуникационных сетях систем критического применения] {Traffic adjustment in information and telecommunication networks of critical applying} 80-85
+/Механіка, машинознавство та електропостачання
+Бабич А. П., Пічугін І. М. [Шляхи підвищення якості технічного обслуговування і ремонту автобусів на підприємствах автомобільного транспорту України] {Ways improving the quality of maintenance and repair of buses at enterprises of motor transport of Ukraine} 86-90
+/Метрологія та вимірювальна техніка
+Коваленко К. В., Науменко А. М. [Аналіз основних принципів дії біодатчиків] {Analysis of basic principles of operation biosensors} 91-93
+Колачов С. П., Кузавков В. В. [Датчики температури для безконтактного способу зняття діагностичної інформації в методі власного випромінювання] {Temperature sensors for contactless way of removing the diagnostic information in the method of self-radiation} 94-97
+Погорелко А. Е. [Измерение времени опережения синхронизатора] {Measuring of time of passing of synchronizer} 98-100
+Шведова В. В. [Оцінювання валідності тестового простору комп’ютеризованої системи тестування: види валідності, методи та способи оцінювання показника та його невизначеності] {Assessment of validity of the test area for computerized testing system: types of validity, methods and techniques of evaluation of its index and uncertainty} 100-104
+/Запобігання та ліквідація надзвичайних ситуацій
+Богом’я В. І., Коваль О. О. [Розробка моделі екологічного аудиту підприємства на основі використання геоінформаційних систем] {Development of model of ecological audit of enterprise on basis of the use of GIS} 105-109
+Віткін Л. М., Лапач С. М., Ролько О. Р. [Методика ідентифікації небезпек та оцінки професійних ризиків в умовах виробничої діяльності на м'ясопереробному підприємстві] {Methodology of dangers identification and professional risks in the conditions of productive activity on meat producer by enterprise} 110-114
+Голубок М. Г. [Класифікація загроз для ядерних установок. [Оцінка мотивації, намірів та можливостей правопорушників щодо проникнення на охороняємий об'єкт та здійснення диверсії] {Classification of threats to nuclear facilities. Evaluation of motivation, intentions and capabilities of offenders to infiltrate the guarded object and diversions} 115-119
+Гречанінов В. Ф., Бегун В. В. [Аналіз функціонування цивільного захисту у сучасних умовах та деякі пропозиції щодо його удосконалення] {The analysis of the civil protection activity under current conditions and some suggestions on its improvement} 120-125
+Кацман М. Д., Родкевич О. Г. [Інформаційна модель ідентифікації екологічно небезпечних надзвичайних ситуацій] {Informative model of authentication ecologically of extraordinary near-accidents} 126-131
+Коростельова О. А., Шамаєв Ю. П. [Особливості впровадження законодавчо-нормативних документів України та Європейського союзу у галузі охорони навколишнього середовища] {Features of introduction of legislatively-normative documents of Ukraine and European union are in industry of guard of environment} 132-135
+Старух О. С., Пащенко В. В., Гончар Р. О. [Аналіз спеціальних технічних приладів виявлення вибухових матеріалів для груп ліквідації загрози вибуху] {Analysis of special technical means of detecting explosives for groups with elimination of the danger of explosion} 136-139
+/Охорона правопорядку
+Баулін Д. С., Горєлишев С. А., Муленко О. О. [Ефективність застосування сучасних інформаційних технологій в системі вогневої підготовки Національної гвардії України] {Effective use of modern information technologies in fire training national guard of Ukraine} 140-143
+Варакута В. П., Дробаха Г. А., Луговський І. С., Панченко В. Ю. [Обґрунтування необхідності оцінювання можливостей військових частин оперативного призначення Національної гвардії України в спеціальній операції щодо знешкодження незаконних збройних формувань] {Ground of necessity of evaluation of possibilities of soldiery parts of the operative setting of the National household troops of Ukraine in the special operation on neutralization of the illegal armed farming’s} 144-149
+Грибенюк Г. С., Тарасенко А. В. [Типологія загроз та порушників безпеки інформаційних систем ДСНС України] {Typology of threats and intruders security information systems of the state emergency service of Ukraine} 150-153
+Євсєєв В. О. [Удосконалена математична модель виявлення диверсійно-розвідувальних сил противника при охороні важливих державних об’єктів] {Improved math model of sabotage and reconnaissance  enemy’s forces detecting during the protection of key infrastructure} 154-157
+[Наші автори] {Authors}158-160
+[Алфавітний покажчик] {Index}160
