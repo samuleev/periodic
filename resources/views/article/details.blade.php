@@ -24,11 +24,11 @@
 
             <div class="row top10">
                 <div class="col-md-12">
-                    @if(count($article->getAuthors())>0)
-                    {{{$article->getAuthors()[0]->getShortName()}}}
+                    @if(count($article->authors)>0)
+                    {{{$article->authors[0]->name_short}}}
                     @endif
                     <br />
-                    <b>{{{$article->getName()}}}</b>&nbsp;@if(count($article->getAuthors())>0)/&nbsp;@include('article.authors')&nbsp;@endif//
+                    <b>{{{$article->name}}}</b>&nbsp;@if(count($article->authors)>0)/&nbsp;@include('article.authors')&nbsp;@endif//
                     <a href={{{route('journal.details', $journal->journal_id)}}}>{{{ $journal->name }}}.</a>
                     - {{{$edition->issue_year}}}. - № {{{$edition->number_in_year}}}. @include('article.pages')
                 </div>
@@ -36,8 +36,8 @@
 
             <div class="row top10">
                 <div class="col-md-12">
-                    <a href={{{route('article.download', $article->getId())}}} >
-                        <img src={{{ url('/data/pdf_icon.ico') }}} /> Повний текст PDF - {{{$article->getFileSize()}}}</a>
+                    <a href={{{route('article.download', $article->article_id)}}} >
+                        <img src={{{ url('/data/pdf_icon.ico') }}} /> Повний текст PDF - {{{$article->file_size}}}</a>
                 </div>
             </div>
 
@@ -46,8 +46,8 @@
                 <div class="col-md-12">
                     Цитованість авторів публікації:
                     <ul>
-                    @foreach($article->getAuthors() as $author)
-                        <li>{{{$author->getShortName()}}}</li>
+                    @foreach($article->authors as $author)
+                        <li>{{{$author->name_short}}}</li>
                     @endforeach
                     </ul>
                 </div>
@@ -57,10 +57,10 @@
                 <div class="col-md-12">
                     <small>
                     <i>Бібліографічний опис для цитування:</i><br>
-                    @if(count($article->getAuthors())>0)
-                    {{{$article->getAuthors()[0]->getShortName()}}}
+                    @if(count($article->authors)>0)
+                    {{{$article->authors[0]->name_short}}}
                     @endif
-                    {{{$article->getName()}}}&nbsp;@if(count($article->getAuthors())>0)/&nbsp;@include('article.authors')&nbsp;@endif//
+                    {{{$article->name}}}&nbsp;@if(count($article->authors)>0)/&nbsp;@include('article.authors')&nbsp;@endif//
                     {{{ $journal->name }}}.
                     - {{{$edition->issue_year}}}. - № {{{$edition->number_in_year}}}. @include('article.pages')
                     </small>

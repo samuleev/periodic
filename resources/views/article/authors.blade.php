@@ -1,3 +1,3 @@
-@foreach($article->getAuthors() as $authorIndex => $author)
-    {{{ $author->getShortName() }}}@if($authorIndex < (count($article->getAuthors()) - 1)),@endif
+@foreach($article->authors as $authorIndex => $author)
+    {{{ $author->name_short }}}@if($authorIndex < (count($article->authors) - 1)),@endif
 @endforeach

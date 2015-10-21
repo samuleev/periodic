@@ -6,28 +6,28 @@
 
             <div class="row top10">
                 <div class="col-md-2">
-                    @if(null !== $edition->getPictureFile())
-                    <img src={{{ url('/data/'.$edition->getJournal()->prefix.'/'.$edition->getNumber().'/'.$edition->getPictureFile()) }}} />
+                    @if(null !== $edition->picture_file)
+                    <img src={{{ url('/data/'.$journal->prefix.'/'.$edition->number.'/'.$edition->picture_file) }}} />
                     @else
-                    <img src={{{ url('/data/'.$edition->getJournal()->prefix.'/'.$edition->getJournal()->default_edition_picture) }}} />
+                    <img src={{{ url('/data/'.$journal->prefix.'/'.$journal->default_edition_picture) }}} />
                     @endif
                 </div>
                 <div class="col-md-10">
-                    {{{ $edition->getJournal()->type}}}
+                    {{{ $journal->type}}}
                     <br/>
-                    <h5>{{{ $edition->getJournal()->name }}}</h5>
-                    <b>{{{ $edition->getIssueYear() }}} рік &nbsp; &nbsp; № {{{ $edition->getNumberInYear().'('.$edition->getNumber().')' }}} </b>
+                    <h5>{{{ $journal->name }}}</h5>
+                    <b>{{{ $edition->issue_year }}} рік &nbsp; &nbsp; № {{{ $edition->number_in_year.'('.$edition->number.')' }}} </b>
                 </div>
             </div>
             <?php  $currentTopicId = null; ?>
-            @foreach($edition->getArticles() as $editionIndex => $article)
+            @foreach($articles as $editionIndex => $article)
 
-                @if($article->getTopic()->topic_id != $currentTopicId)
-                    <?php  $currentTopicId = $article->getTopic()->topic_id; ?>
-                    @if($article->getTopic()->visible)
+                @if($article->topic_id != $currentTopicId)
+                    <?php  $currentTopicId = $article->topic_id; ?>
+                    @if($article->topic->visible)
                     <div class="row top10">
                         <div class="col-md-12">
-                            <b> {{{ $article->getTopic()->name }}} </b>
+                            <b> {{{ $article->topic->name }}} </b>
                         </div>
                     </div>
                     @endif
@@ -35,11 +35,11 @@
 
                 <div class="row top10">
                     <div class="col-md-12">
-                        {{{ $article->getOrder() }}}.
+                        {{{ $article->sort_order }}}.
 
                         @include('article.authors')
 
-                        <a href="{{{ route('article.details', array($article->getId())) }}}">{{{ $article->getName().'.' }}}</a>
+                        <a href="{{{ route('article.details', array($article->article_id)) }}}">{{{ $article->name.'.' }}}</a>
 
                         @include('article.pages')
 
