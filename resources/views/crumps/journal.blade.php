@@ -1,0 +1,1 @@
+<a href={{{route('journal.details', $journal->journal_id)}}}> {{{ $journal->name }}} </a>

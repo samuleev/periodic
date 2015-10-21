@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10">
+            @yield('bread_crumps')
         </div>
         <div class="col-md-2">
             <div id="google_translate_element"></div><script type="text/javascript">

@@ -1,5 +1,13 @@
 @extends('layouts.default')
 
+@section('bread_crumps')
+    @include('crumps.journal_list')
+    &gt;
+    @include('crumps.journal')
+    &gt;
+    @include('crumps.edition')
+@stop
+
 @section('content')
     @if(isset($edition))
         <div class="container">

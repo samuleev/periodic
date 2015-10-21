@@ -1,0 +1,1 @@
+<a href="{{{ route('edition.details', array($edition->journal_edition_id)) }}}"> {{{ $edition->number_in_year."(".$edition->number.")'".$edition->issue_year }}}</a>

@@ -1,5 +1,15 @@
 @extends('layouts.default')
 
+@section('bread_crumps')
+    @include('crumps.journal_list')
+    &gt;
+    @include('crumps.journal')
+    &gt;
+    @include('crumps.edition')
+    &gt;
+    @include('crumps.article')
+@stop
+
 @section('content')
     @if(isset($article))
 

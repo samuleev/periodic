@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@section('bread_crumps')
+    @include('crumps.journal_list')
+@stop
+
 @section('content')
     @if(count($journals))
         <div class="container main-content">
