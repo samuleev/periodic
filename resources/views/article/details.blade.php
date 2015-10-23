@@ -1,19 +1,28 @@
 @extends('layouts.default')
 
+@section('seo_headers')
+    <title>{{{ $article->name }}}</title>
+    @if(isset($article->keywords))
+        <meta name="keywords" content="{{{$article->keywords}}}" >
+    @endif
+
+    @if(isset($article->description))
+        <meta name="description" content="{{{ $journal->description}}}" >
+    @endif
+@stop
+
 @section('bread_crumps')
     @include('crumps.journal_list')
-    &gt;
+    &#10095;
     @include('crumps.journal')
-    &gt;
+    &#10095;
     @include('crumps.edition')
-    &gt;
+    &#10095;
     @include('crumps.article')
 @stop
 
 @section('content')
     @if(isset($article))
-
-
         <div class="container">
 
             <div class="row top10">
@@ -28,7 +37,8 @@
                     {{{ $journal->type}}}
                     <br/>
                     <h5>{{{ $journal->name }}}</h5>
-                    <b>{{{ $edition->issue_year }}} рік &nbsp; &nbsp; № {{{ $edition->number_in_year.'('.$edition->number.')' }}} </b>
+                    <b>{{{ $edition->issue_year }}} рік &nbsp; &nbsp; № {{{ $edition->number_in_year.'('.$edition->number.')' }}}</b>
+                    <br/><br/>
                 </div>
             </div>
 
@@ -37,10 +47,12 @@
                     @if(count($article->authors)>0)
                     {{{$article->authors[0]->name_short}}}
                     @endif
-                    <br />
+                    <br/>
                     <b>{{{$article->name}}}</b>&nbsp;@if(count($article->authors)>0)/&nbsp;@include('article.authors')&nbsp;@endif//
                     <a href={{{route('journal.details', $journal->journal_id)}}}>{{{ $journal->name }}}.</a>
                     - {{{$edition->issue_year}}}. - № {{{$edition->number_in_year}}}. @include('article.pages')
+                    <br/>
+                    Тематика статті: {{{$article->topic->name}}}
                 </div>
             </div>
 

@@ -23,15 +23,10 @@ class EditionController extends Controller {
             ));
     }
 
-    public function index($journalId, $selectedYear)
+    public function byYear($journalId, $selectedYear)
     {
-        $journal = JournalDao::findById($journalId);
-        $issueYears = EditionDao::listYears($journalId);
         $editions = EditionDao::listNumbersInYear($journalId, $selectedYear);
-        return view('journal.details')->with(array(
-            'journal' => $journal,
-            'issueYears' => $issueYears,
-            'editions' => $editions));
+        return view('edition.by_year_ajax')->with(array('editions' => $editions, 'selectedYear' => $selectedYear));
     }
 
 }

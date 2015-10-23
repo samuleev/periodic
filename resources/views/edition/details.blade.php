@@ -1,10 +1,16 @@
 @extends('layouts.default')
 
+@section('seo_headers')
+    <title>{{{ $journal->name }}} - {{{ $journal->type }}}</title>
+    <meta name="keywords" content="{{{ $journal->dak_spec}}}" >
+    <meta name="description" content="{{{ $journal->subject}}}" >
+@stop
+
 @section('bread_crumps')
     @include('crumps.journal_list')
-    &gt;
+    &#10095;
     @include('crumps.journal')
-    &gt;
+    &#10095;
     @include('crumps.edition')
 @stop
 
