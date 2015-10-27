@@ -23,10 +23,28 @@ class AuthorDao implements Dao {
         return DB::table('author')->insertGetId(get_object_vars($valueObject));
     }
 
-    public static function findByName($name)
+    public static function findByFullName($author)
     {
-        $author = DB::table('author')
-            ->where('name_short', $name)
+        $query = DB::table('author')
+            ->where('surname', $author->surname);
+
+        if (isset($author->name))
+        {
+            $query = $query->where('name', $author->name);
+        } else
+        {
+            $query = $query->whereNull('name');
+        }
+
+        if (isset($author->patronymic))
+        {
+            $query = $query->where('patronymic', $author->patronymic);
+        } else
+        {
+            $query = $query->whereNull('patronymic');
+        }
+
+        $author = $query
             ->orderby('author_id')->get();
         if (count($author) == 0)
         {

@@ -1,0 +1,53 @@
+<files .env>
+    Deny from all
+</files>
+<files .gitattributes>
+    Deny from all
+</files>
+<files .gitignore>
+    Deny from all
+</files>
+<files artisan>
+    Deny from all
+</files>
+<files composer.json>
+    Deny from all
+</files>
+<files composer.lock>
+    Deny from all
+</files>
+<files composer.phar>
+    Deny from all
+</files>
+<files gulpfile.js>
+    Deny from all
+</files>
+<files package.json>
+    Deny from all
+</files>
+<files phpspec.yml>
+    Deny from all
+</files>
+<files phpunit.xml>
+    Deny from all
+</files>
+<files readme.md>
+    Deny from all
+</files>
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>

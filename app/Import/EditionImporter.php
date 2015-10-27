@@ -47,7 +47,7 @@ class EditionImporter {
 
         $line = trim($line);
         $parsedLine = explode(', ',$line);
-        $parsedEdition->journal_name = self::getJournalName($parsedLine[0]);
+        $parsedEdition->journal_name =trim($parsedLine[0]);
         $parsedEdition->issue_year = trim($parsedLine[1]);
 
         $parsedNumber = self::getParsedNumbers($parsedLine[2]);
@@ -57,21 +57,15 @@ class EditionImporter {
         return $parsedEdition;
     }
 
-    private static function getJournalName($nameString)
-    {
-        $journalName = Util::bomTrim($nameString);
-        $journalName = str_ireplace('Збірник наукових праць', '', $journalName);
-        return trim($journalName);
-    }
-
     private static function getParsedNumbers($numberString)
     {
         $numberString = trim($numberString);
-        $lastSpacePos = strrpos($numberString, ' ');
+        $lastSpacePos = strpos($numberString, ' ');
         $numberString = substr($numberString, $lastSpacePos + 1);
         $numberString = trim($numberString,')');
         $numberString = trim($numberString);
 
+        $numberString = str_replace(' ', '', $numberString);
         $parsedNumbers = explode('(',$numberString);
 
         if (count($parsedNumbers) != 2 || !is_numeric($parsedNumbers[0]) || !is_numeric($parsedNumbers[1]))

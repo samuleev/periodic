@@ -1,6 +1,9 @@
+- names without last dot
+- name as separate / reverse order
+- natural key url / key/constraint
+- excel sheet for additional info import
 - refactor views
 - edition header - pattern
 - english article name
-
 - human readable message if importing existing edition
 - bred crumps: "if isset" chain

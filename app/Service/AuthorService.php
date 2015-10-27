@@ -12,7 +12,7 @@ class AuthorService {
             ->distinct()
             ->join('article_to_author', 'article_to_author.author_id', '=', 'author.author_id')
             ->whereIn('article_to_author.article_id', $articleIds)
-            ->orderBy('author.name_short')
+            ->orderBy('author.surname')
             ->get();
     }
 }

@@ -2,7 +2,7 @@
 [Титул]
 [Зміст] 161-162
 /Збройна боротьба: теорія, забезпечення, досвід
-Іванець Г. В., М. П. Букін, Стецюк Є. І. [Дослідження дії ударної хвилі на організм саперів при несанкціонованому вибуху ручних протипіхотних гранат] {Investigation of the effect of shock waves on the body sapper unauthorized explosion antipersonnel grenades} 3-6
+Іванець Г. В., Букін М. П., Стецюк Є. І. [Дослідження дії ударної хвилі на організм саперів при несанкціонованому вибуху ручних протипіхотних гранат] {Investigation of the effect of shock waves on the body sapper unauthorized explosion antipersonnel grenades} 3-6
 Поляков C. Ю., Ленкин В. М., Королев С. С., Змиевской Г. А. [Пути усовершенствования противодействия тепловизионной разведке] {The ways to improve counteraction thermal imaging exploration} 7-15
 Смірнов Є. Б., Таран І. А., Астахов О. О. [Принципи застосування цільового управління органами військового управління] {Principles of using the management by objectives by military authorities} 16-21
 /Літальні апарати: аеродинаміка, силові установки, обладнання та озброєння

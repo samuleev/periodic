@@ -4,13 +4,16 @@ namespace App\Import;
 
 class Util {
 
-    public static final function bomTrim($string)
+    public static final function remove_utf8_bom($text)
     {
-        if(substr($string,0,3) == pack("CCC",0xef,0xbb,0xbf))
-        {
-            return trim(substr($string, 3));
-        }
-        return trim($string);
+        //remove_utf8_bom
+        $bom = pack('H*','EFBBBF');
+        $text = preg_replace("/^$bom/", '', $text);
+        //remove NO-BREAK SPACE
+        $text = str_replace("\xc2\xa0", ' ', $text);
+        //replace double space
+        $text = str_replace('  ', ' ', $text);
+        return trim($text);
     }
 
     public static function findSubStringBetween($string, $openingString, $closingSting)

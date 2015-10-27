@@ -25,7 +25,7 @@
 
             <div class="row top10">
                 <div class="col-md-6" style="width: 390px">
-                    <img src={{{ url('/data/'.$journal->prefix.'/'.$journal->picture_file) }}} />
+                    <img src={{{ url('/public/data/'.$journal->prefix.'/'.$journal->picture_file) }}} />
                 </div>
                 <div class="col-md-6">
                          <div class="row">
@@ -83,7 +83,7 @@
                     Свідоцтво про державну реєстрацію:
                 </div>
                 <div class="col-md-10">
-                    <a href={{{ url('/data/'.$journal->prefix.'/'.$journal->gov_registration_file) }}}>{{{ $journal->gov_registration}}}</a>
+                    <a href={{{ url('/public/data/'.$journal->prefix.'/'.$journal->gov_registration_file) }}}>{{{ $journal->gov_registration}}}</a>
                 </div>
             </div>
 

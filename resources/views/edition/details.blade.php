@@ -21,9 +21,9 @@
             <div class="row top10">
                 <div class="col-md-2">
                     @if(null !== $edition->picture_file)
-                    <img src={{{ url('/data/'.$journal->prefix.'/'.$edition->number.'/'.$edition->picture_file) }}} />
+                    <img src={{{ url('/public/data/'.$journal->prefix.'/'.$edition->number.'/'.$edition->picture_file) }}} />
                     @else
-                    <img src={{{ url('/data/'.$journal->prefix.'/'.$journal->default_edition_picture) }}} />
+                    <img src={{{ url('/public/data/'.$journal->prefix.'/'.$journal->default_edition_picture) }}} />
                     @endif
                 </div>
                 <div class="col-md-10">
@@ -51,7 +51,7 @@
                     <div class="col-md-12">
                         {{{ $article->sort_order }}}.
 
-                        @include('article.authors')
+                        @include('edition.authors')
 
                         <a href="{{{ route('article.details', array($article->article_id)) }}}">{{{ $article->name.'.' }}}</a>
 
