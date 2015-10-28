@@ -16,8 +16,8 @@
     @if(isset($journal))
 
         <script type="text/javascript">
-            function updateEditions(journalId, selectedYear) {
-                $('#editions_by_year').load('' + journalId + '/' + selectedYear);
+            function updateEditions(prefix, selectedYear) {
+                $('#editions_by_year').load('' + prefix + '/' + selectedYear);
             }
         </script>
 
@@ -71,7 +71,7 @@
                     <strong>РОКИ ВИДАННЯ:</strong>
                     <br/> <br/>
                     @foreach($issueYears as $index => $issueYear)
-                       <button type="button" class="btn btn-link" onclick={{{'updateEditions('.$journal->journal_id.','.$issueYear->issue_year}}})><b>{{{ $issueYear->issue_year }}}</b></button> &nbsp;&nbsp;
+                       <button type="button" class="btn btn-link" onclick="{{{"updateEditions('".$journal->prefix."', ".$issueYear->issue_year.")"}}}"><b>{{{ $issueYear->issue_year }}}</b></button> &nbsp;&nbsp;
                     @endforeach
                 </div>
                 <div id="editions_by_year" class="col-md-6">

@@ -9,11 +9,11 @@ use App\Service\ArticleService;
 
 class EditionController extends Controller {
 
-    public function show($editionId)
+    public function show($prefix, $selectedYear, $number)
     {
-        $edition = EditionDao::findById($editionId);
-        $journal = JournalDao::findById($edition->journal_id);
-        $articles = ArticleDao::findByEdition($editionId);
+        $journal = JournalDao::findByPrefix($prefix);
+        $edition = EditionDao::findByJournalIdAndYearNumber($journal->journal_id, $selectedYear, $number);
+        $articles = ArticleDao::findByEdition($edition->journal_edition_id);
         $articles = ArticleService::getEnrichedArticles($articles);
 
         return view('edition.details')->with(array(
@@ -23,10 +23,13 @@ class EditionController extends Controller {
             ));
     }
 
-    public function byYear($journalId, $selectedYear)
+    public function byYear($prefix, $selectedYear)
     {
-        $editions = EditionDao::listNumbersInYear($journalId, $selectedYear);
-        return view('edition.by_year_ajax')->with(array('editions' => $editions, 'selectedYear' => $selectedYear));
+        $editions = EditionDao::listNumbersInYear($prefix, $selectedYear);
+        return view('edition.by_year_ajax')->with(array(
+            'prefix' => $prefix,
+            'editions' => $editions,
+            'selectedYear' => $selectedYear));
     }
 
 }

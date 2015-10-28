@@ -29,6 +29,16 @@ class JournalDao implements Dao
         return $journal[0];
     }
 
+    static function findByPrefix($prefix)
+    {
+        $journal = DB::table('journal')->where('prefix', $prefix)->get();
+        if (count($journal) == 0)
+        {
+            return null;
+        }
+        return $journal[0];
+    }
+
     static function persist($valueObject)
     {
         throw new Exception('Not implemented yet');

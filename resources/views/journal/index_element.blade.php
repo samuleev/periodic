@@ -13,7 +13,7 @@
 
 <div class="row">
     <div class="col-md-12 top10 bottom10">
-       <a href={{{route('journal.details', $journal->journal_id)}}}> <img src={{{ url('/public/data/'.$journal->prefix.'/'.$journal->picture_file) }}} /> </a>
+       <a href={{{route('journal.details', $journal->prefix)}}}> <img src={{{ url('/public/data/'.$journal->prefix.'/'.$journal->picture_file) }}} /> </a>
     </div>
 </div>
 

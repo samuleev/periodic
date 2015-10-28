@@ -52,7 +52,7 @@
                     @endif
                     <br/>
                     <b>{{{$article->name}}}</b>&nbsp;@if(count($article->authors)>0)/&nbsp;@include('article.authors')&nbsp;@endif//
-                    <a href={{{route('journal.details', $journal->journal_id)}}}>{{{ $journal->name }}}.</a>
+                    <a href={{{route('journal.details', $journal->prefix)}}}>{{{ $journal->name }}}.</a>
                     - {{{$edition->issue_year}}}. - № {{{$edition->number_in_year}}}. @include('article.pages')
                     <br/>
                     Тематика статті: {{{$article->topic->name}}}
