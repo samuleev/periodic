@@ -7,11 +7,11 @@
 @stop
 
 @section('bread_crumps')
-    @include('crumps.journal_list')
-    &#10095;
-    @include('crumps.journal')
-    &#10095;
-    @include('crumps.edition')
+    <ol class="breadcrumb">
+        <li>@include('crumps.journal_list')</li>
+        <li>@include('crumps.journal')</li>
+        <li class="active">{{{$edition->number_in_year."(".$edition->number.")'".$edition->issue_year}}}</li>
+    </ol>
 @stop
 
 @section('content')
@@ -48,9 +48,10 @@
                 @endif
 
                 <div class="row top10">
-                    <div class="col-md-12">
+                    <div class="col-md-1" style="width: 20px">
                         {{{ $article->sort_order }}}.
-
+                    </div>
+                    <div class="col-md-7">
                         @include('edition.authors')
 
                         <a href="{{{ route('article.details', array($article->article_id)) }}}">{{{ $article->name.'.' }}}</a>
