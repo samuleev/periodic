@@ -55,7 +55,9 @@
                     <a href={{{route('journal.details', $journal->prefix)}}}>{{{ $journal->name }}}.</a>
                     - {{{$edition->issue_year}}}. - № {{{$edition->number_in_year}}}. @include('article.pages')
                     <br/>
-                    Тематика статті: {{{$article->topic->name}}}
+                    @if($article->topic->name != 'special')
+                        Тематика статті: {{{$article->topic->name}}}
+                    @endif
                 </div>
             </div>
 
@@ -66,7 +68,7 @@
                 </div>
             </div>
 
-
+            @if(count($article->authors) > 0)
             <div class="row top10">
                 <div class="col-md-12">
                     Цитованість авторів публікації:
@@ -82,6 +84,7 @@
                     </ul>
                 </div>
             </div>
+            @endif
 
             <div class="row top10">
                 <div class="col-md-12">
