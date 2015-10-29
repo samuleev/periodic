@@ -7,7 +7,9 @@
 @stop
 
 @section('bread_crumps')
-    @include('crumps.journal_list')
+    <ol class="breadcrumb">
+        <li class="active">Перелік видань</li>
+    </ol>
 @stop
 
 @section('content')

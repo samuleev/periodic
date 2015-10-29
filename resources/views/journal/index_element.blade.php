@@ -1,4 +1,4 @@
-<div class="conrainer padding15 border" style="width: 390px">
+<div class="conrainer padding15 border" style="width: 450px">
 <div class="row">
     <div class="col-md-12 pl-text">
         {{{ $journal->type }}}

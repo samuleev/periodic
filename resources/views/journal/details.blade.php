@@ -7,9 +7,10 @@
 @stop
 
 @section('bread_crumps')
-    @include('crumps.journal_list')
-    &#10095;
-    @include('crumps.journal')
+    <ol class="breadcrumb">
+        <li>@include('crumps.journal_list')</li>
+        <li class="active">{{{ $journal->name }}}</li>
+    </ol>
 @stop
 
 @section('content')
@@ -68,11 +69,25 @@
 
             <div class="row top10 padding15 border">
                 <div class="col-md-6" style="width: 390px">
-                    <strong>РОКИ ВИДАННЯ:</strong>
-                    <br/> <br/>
-                    @foreach($issueYears as $index => $issueYear)
-                       <button type="button" class="btn btn-link" onclick="{{{"updateEditions('".$journal->prefix."', ".$issueYear->issue_year.")"}}}"><b>{{{ $issueYear->issue_year }}}</b></button> &nbsp;&nbsp;
+                        <div class="row">
+                            <div class="col-md-12">
+                                <strong>РОКИ ВИДАННЯ:</strong>
+                                <br/><br/>
+                            </div>
+                        </div>
+                    @foreach(array_chunk($issueYears, 5) as $fiveYears)
+                            <div class="row">
+                                @foreach($fiveYears as $index => $issueYear)
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-link" onclick="{{{"updateEditions('".$journal->prefix."', ".$issueYear->issue_year.")"}}}"><b>{{{$issueYear->issue_year}}}</b></button> &nbsp;&nbsp;
+                                    </div>
+                                @endforeach
+                            </div>
                     @endforeach
+
+                    {{--@foreach($issueYears as $index => $issueYear)--}}
+                       {{--<button type="button" class="btn btn-link" onclick="{{{"updateEditions('".$journal->prefix."', ".$issueYear->issue_year.")"}}}"><b>{{{ $issueYear->issue_year }}}</b></button> &nbsp;&nbsp;--}}
+                    {{--@endforeach--}}
                 </div>
                 <div id="editions_by_year" class="col-md-6">
                 </div>
