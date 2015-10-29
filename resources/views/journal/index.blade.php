@@ -1,5 +1,15 @@
 @extends('layouts.default')
 
+@section('seo_headers')
+    <title>Перелік видань Харківського університету Повітряних Сил</title>
+    <meta name="keywords" content="науковий журнал, збірник наукових праць, технічні науки, військові науки" >
+    <meta name="description" content="Перелік видань Харківського університету Повітряних Сил" >
+@stop
+
+@section('bread_crumps')
+    @include('crumps.journal_list')
+@stop
+
 @section('content')
     @if(count($journals))
         <div class="container main-content">

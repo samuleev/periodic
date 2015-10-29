@@ -1,23 +1,42 @@
 @extends('layouts.default')
 
+@section('seo_headers')
+    <title>{{{ $journal->name }}} - {{{ $journal->type }}}</title>
+    <meta name="keywords" content="{{{ $journal->dak_spec}}}" >
+    <meta name="description" content="{{{ $journal->subject}}}" >
+@stop
+
+@section('bread_crumps')
+    @include('crumps.journal_list')
+    &#10095;
+    @include('crumps.journal')
+@stop
+
 @section('content')
     @if(isset($journal))
+
+        <script type="text/javascript">
+            function updateEditions(prefix, selectedYear) {
+                $('#editions_by_year').load('' + prefix + '/' + selectedYear);
+            }
+        </script>
+
         <div class="container">
 
             <div class="row top10">
                 <div class="col-md-6" style="width: 390px">
-                    <img src={{{ url('/data/'.$journal->prefix.'/'.$journal->picture_file) }}} />
+                    <img src={{{ url('/public/data/'.$journal->prefix.'/'.$journal->picture_file) }}} />
                 </div>
                 <div class="col-md-6">
                          <div class="row">
                             <div class="col-md-12">
-                                {{{ $journal->type}}}
+                                {{{ $journal->type }}}
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-12">
-                                <h5> {{{ $journal->name}}} </h5>
+                                <h5> {{{ $journal->name }}} </h5>
                             </div>
                         </div>
 
@@ -52,18 +71,10 @@
                     <strong>РОКИ ВИДАННЯ:</strong>
                     <br/> <br/>
                     @foreach($issueYears as $index => $issueYear)
-                       <a href="{{{ route('journal.details.editions', array($journal->journal_id, $issueYear->issue_year)) }}}"><b> {{{ $issueYear->issue_year }}}</b></a> &nbsp;&nbsp;
+                       <button type="button" class="btn btn-link" onclick="{{{"updateEditions('".$journal->prefix."', ".$issueYear->issue_year.")"}}}"><b>{{{ $issueYear->issue_year }}}</b></button> &nbsp;&nbsp;
                     @endforeach
                 </div>
-                <div class="col-md-6">
-                    @if(isset($editions))
-                    <strong>НОМЕРИ ЗА ОБРАНИЙ РІК:</strong>
-                    <br/> <br/>
-                    @foreach($editions as $index => $edition)
-                        <a href="{{{ route('edition.details', array($edition->journal_edition_id)) }}}">
-                            <b>{{{ $edition->number_in_year.'('.$edition->number.')' }}}</b></a> &nbsp;&nbsp;
-                    @endforeach
-                    @endif
+                <div id="editions_by_year" class="col-md-6">
                 </div>
             </div>
 
@@ -72,7 +83,7 @@
                     Свідоцтво про державну реєстрацію:
                 </div>
                 <div class="col-md-10">
-                    <a href={{{ url('/data/'.$journal->prefix.'/'.$journal->gov_registration_file) }}}>{{{ $journal->gov_registration}}}</a>
+                    <a href={{{ url('/public/data/'.$journal->prefix.'/'.$journal->gov_registration_file) }}}>{{{ $journal->gov_registration}}}</a>
                 </div>
             </div>
 

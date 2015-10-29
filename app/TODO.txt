@@ -1,6 +1,13 @@
+- excel sheet for additional info import
 - refactor views
 - edition header - pattern
 - english article name
 
-- human readable message if importing existing edition
-- bred crumps: "if isset" chain
+new urls:
+done /journal/{prefix} -- journal
+done /journal/{prefix}/{selectedYear} -- editions
+done /journal/{prefix}/{selectedYear}/{number} -- edition
+
+reconsider:
+/journal/{prefix}/{selectedYear}/{edition_number}/{article_number} -- article
+/journal/{prefix}/{selectedYear}/{edition_number}/{article_number}/download -- download

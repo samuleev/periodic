@@ -1,39 +1,54 @@
-﻿Системи озброєння і військова техніка, 2014, № 4(40)
+﻿Системи обробки інформації, 2015, № 2(127)
 [Титул]
-[Зміст] 157-158
-/Військово-технічні проблеми
-Александрова Т. Е., Лазаренко А. А., Зейн А. В. [Об особенностях построения инвариантной системы наведения и стабилизации танковой пушки] {About the features of construction of the invariant system of guidance and stabilization of tank gun} 3-6
-Варава В. В., Толмачов О. М. [Визначення основних тенденцій та перспективних напрямків розвитку і модернізації реактивних систем залпового вогню] {Identification of major trends and perspective directions of development and modernization reactive systems of volley fire} 7-9
-Висоцький О. В. [Аналіз тактико-технічних характеристик основних радіолокаційних засобів існуючої системи контролю повітряного простору України] {The analysis of tactic-technical characteristics of radar-tracking means of the existing monitoring system of air space of Ukraine} 10-12
-Грабчак В. І., Іваник Є. Г., Цибуля С. А. [Основні аспекти опису задачі про оптимальну швидкодію керування рухом ракети] {The basic aspects of description to problem of optimal high-speed to moving by operating of rocket} 13-20
-Іванець Г. В., Стецюк Є. І., Іванець М. Г. [Індивідуальний захист саперів від дії осколків і куль] {Individual protection of sappers from the action of the fragments and bullets} 21-24
-Квітковський Ю. В., Василькова К. Ю. [Урахування ергономічних показників при конструюванні бронешоломів] {An account of ergonomics indexes is at constructing of combat helmets} 25-31
-Ковалевський С. М., Худов Г. В., Боровий В. І. [Перспективи розвитку засобів повітряного нападу як об’єктів радіолокаційного виявлення] {Prospects of development of means of the air attack as objects of radar-tracking detection} 31-35
-Кононов В. Б., Шевяков Ю. І., Філістєєв Д. А., Бурцева В. В. [Метод визначення оптимального плану розподілу й відповідних оптимальних маршрутів руху виїзних метрологічних груп при метрологічному обслуговуванні  військових частин та підрозділів] {Method of determination of optimum plan of distributing and proper optimum routes of motion of departure metrology groups at metrology maintenance of military parts and subdivisions} 35-41
-Корольов В. М., Заєць Я. Г., Щавінський Ю. В. [Спосіб обчислення часу висування бойової машини із зони «затінення» в зону прямої видимості цілі] {Method of calculation of time of fighting machine advancement from the “shading” area to line-of-sight range to target} 41-44
-Купріненко О. М. [Методика оцінки воєнно-економічної ефективності перспективних типів бойових броньованих машин] {Method of estimation of military and economic efficiency perspective types of armoured combat vehicles} 44-49
-Лісогорський Б. А., Худов Г. В. [Аналіз характеристик радіолокаційних станцій контрбатарейної боротьби] {The analysis of characteristics of radar stations} 50-54
-Сидоренко І. І., Пономаренко М. О. [Вибір штурмової гвинтівки на основі методу аналізу ієрархій] {A choice an assault rifle on the basis of analytic hierarchy process} 54-57
-/Теоретичні основи розробки систем озброєння
-Біленко О. І. [Вплив розкиду значень балістичного коефіцієнту поражаючого елементу кінетичної зброї на ефективність виконання вогневих завдань силами безпеки] {Dispersion influence of ballistic coefficient senses of a hit element of the kinetic weapon on the implementation efficiency of fire tasks of safety forces} 58-62
-Гузченко С. В., Ярош С. П. [Обґрунтування показників бойових можливостей міжвидових тактичних груп] {Substantiation of metrics of fighting possibilities interspecific tactical groups} 63-67
-Еременко С. М., Соловьев О. В., Прусак П. В., Кобрина Н. В. [Особенности методики расчёта турбулентных характеристик вихревых следов] {Calculation method features of vortex wake turbulent characteristics} 67-72
-Жердев М. К., Кузавков В. В. [Побудова функціональних перевірних тестів для безконтактного індукційного методу діагностування] {Building a functional screening tests for non-contact induction method of diagnosis} 73-76
-Зюкин В. Ф., Белавин А. В., Свистунов Д. Ю. [Методика оценки потенциальной помехоустойчивости обзорных РЛС при воздействии комбинированных помех] {Method of estimation of potential antijammingness survey radar at influence of the combined hindrances} 76-81
-Кобзев А. В., Мурзин М. В. [Применение вейвлет-разложения для реализации некогерентного накопления при обнаружении сигналов с неизвестной протяженностью] {Application of wavelet decomposition for the implementation of incoherent accumulation at detection signals with unknown length} 82-85
-Коваленко А. С., Смірнов О. А., Коваленко О. В. [Дослідження будови інтегрованої інформаційної системи та її елементів] {Studying the structure of an integrated information system and its elements} 85-88
-Лаврут О. О. [Дослідження якості управління потоками інформації у телекомунікаційній мережі критичного призначення] {Quality research of information management in the telecommunications network of critical use} 89-93
-Ланецький Б. М., Доска О. М. [Обґрунтування тривалостей доводочних робіт та випробувань зразків зенітного ракетного озброєння при відновлювальних середніх і капітальних ремонтах] {Grounding the terms of refinements jobs and tests for SAM troops armaments during midterm repairs and over haunts} 94-97
-Леонов И. Г., Коржов А. Н., Куц В. С., Пичугин И. М. [Учет замираний и рассеивания по времени и частоте в модели дискретного радиолокационного канала] {Account of stopping beating and dispersion on time and frequency in models of discrete radio-location channel} 98-102
-Лысенко И. А., Смирнов А. А., Полищук Л. И. [Исследование процесса разработки программного обеспечения инфотелекоммуникационных систем] {Study of software development infotelecommunication systems} 103-106
-Сігайло Г. П., Кравцов А. Г., Варваров В. В. [Температурна стійкість гідравлічних мастильних матеріалів при  їх модифікації присадками різноманітного призначення] {Hydraulic lubricants temperature resistance during their modification various purposes additives} 107-109
-Смеляков К. С., Дроб Е. М., Водолажко О. В. [Модели и методы градационной коррекции цифрового изображения] {Models and methods for gray-scale transformation of digital images} 110-116
-Сова О. Я., Жук П. В., Міночкін Д. А., Симоненко О. А. [Методика побудови нечітких баз знань інтелектуальних систем управління вузлами мобільних радіомереж класу MANET] {The method of fuzzy knowledge bases construction for intellectual nodal control systems in the MANET} 117-125
-Strykhalyuk B. M., Kahalo I. O., Brych M. V., Beshley M. I.,  Seliuchenko M. O. [Implementation of wireless heterogeneous network based on LTE core virtualization for military communication systems] 125-132
-Шитова О. В., Пухляк А. Н. [Выбор признаков для сегментации текстурных областей изображений, близких по значениям цвета и структуре] {A choice of signs for segmentation of texture areas of images which have similar values of color and structure} 133-136
-Грабчак В. І., Бондаренко С. В., Стеців С. В. [Математична модель обертального руху снарядів з гіроскопічною стабілізацією] {Mathematical model of rotational motion shells with gyroscopic stabilization} 137-142
-Кийко С. Г. [Мультиагентная модель анализа процессов управления ресурсными потоками проектов предприятия] {Agent-based model for analyze the management process of projects resource flows} 143-146
-Азаренко Е. В., Столярчук Ю. Ю. [Закономерности трансформации иприта в эмульгированное состояние] {Patterns of transformation of mustards (dichloroethyl sulfide) to the emulsified state} 147-150
-Стрелец В. М. [Особенности выбора средств индивидуальной защиты для работы спасателей в условиях, которые существенно отличаются от наихудших условий пожара] {Comparative analysis of the flow patterns of air reserve for rescuers in SCBA} 150-153
-[Наші автори] {Authors} 154-155
-[Алфавітний покажчик] {Index} 156
+[Зміст] 3-5
+/Законодавчі, філософські та термінологічні аспекти
+Єременко В. С., Білецький П. П., Прокопович Р. О. [Законодавчі проблеми акредитації випробувальних лабораторій в судово-експертних установах України] {Legislative problems of accreditation of testing laboratories in forensic institutions of Ukraine} 6-8
+Левин С. Ф. [Метрология – наука и терминология] {Metrology – science and terminology} 9-12
+Чалий В. П., Чалий С. Ф. [Гносеологічні корені «кризи» в сучасній метрології на пострадянському просторі] {Epistemological roots of "crisis" in modern metrology in the former Soviet Union} 13-16
+/Теоретичні аспекти
+Бакер Альравашдех, Сергиенко М. П. [Применение метода наименьших квадратов при идентификации амплитудно-частотных характеристик средств измерительной техники колебательного типа] {An application of a least squares method for the identification of oscillatory type measuring devices gain-frequency characteristic} 17-20
+Боцюра О. А., Жарко Ю. Г., Захаров И. П. [Оценивание неопределенности измерений максимального наблюдаемого значения параметра испытаний] {Measurement uncertainty evaluation of the maximum observed value of the test parameter} 21-24
+Warsza Z. L., Korczyсski M. J. [Statistical properties of skewness and kurtosis of small samples from normal population] 24-28
+Данилов А. А., Захаров И. П. [Еще раз о достоверности оценок характеристик неопределенности и погрешности измерений] {Once again about the reliability of the estimates uncertainties and errors of measurement} 29-31
+/Прикладні аспекти: простежуваність вимірювань
+Данилов А. А., Кучеренко Ю. В., Бержинская М. В., Мальцева К. И. [Калибровочные характеристики средств измерений в рабочих условиях эксплуатации] {} 32-34
+Коцюба А. М. [Валідація методик калібрування мір фізичних величин] {Validation of calibration methods of physical quantities measures} 35-39
+Петришин І. С., Присяжнюк Т. І., Бас О. А. [Оцінка невизначеності калібрувальної установки дзвонового типу для роботи при високому надлишковому тиску] {Bell prover uncertainty estimation operated at a high overpressure} 39-42
+/Прикладні аспекти: геометричні та механічні вимірювання
+Загурська О. М. [Опрацювання результатів при інтерференційно-оптичних вимірюваннях округлості] {Processing of results of the interference-optical measurements of roundness} 43-45
+Новоселов О. А. [Оценивание неопределенности измерений диаметра отверстия сужающего устройства] {Measurement uncertainty evaluation of narrowing device diameter hole} 46-49
+Радев Х. К., Богев В. Й., Василев В. А. [О неопределенности результатов измерения взаимного расположения поверхностей и осей деталей] 5{On the uncertainty of measurement rezults of relative disposition of surfaces and axes of machine work pieces} 0-53
+Сакакушев Б. Б., Георгиев Г. К., Железаров И. С. [Первые шаги для построения бюджета неопределенности при фотограмметрических измерениях в машиностроении] {Initial steps to construction uncertainty budget for photogrammetric measurements in mechanical engineering} 54-56
+Skliarov V. V. [Regional metrological organization key comparison in the field of rockwell hardness scales (progress and perspectives)] 57-60
+Sotirov B. D., Ivanov S. G., Zhelezarov I. S. [Determining the values of differential accuracy indicators of spur gears based on the results of the Double Flank Gear Test] 61-63
+Черепащук Г. О., Потильчак О. П., Бикова Т. В. [Оцінювання невизначеності вимірювань під час випробувань ресорних підвісів вантажних вагонів] {Estimation of measurements uncertainty during tests of friction shock absorber of freight carriages} 64-67
+/Прикладні аспекти: фізико-хімічні вимірювання
+Барна О. Б. [Метрологічний аналіз методу розгорнутого меніска при контролі поверхневих властивостей рідин] {Metrological analysis of external meniscus method in liquids surface properties control} 68-71
+Витвицька Л. А., Чеховський С. А. [Метрологічний аналіз  конденсаційного вологоміра природного газу] {Measurement analysis of natural gas condensation moisture} 72-74
+Донбаева В. А. [Оценка неопределенности измерений при испытаниях  на пожаровзрывоопасность] {Assessment of uncertainties during fire  and explosion hazards tests} 75-77
+Хакимов О. Ш., Утаев К. О., Хакимов У. О., Муродов Ж. Н. [Неопределенность контроля вязкоупругих свойств растительных  масел акустическим импедансным методом] {Uncertainty of control of viscoelastic properties of vegetable oils using acoustic impedance method} 78-81
+Цалев Д. Л. [Неопределенность результатов аналитических измерений – короткий обзор особенностей и достижений] {Uncertainty of results of analytical measurements – a brief overview of characteristics and advances} 82-85
+/Прикладні аспекти: електричні вимірювання
+Величко О. М., Шевкун С. М., Добролюбова М. В., Ізбаш Ю. М. [Оцінка невизначеності при калібруванні фазометрів на Державному еталоні кута зсуву фаз між двома напругами в основному діапазоні частот] {The uncertainty estimate in the calibration of phase meters with using the State phase angle between two voltage standard} 86-88
+Піндус Н. М., Марчук Т. З. [Оцінка невизначеності вимірювання показників якості електроенергії] {Measurement uncertainty evaluation of power quality} 89-91
+/Прикладні аспекти: радіаційні, калориметричні та колориметричні вимірювання
+Гринев Б. В., Гурджян Н. Р., Зеленская О. В., Любинский В. Р., Мицай Л. И., Молчанова Н. И., Тарасов В. А. [Оценка точности результатов измерений светового выхода стрипов на основе пластмассовых сцинтилляторов] {The estimation of measurements accuracy for plastic scintillation strips light output } 92-95
+Савкова Е. Н. [Неопределенность идентификации цвета в колориметрии высокого разрешения] {The Color Identification Uncertainty in a High-Resolution Colorimetry} 96-99
+Стрілецький Ю. Й., Винничук А. Г., Середюк О. Є. [Метрологічні дослідження пристрою для прецизійного вимірювання різниці температур] {Metrological research device for precision measurement of the temperature difference} 100-103
+/Прикладні аспекти: медико-біологічні вимірювання
+Доброва В. Є., Зупанець К. О., Місюрьова С. В., Мазур Н. С. [Забезпечення якості гематологічних досліджень на прикладі валідації методики визначення концентрація гемоглобіну в біологічних рідинах гемоглобінціанідним методом] {Quality assurance of hematological research on the example of validation methods for determining concentration of hemoglobin in biological fluids by gemoglobintsianid} 104-107
+Чабан О. П., Юзевич В. М. [Математичне моделювання діагностичних ознак для забезпечення системи функціонування медичних послуг] {Mathematical modeling of diagnostic signs for providing of system of functioning medical services} 108-113
+/Прикладні аспекти: кваліметрія
+Величко О. Н., Гордиенко Т. Б., Габер А. А., Коломиец Л. В. [Особенности оценки компетентности экспертов с учетом характеристик неопределенности данных] {Peculiarity of estimation of experts’ competence in the field of higher education} 114-117
+Малкіна В. М., Білоус Н. В. [Методика вимірювання показників вибірки насіння соняшнику на основі класифікації за ознаками геометричних інваріантів] {The technique of measurement for samples of sunflower seeds on the basis of the classification using of features of geometric  invariants} 118-120
+Шведова В. В. [Оцінювання надійності тестового простору комп’ютеризованої системи тестування: методи та способи оцінювання показника та його невизначеності] {Assessment of reliability of the test area for computerized testing system: methods and techniques of evaluation of its index and uncertainty} 121-128
+Яремчук Н. А., Года О. Ю. [Оцінювання комплексного показника якості програмного засобу з характеристикою невизначеності] {Evaluation of complex index of software quality with uncertainty characteristics} 129-131
+/Прикладні аспекти: автоматизація обробки
+Коржов І. М., Лисенко В. В. [Універсальне програмне забезпечення автоматизації обробки результатів вимірювань «CALIBR 2. 0»] {Universal software automate for the processing of the measurement results «CALIBR 2.0»} 132-134
+Щербакова Г. Ю., Крылов В. Н. [Автоматизация кластерного анализа измерений  с использованием вейвлет-преобразования] {Automation of the cluster analysis of measuring with use of wavelet transforming} 135-138
+/Прикладні аспекти: складні об’єкти
+Арсирий Е. А., Антощук С. Г., Бабилунга О. Ю., Арсирий В. А. [Оценка состояния сложных процессов при реинжиниринге энергетического оборудования] {The assessment of the state of complex processes during the reengineering power equipment} 139-142
+Кондрашов С. И., Дроздова Т. В. [Концепция «линейной» координации сложной иерархической системы в условиях неопределенности] {The concept of "linear" coordination of complex hierarchical systems under uncertainty} 143-145
+Курской Ю. С. [Применение интервального анализа для оценки неопределенности измерений в сложных системах] {Application of interval analysis for evaluation of measurement uncertainty in complex systems} 146-148
+[Наші автори] {Authors} 149-151
+[Алфавітний покажчик] {Index} 151

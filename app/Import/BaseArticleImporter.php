@@ -4,7 +4,12 @@ namespace App\Import;
 
 use stdClass;
 
+
+
 abstract class BaseArticleImporter {
+
+    const ARTICLE_START_DELIMITER = "[";
+    const ARTICLE_END_DELIMITER = "]";
 
     protected static function generateContentFileName($index)
     {
@@ -41,7 +46,7 @@ abstract class BaseArticleImporter {
 
     protected static function getArticleName($line)
     {
-        return Util::findSubStringBetween($line, "[", "]");
+        return Util::findSubStringBetween($line, self::ARTICLE_START_DELIMITER, self::ARTICLE_END_DELIMITER);
     }
 
     protected static function getArticleEngName($line)

@@ -21,11 +21,27 @@ class EditionDao implements Dao {
         return $issue_years;
     }
 
-    static function listNumbersInYear($journalId, $issueYear)
+    static function listNumbersInYear($prefix, $issueYear)
     {
-        $editions = DB::table('journal_edition')->
-        where('journal_id', $journalId)->where('issue_year', $issueYear)->orderby('number_in_year')->get();
+        $editions = DB::table('journal_edition')
+            ->join('journal', 'journal.journal_id', '=', 'journal_edition.journal_id')
+            ->where('journal.prefix', $prefix)->where('journal_edition.issue_year', $issueYear)
+            ->orderby('number_in_year')->get();
         return $editions;
+    }
+
+    static function findByJournalIdAndYearNumber($journalId, $year, $number)
+    {
+        $journal = DB::table('journal_edition')
+            ->where('journal_id', $journalId)
+            ->where('issue_year', $year)
+            ->where('number_in_year', $number)
+            ->get();
+        if (count($journal) == 0)
+        {
+            return null;
+        }
+        return $journal[0];
     }
 
     static function findById($id)

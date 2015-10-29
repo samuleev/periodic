@@ -1,0 +1,1 @@
+<a href="{{{ route('journal.index') }}}">Перелік видань</a>

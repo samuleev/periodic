@@ -3,23 +3,13 @@
 namespace App\Import;
 
 use App\Dao\ArticleDao;
-use App\Dao\TopicDao;
+use App\Service\TopicService;
 use Exception;
 use stdClass;
 
 class SpecialArticleImporter extends BaseArticleImporter {
 
-    public static function import(array $lines, $editionId, $startIndex){
-        $index = $startIndex;
-        foreach ($lines as $line)
-        {
-            self::importSingleArticle(trim($line), $editionId, $index);
-            $index++;
-        }
-        return $index;
-    }
-
-    private static function importSingleArticle($line, $editionId, $index)
+    public static function importSingleArticle($line, $editionId, $index)
     {
         $article = self::createArticle($line, $editionId, $index);
         ArticleDao::persist($article);
@@ -37,10 +27,7 @@ class SpecialArticleImporter extends BaseArticleImporter {
 
         $pages = self::getPages($line);
 
-        $topic = TopicDao::findByName('special');
-        if (!isset($topic)) {
-            throw new Exception("'special' topic not found!");
-        }
+        $topic = TopicService::getDefaultTopic();
 
         $article = new stdClass();
         $article->topic_id = $topic->topic_id;

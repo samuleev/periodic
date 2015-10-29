@@ -2,36 +2,32 @@
 
 namespace App\Service;
 
-use App\Converter\ArticleConverter;
-use App\Dao\ArticleDao;
-use App\Model\Article;
-use App\Model\Edition;
 use Illuminate\Support\Facades\DB;
 use stdClass;
 
 class ArticleService {
 
-    public static function getEnrichedArticle(stdClass $articleRow)
+    public static function getEnrichedArticle(stdClass $article)
     {
-        $articleRows = array();
-        $articleRows[] = $articleRow;
+        $articles = array();
+        $articles[] = $article;
 
-        $articles = self::getEnrichedArticles($articleRows);
+        $articles = self::getEnrichedArticles($articles);
 
         return $articles[0];
     }
 
-    public static function enrichFileSize(Article $article, stdClass $journal, stdClass $edition)
+    public static function enrichFileSize(stdClass $article, stdClass $journal, stdClass $edition)
     {
         $path = self::getFilePath($article, $journal, $edition);
 
         $bytes = filesize($path);
 
-        $article->setFileSize(self::formatSizeUnits($bytes));
+        $article->file_size = self::formatSizeUnits($bytes);
     }
 
-    public static function getFilePath(Article $article, stdClass $journal, stdClass $edition) {
-        return public_path().'/data/'.$journal->prefix.'/'.$edition->number.'/'.$article->getContentFile();
+    public static function getFilePath(stdClass $article, stdClass $journal, stdClass $edition) {
+        return public_path().'/data/'.$journal->prefix.'/'.$edition->number.'/'.$article->content_file;
     }
 
     private static function formatSizeUnits($bytes)
@@ -64,38 +60,39 @@ class ArticleService {
         return $bytes;
     }
 
-    public static function getEnrichedArticles(array $articleRows)
+    public static function getEnrichedArticles(array $articles)
     {
-        $articleIds = self::getArticleIds($articleRows);
+        $articleIds = self::getArticleIds($articles);
         $articleToAuthors = self::getArticleToAuthors($articleIds);
 
-        $topicIds = self::getGroupedTopicsIds($articleRows);
+        $topicIds = self::getGroupedTopicsIds($articles);
         $topics = TopicService::getByIds($topicIds);
 
-        $articles = array();
-        foreach($articleRows as $articleRow)
+        $enrichedArticles = array();
+        foreach($articles as $article)
         {
-            $article = self::enrichArticle($articleRow, $articleToAuthors, $topics);
-            $articles[] = $article;
+            $enrichedArticle = self::enrichArticle($article, $articleToAuthors, $topics);
+            $enrichedArticles[] = $enrichedArticle;
         }
-        return $articles;
+        return $enrichedArticles;
     }
 
-    private static function enrichArticle(stdClass $articleRow, array $articleToAuthors, array $topics)
+    private static function enrichArticle(stdClass $article, array $articleToAuthors, array $topics)
     {
-        $article = ArticleConverter::getObjectFromArray($articleRow);
+        $article->authors = array();
         foreach($articleToAuthors as $key => $articleToAuthor)
         {
-            if ($article->getId() == $key)
+            if ($article->article_id == $key)
             {
-                $article->setAuthors($articleToAuthor);
+                $article->authors = $articleToAuthor;
             }
         }
 
+        $article->topic = null;
         foreach($topics as $topic) {
-            if($articleRow->topic_id == $topic->topic_id)
+            if($article->topic_id == $topic->topic_id)
             {
-                $article->setTopic($topic);
+                $article->topic = $topic;
             }
         }
 
@@ -132,7 +129,7 @@ class ArticleService {
 
             $foundAuthor = NULL;
             foreach($authors as $author) {
-                if($author->getId() == $articleToAuthor->author_id)
+                if($author->author_id == $articleToAuthor->author_id)
                 {
                     $foundAuthor = $author;
                 }
