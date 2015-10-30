@@ -19,3 +19,4 @@ Route::get('/article/{id}', array('uses' => 'ArticleController@show', 'as' => 'a
 Route::get('/article/{id}/download', array('uses' => 'ArticleController@download', 'as' => 'article.download'))->where('id', '[1-9][0-9]*');
 Route::get('/import', array('uses' => 'ImportController@import', 'as' => 'import.main'));
 Route::get('/author', array('uses' => 'AuthorController@index', 'as' => 'author.index'));
+Route::get('/sitemap-article.xml', array('uses' => 'SitemapController@article', 'as' => 'sitemap.article'));
