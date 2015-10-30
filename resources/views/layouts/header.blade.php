@@ -20,7 +20,50 @@
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
+    <div class="container periodic-nav">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="vw-menu-main-inner clearfix">
+                    <nav>
+                        <ul class="periodic-nav-ul">
+                            <li class="periodic-nav-li">
+                                <a href="/journal">
+                                    <i class="fa fa-book"></i>
+                                    <span>Перелiк видань</span>
+                                </a>
+                            </li>
+                            <li class="periodic-nav-li periodic-item-nav-1">
+                                <a href="#">
+                                    <i class="fa fa-users"></i>
+                                    <span>Автори</span>
+                                </a>
+                            </li>
+                            <li class="periodic-nav-li periodic-item-nav-2">
+                                <a href="#">
+                                    <i class="fa fa-folder"></i>
+                                    <span>Тематики</span>
+                                </a>
+                            </li>
+                            <li class="periodic-nav-li periodic-item-nav-3">
+                                <a href="#">
+                                    <i class="fa fa-search"></i>
+                                    <span>Пошук</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div id="google_translate_element" style="padding: 8px 0 0 20px;"></div><script type="text/javascript">
+                    function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({pageLanguage: 'uk', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                    }
+                </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            </div>
+        </div>
+    </div>
 </header>
 <!--<div class="container">
     <div class="row bottom10">

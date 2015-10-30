@@ -48,11 +48,10 @@ body{
     background-size: cover;
     background-image: url('../img/header-bgd.jpg');
     min-height:200px;
-    margin-bottom:21px;
 }
 .vw-site-header {
     padding: 5px 0;
-    /*margin-bottom: 90px;*/
+    margin-bottom: 90px;
     background: rgba(255,255,255,0.6);
     color: #575757;
 }
@@ -106,6 +105,61 @@ body{
     text-transform:uppercase;
     line-height: 1.2em;
     margin-top: 10px;
+}
+
+/* -----------------------------------------------------------------------------
+ * Main Nav
+ * -------------------------------------------------------------------------- */
+.periodic-nav{
+    background:#222222;
+}
+.periodic-nav-ul{
+    margin-bottom:0;
+}
+.periodic-nav-li{
+    padding:0;
+    list-style-type:none;
+    float:left;
+}
+.periodic-item-nav-1,.periodic-item-nav-2,.periodic-item-nav-3{
+    margin-left:21px;
+}
+.periodic-nav-li a{
+    padding: 10px 0;
+    text-transform:uppercase;
+    display:block;
+    color:#FFFFFF;
+}
+.periodic-nav-li a:hover{
+    text-decoration: none;
+    color:#428bca;
+}
+
+/* -----------------------------------------------------------------------------
+ * Breadcrumbs
+ * -------------------------------------------------------------------------- */
+.vw-breadcrumb-wrapper{
+    background-color: #eeeeee;
+}
+.vw-breadcrumb-title {
+    font-weight: bold;
+    margin-right: 1em;
+    font-size: 12px;
+    line-height:38px;
+    float:left;
+}
+.periodic-breadcrumb{
+    list-style-type: none;
+}
+.periodic-breadcrumb li{
+    line-height:38px;
+    font-size:12px;
+    float:left;
+}
+.periodic-breadcrumb>li+li:before{
+    padding:0 5px;
+    color:#ccc;
+    content:"/\00a0";
 }
 
  /* -----------------------------------------------------------------------------

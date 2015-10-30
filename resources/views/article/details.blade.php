@@ -12,12 +12,10 @@
 @stop
 
 @section('bread_crumps')
-    <ol class="breadcrumb">
         <li>@include('crumps.journal_list')</li>
         <li>@include('crumps.journal')</li>
         <li>@include('crumps.edition')</li>
         <li class="active">{{{$article->name}}}</li>
-    </ol>
 @stop
 
 @section('content')

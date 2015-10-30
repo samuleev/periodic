@@ -1,14 +1,12 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-10">
-            @yield('bread_crumps')
-        </div>
-        <div class="col-md-2">
-            <div id="google_translate_element"></div><script type="text/javascript">
-                function googleTranslateElementInit() {
-                    new google.translate.TranslateElement({pageLanguage: 'uk', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-                }
-            </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<div class="vw-breadcrumb-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="periodic-breadcrumb">
+                    <span class="vw-breadcrumb-title">ВИ ЗНАХОДИТЕСЬ ТУТ:</span>
+                    @yield('bread_crumps')
+                </ol>
+            </div>
         </div>
     </div>
 </div>

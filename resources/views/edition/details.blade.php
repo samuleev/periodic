@@ -7,11 +7,9 @@
 @stop
 
 @section('bread_crumps')
-    <ol class="breadcrumb">
         <li>@include('crumps.journal_list')</li>
         <li>@include('crumps.journal')</li>
         <li class="active">{{{$edition->number_in_year."(".$edition->number.")'".$edition->issue_year}}}</li>
-    </ol>
 @stop
 
 @section('content')
