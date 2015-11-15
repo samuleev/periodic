@@ -60,7 +60,7 @@
 
             <div class="row top10">
                 <div class="col-md-12">
-                    <a href={{{route('article.download', $article->article_id)}}} >
+                    <a href={{{route('article.download', array($article->article_id, $fileName))}}} >
                         <img src={{{ url('/public/data/pdf_icon.ico') }}} /> Повний текст PDF - {{{$article->file_size}}}</a>
                 </div>
             </div>

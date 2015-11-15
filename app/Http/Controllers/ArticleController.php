@@ -19,9 +19,13 @@ class ArticleController extends Controller {
 
         ArticleService::enrichFileSize($article, $journal, $edition);
 
+        $fileName = ArticleService::getArticleFileName($journal->prefix, $edition->issue_year,
+            $edition->number_in_year, $article->sort_order);
+
         return view('article.details')->with(array('article' => $article,
             'edition' => $edition,
-            'journal' => $journal));
+            'journal' => $journal,
+            'fileName' => $fileName));
     }
 
     public function download($articleId) {
@@ -32,8 +36,8 @@ class ArticleController extends Controller {
         $journal = JournalDao::findById($edition->journal_id);
 
         $original_filename = ArticleService::getFilePath($article, $journal, $edition);
-        $new_filename = $journal->prefix . '_' . $edition->issue_year . '_'
-            . $edition->number_in_year . '_' . $article->sort_order . '.pdf';
+        $new_filename = ArticleService::getArticleFileName($journal->prefix, $edition->issue_year,
+            $edition->number_in_year, $article->sort_order);
 
         $headers = array(
             "Content-Type: application/pdf"

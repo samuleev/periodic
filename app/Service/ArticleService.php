@@ -144,6 +144,11 @@ class ArticleService {
         return $articleIdToAuthorsArray;
     }
 
+    public static function getArticleFileName($prefix, $issue_year, $number_in_year, $sort_order)
+    {
+        return $prefix . '_' . $issue_year . '_'  . $number_in_year . '_' . $sort_order . '.pdf';
+    }
+
     private static function getArticleIds(array $articleRows)
     {
         $articleIds = array();

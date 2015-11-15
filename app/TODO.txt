@@ -1,3 +1,13 @@
+- add pdf doc titles/authors
+- add citations metas
+- список всех годов
+- список статей за год
+- гугл скулар
+- залить базу
+- ссылки на пды - в виде файла, тайтл
+- закрыть доступ к паке паблик в роботс
+
+
 - excel sheet for additional info import
 - refactor views
 - edition header - pattern
