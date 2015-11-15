@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\DB;
 
 class EditionDao implements Dao {
 
+    static function listAllYears()
+    {
+        $issue_years = DB::table('journal_edition')
+            ->select('issue_year')->distinct()->orderby('issue_year')->get();
+        return $issue_years;
+    }
+
     static function listYears($journalId)
     {
         //DB::enableQueryLog();

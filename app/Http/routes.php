@@ -19,4 +19,6 @@ Route::get('/article/{id}', array('uses' => 'ArticleController@show', 'as' => 'a
 Route::get('/article/{id}/{fileName}', array('uses' => 'ArticleController@download', 'as' => 'article.download'))->where('id', '[1-9][0-9]*');
 Route::get('/import', array('uses' => 'ImportController@import', 'as' => 'import.main'));
 Route::get('/author', array('uses' => 'AuthorController@index', 'as' => 'author.index'));
+Route::get('/year', array('uses' => 'YearController@index', 'as' => 'year.index'));
+Route::get('/year/{selectedYear}', array('uses' => 'ArticleController@byYear', 'as' => 'year.details'))->where(array('selectedYear' => '[1-2][0-9]{3}'));
 Route::get('/sitemap-article.xml', array('uses' => 'SitemapController@article', 'as' => 'sitemap.article'));
