@@ -7,8 +7,37 @@
     @endif
 
     @if(isset($article->description))
-        <meta name="description" content="{{{ $journal->description}}}" >
+        <meta name="description" content="{{{ $article->description}}}" >
     @endif
+
+    <meta name="citation_journal_title" content="{{{$journal->name}}}" />
+    <meta name="citation_publisher" content="{{{$journal->founders}}}" />
+    <meta name="citation_issn" content="{{{$journal->issn}}}" />
+    <meta name="citation_publication_date" content="{{{$edition->issue_year}}}" />
+    <meta name="citation_issue" content="{{{$edition->number_in_year}}}" />
+    @if( $article->start_page > 0 )
+        <meta name="citation_firstpage" content="{{{$article->start_page}}}" />
+        @if( $article->end_page > 0 )
+            <meta name="citation_lastpage" content="{{{$article->end_page}}}" />
+        @endif
+    @endif
+    <meta name="citation_title" content="{{{$article->name}}}" />
+    @foreach($article->authors as $author)
+        <?php
+        $authorNameWithComa = $author->surname;
+            if(isset($author->name))
+            {
+                $authorNameWithComa = $authorNameWithComa.", ".$author->name.".";
+                if(isset($author->patronymic))
+                {
+                    $authorNameWithComa = $authorNameWithComa." ".$author->patronymic.".";
+                }
+            }
+        ?>
+        <meta name="citation_author" content="{{{$authorNameWithComa}}}" />
+    @endforeach
+    <meta name="citation_abstract_html_url" content="{{{route('article.details', array($article->article_id))}}}" />
+    <meta name="citation_pdf_url" content="{{{route('article.download', array($article->article_id, $fileName))}}}" />
 @stop
 
 @section('bread_crumps')
@@ -41,12 +70,22 @@
 
             <div class="row top10">
                 <div class="col-md-12">
-                    @if(count($article->authors)>0)
-                        {{{$article->authors[0]->surname}}}
-                        @if(isset($article->authors[0]->name)){{{$article->authors[0]->name}}}.
-                        @if(isset($article->authors[0]->patronymic)){{{$article->authors[0]->patronymic}}}.@endif
-                        @endif
-                    @endif
+                    <?php
+                    $firstAuthor = null;
+                    if(count($article->authors)>0)
+                    {
+                        $firstAuthor = $article->authors[0]->surname;
+                        if(isset($article->authors[0]->name))
+                        {
+                            $firstAuthor = $firstAuthor." ".$article->authors[0]->name.".";
+                            if(isset($article->authors[0]->patronymic))
+                            {
+                                $firstAuthor = $firstAuthor." ".$article->authors[0]->patronymic.".";
+                            }
+                        }
+                    }
+                    ?>
+                    {{{$firstAuthor}}}
                     <br/>
                     <b>{{{$article->name}}}</b>&nbsp;@if(count($article->authors)>0)/&nbsp;@include('article.authors')&nbsp;@endif//
                     <a href={{{route('journal.details', $journal->prefix)}}}>{{{ $journal->name }}}.</a>
@@ -71,12 +110,7 @@
                     Цитованість авторів публікації:
                     <ul>
                     @foreach($article->authors as $author)
-                            <li>
-                            {{{$author->surname}}}
-                            @if(isset($author->name)){{{$author->name}}}.
-                            @if(isset($author->patronymic)){{{$author->patronymic}}}.@endif
-                            @endif
-                            </li>
+                            <li>{{{$author->surname}}} @if(isset($author->name)){{{$author->name}}}. @if(isset($author->patronymic)){{{$author->patronymic}}}.@endif @endif </li>
                     @endforeach
                     </ul>
                 </div>
@@ -87,15 +121,8 @@
                 <div class="col-md-12">
                     <small>
                     <i>Бібліографічний опис для цитування:</i><br>
-                        @if(count($article->authors)>0)
-                            {{{$article->authors[0]->surname}}}
-                            @if(isset($article->authors[0]->name)){{{$article->authors[0]->name}}}.
-                            @if(isset($article->authors[0]->patronymic)){{{$article->authors[0]->patronymic}}}.@endif
-                            @endif
-                        @endif
-                    {{{$article->name}}}&nbsp;@if(count($article->authors)>0)/&nbsp;@include('article.authors')&nbsp;@endif//
-                    {{{ $journal->name }}}.
-                    - {{{$edition->issue_year}}}. - № {{{$edition->number_in_year}}}. @include('article.pages')
+                    {{{$firstAuthor}}}
+                    {{{$article->name}}}&nbsp;@if(count($article->authors)>0)/&nbsp;@include('article.authors')&nbsp;@endif// {{{ $journal->name }}}. - {{{$edition->issue_year}}}. - № {{{$edition->number_in_year}}}. @include('article.pages')
                     </small>
                 </div>
             </div>
