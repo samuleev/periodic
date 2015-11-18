@@ -107,10 +107,10 @@
             @if(count($article->authors) > 0)
             <div class="row top10">
                 <div class="col-md-12">
-                    Цитованість авторів публікації:
+                    Інформація про авторів публікації:
                     <ul>
                     @foreach($article->authors as $author)
-                            <li>{{{$author->surname}}} @if(isset($author->name)){{{$author->name}}}. @if(isset($author->patronymic)){{{$author->patronymic}}}.@endif @endif </li>
+                            <li><a href="{{{route('author.details', array($author->author_id))}}}">{{{$author->surname}}} @if(isset($author->name)){{{$author->name}}}. @if(isset($author->patronymic)){{{$author->patronymic}}}.@endif @endif</a></li>
                     @endforeach
                     </ul>
                 </div>

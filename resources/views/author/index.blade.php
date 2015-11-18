@@ -7,13 +7,7 @@
 @stop
 
 @section('bread_crumps')
-    {{--@include('crumps.journal_list')--}}
-    {{--&#10095;--}}
-    {{--@include('crumps.journal')--}}
-    {{--&#10095;--}}
-    {{--@include('crumps.edition')--}}
-    {{--&#10095;--}}
-    {{--@include('crumps.article')--}}
+    <li class="active">Автори</li>
 @stop
 
 @section('content')

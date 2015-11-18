@@ -24,6 +24,14 @@ class ArticleDao implements Dao {
         return DB::table('article')->where('journal_edition_id', $editionId)->orderby('sort_order')->get();
     }
 
+    static function findByAuthor($authorId)
+    {
+        return DB::table('article')
+            ->join('article_to_author', 'article_to_author.article_id', '=', 'article.article_id')
+            ->where('article_to_author.author_id', $authorId)
+            ->orderby('name')->get();
+    }
+
     static function findById($id)
     {
         $article = DB::table('article')->where('article_id', $id)->get();

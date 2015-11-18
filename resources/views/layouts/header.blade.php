@@ -28,13 +28,13 @@
                     <nav>
                         <ul class="periodic-nav-ul">
                             <li class="periodic-nav-li">
-                                <a href="/journal">
+                                <a href="{{{route('journal.index')}}}">
                                     <i class="fa fa-book"></i>
-                                    <span>Перелiк видань</span>
+                                    <span>Видання</span>
                                 </a>
                             </li>
                             <li class="periodic-nav-li periodic-item-nav-1">
-                                <a href="#">
+                                <a href="{{{route('author.index')}}}">
                                     <i class="fa fa-users"></i>
                                     <span>Автори</span>
                                 </a>

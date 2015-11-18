@@ -55,7 +55,6 @@
                         <a href="{{{ route('article.details', array($article->article_id)) }}}">{{{ $article->name.'.' }}}</a>
 
                         @include('article.pages')
-
                     </div>
                 </div>
             @endforeach

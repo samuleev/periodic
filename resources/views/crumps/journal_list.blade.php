@@ -1,1 +1,1 @@
-<a href="{{{route('journal.index')}}}">Перелік видань</a>
+<a href="{{{route('journal.index')}}}">Видання</a>

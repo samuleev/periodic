@@ -7,7 +7,7 @@
 @stop
 
 @section('bread_crumps')
-        <li class="active">Перелік видань</li>
+        <li class="active">Видання</li>
 @stop
 
 @section('content')

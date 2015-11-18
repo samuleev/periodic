@@ -1,0 +1,1 @@
+<a href={{{route('author.details', $author->author_id)}}}>@include('author.name')</a>
