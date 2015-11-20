@@ -17,6 +17,13 @@ class AuthorController extends Controller {
         return view('author.details')->with(array('author' => $author, 'articles' => $articles));
     }
 
+    public function showByFirstSurnameLetter($letter)
+    {
+        $authors = AuthorDao::findByFirstSurnameLetter($letter);
+
+        return view('author.by_letter')->with(array('authors' => $authors));
+    }
+
     public function index()
     {
         return view('author.index');

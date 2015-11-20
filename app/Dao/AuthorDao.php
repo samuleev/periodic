@@ -52,4 +52,14 @@ class AuthorDao implements Dao {
         }
         return $author[0];
     }
+
+    static function findByFirstSurnameLetter($letter)
+    {
+        return DB::table('author')
+            ->where('surname', 'like', $letter."%")
+            ->orderby('surname', 'ASC')
+            ->orderby('name', 'ASC')
+            ->orderby('patronymic', 'ASC')
+            ->get();
+    }
 }

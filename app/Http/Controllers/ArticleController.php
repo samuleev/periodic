@@ -28,7 +28,7 @@ class ArticleController extends Controller {
             'fileName' => $fileName));
     }
 
-    public function download($articleId) {
+    public function download($articleId, $fileName) {
         $articleRow = ArticleDao::findById($articleId);
         $article = ArticleService::getEnrichedArticle($articleRow);
 
@@ -38,6 +38,10 @@ class ArticleController extends Controller {
         $original_filename = ArticleService::getFilePath($article, $journal, $edition);
         $new_filename = ArticleService::getArticleFileName($journal->prefix, $edition->issue_year,
             $edition->number_in_year, $article->sort_order);
+
+        if($fileName != $new_filename) {
+            return redirect(route('article.download', [$articleId, $new_filename]), 301);
+        }
 
         $headers = array(
             "Content-Type: application/pdf"
