@@ -11,8 +11,12 @@
 @stop
 
 @section('content')
+    <script type="text/javascript">
+        function updateAuthors(letter) {
+            $('#authors_by_letter').load('author/by_letter/' + letter);
+        }
+    </script>
 
-    {{--@if(isset($author))--}}
         <div class="container">
 
             <div class="row top10">
@@ -23,8 +27,8 @@
                     <div class="container">
                         <div class="btn-toolbar">
                             <div class="btn-group btn-group-sm">
-                                <button class="btn btn-default">А</button>
-                                <button class="btn btn-default">Б</button>
+                                <button class="btn btn-default" onclick="updateAuthors('А')">А</button>
+                                <button class="btn btn-default" onclick="updateAuthors('Б')">Б</button>
                                 <button class="btn btn-default">В</button>
                                 <button class="btn btn-default">Г</button>
                                 <button class="btn btn-default">Ґ</button>
@@ -102,9 +106,10 @@
                 </div>
             </div>
         </div>
-    {{--
-        @else
-            <p>No author</p>
-        @endif
-        --}}
+
+    <div id="authors_by_letter">
+        <script type="text/javascript">
+            window.onload = updateAuthors('А');
+        </script>
+    </div>
 @stop
