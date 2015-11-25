@@ -1,5 +1,13 @@
 <div class="container">
 
+    @if(count($sub_authors) == 0)
+        <div class="row top10">
+            <div class="col-md-12">
+                <h3>В базі даних немає авторів, прізвище яких починається з літери '{{{$letter}}}'</h3>
+            </div>
+        </div>
+    @else
+
     @foreach($sub_authors  as $sub => $authors)
         <div class="row top10">
             <div class="col-md-12">
@@ -18,5 +26,7 @@
         @endforeach
 
     @endforeach
+
+    @endif
 
 </div>

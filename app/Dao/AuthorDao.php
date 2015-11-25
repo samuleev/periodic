@@ -57,7 +57,7 @@ class AuthorDao implements Dao {
     {
         return DB::table('author')
             ->where('surname', 'like', $letter."%")
-            ->orderby('surname', 'ASC')
+            ->orderByRaw("surname COLLATE utf8_unicode_ci ASC")
             ->orderby('name', 'ASC')
             ->orderby('patronymic', 'ASC')
             ->get();

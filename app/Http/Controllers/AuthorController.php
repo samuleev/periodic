@@ -25,7 +25,8 @@ class AuthorController extends Controller {
         $sub_authors = self::rotateSubAuthors($sub_authors, $COLUMN_COUNT);
         return view('author.by_letter')->with(array(
             'sub_authors' => $sub_authors,
-            'column_count' => $COLUMN_COUNT
+            'column_count' => $COLUMN_COUNT,
+            'letter' => $letter
         ));
     }
 
