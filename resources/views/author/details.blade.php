@@ -19,10 +19,29 @@
 @section('content')
     @if(isset($author))
         <div class="container">
+            <?php
+            $authorSearchName = "";
+            if(isset($author->name))
+            {
+                $authorSearchName = $author->name;
+                if(isset($author->patronymic))
+                {
+                    $authorSearchName = $authorSearchName.$author->patronymic;
+                }
+            }
+            $authorSearchName = $authorSearchName . "%20" . $author->surname;
+            ?>
 
             <div class="row top10">
                 <div class="col-md-12">
                     <h4>@include('author.name')</h4>
+                </div>
+            </div>
+            <div class="row top10">
+                <div class="col-md-12">
+                    <img src={{{ url('/public/data/google-scholar.jpg') }}} />
+                    <a target="_blank" href={{{"http://scholar.google.com.ua/scholar?as_q=site%3Airbis-nbuv.gov.ua&as_sauthors=" . $authorSearchName . "&hl=uk&btnG=&as_sdt=0%2C5"}}}>
+                        Цитованість автора</a>
                 </div>
             </div>
             <div class="row top10">

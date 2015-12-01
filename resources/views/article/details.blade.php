@@ -72,9 +72,11 @@
                 <div class="col-md-12">
                     <?php
                     $firstAuthor = null;
+                    $firstAuthorSurname = null;
                     if(count($article->authors)>0)
                     {
                         $firstAuthor = $article->authors[0]->surname;
+                        $firstAuthorSurname = $article->authors[0]->surname;
                         if(isset($article->authors[0]->name))
                         {
                             $firstAuthor = $firstAuthor." ".$article->authors[0]->name.".";
@@ -92,17 +94,41 @@
                     - {{{$edition->issue_year}}}. - № {{{$edition->number_in_year}}}. @include('article.pages')
                     <br/>
                     @if($article->topic->name != 'special')
-                        Тематика статті: {{{$article->topic->name}}}
+                        Тематика статті: <a href="{{{route('topic.details', array($article->topic->topic_id))}}}">{{{$article->topic->name}}}</a>
                     @endif
                 </div>
             </div>
 
             <div class="row top10">
                 <div class="col-md-12">
+                    <img src={{{ url('/public/data/pdf_icon.ico') }}} />
                     <a href={{{route('article.download', array($article->article_id, $fileName))}}} >
-                        <img src={{{ url('/public/data/pdf_icon.ico') }}} /> Повний текст PDF - {{{$article->file_size}}}</a>
+                        Повний текст PDF - {{{$article->file_size}}}</a>
                 </div>
             </div>
+
+            @if($article->topic->name != 'special')
+                <?php
+                    $searchName = "";
+                    $words = explode(" ", $article->name);
+                    $delimiter = "";
+                    for ($i = 0; $i < 3; $i++)
+                    {
+                        if ($i > 0) {
+                            $delimiter = "+";
+                        }
+
+                        $searchName = $searchName . $delimiter . $words[$i];
+                    }
+                ?>
+                <div class="row top10">
+                    <div class="col-md-12">
+                        <img src={{{ url('/public/data/google-scholar.jpg') }}} />
+                        <a target="_blank" href={{{"http://scholar.google.com.ua/scholar?as_q=site%3Airbis-nbuv.gov.ua&as_epq=" . $searchName . "&as_sauthors=" . $firstAuthorSurname . "&hl=uk"}}}>
+                            Цитування публікації </a>
+                    </div>
+                </div>
+            @endif
 
             @if(count($article->authors) > 0)
             <div class="row top10">
