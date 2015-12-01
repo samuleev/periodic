@@ -23,5 +23,7 @@ Route::get('/author/by_letter/{letter}', array('uses' => 'AuthorController@showB
 Route::get('/author/{id}', array('uses' => 'AuthorController@show', 'as' => 'author.details'))->where('id', '[1-9][0-9]*');
 Route::get('/year', array('uses' => 'YearController@index', 'as' => 'year.index'));
 Route::get('/year/{selectedYear}', array('uses' => 'ArticleController@byYear', 'as' => 'year.details'))->where(array('selectedYear' => '[1-2][0-9]{3}'));
+Route::get('/topic', array('uses' => 'TopicController@index', 'as' => 'topic.index'));
+Route::get('/topic/{id}', array('uses' => 'TopicController@show', 'as' => 'topic.details'))->where('id', '[1-9][0-9]*');
 Route::get('/sitemap-article.xml', array('uses' => 'SitemapController@article', 'as' => 'sitemap.article'));
 Route::get('/sitemap-pdf.xml', array('uses' => 'SitemapController@pdf', 'as' => 'sitemap.pdf'));

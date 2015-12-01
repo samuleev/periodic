@@ -18,6 +18,22 @@ class TopicDao implements Dao {
         return DB::table('topic')->orderby('topic_id')->get();
     }
 
+    static function paginate($pageSize)
+    {
+        return DB::table('topic')->select('topic.topic_id', 'topic.name', DB::raw('COUNT(article.article_id) as article_count'))
+            ->join('article', 'article.topic_id', '=', 'topic.topic_id')
+            ->where('visible', 1)
+            ->groupBy('topic.topic_id')
+            ->orderByRaw("topic.name COLLATE utf8_unicode_ci ASC")
+            ->paginate($pageSize);
+    }
+
+    static function countVisible()
+    {
+        return DB::table('topic')
+        ->where('visible', 1)->count();
+    }
+
     static function persist($topic)
     {
         self::checkTopicExists($topic->name);

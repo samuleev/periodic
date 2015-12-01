@@ -1,0 +1,1 @@
+<a href="{{{route('topic.index')}}}">Тематики</a>

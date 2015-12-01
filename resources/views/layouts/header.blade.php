@@ -40,17 +40,17 @@
                                 </a>
                             </li>
                             <li class="periodic-nav-li periodic-item-nav-2">
-                                <a href="#">
+                                <a href="{{{route('topic.index')}}}">
                                     <i class="fa fa-folder"></i>
                                     <span>Тематики</span>
                                 </a>
                             </li>
-                            <li class="periodic-nav-li periodic-item-nav-3">
-                                <a href="#">
-                                    <i class="fa fa-search"></i>
-                                    <span>Пошук</span>
-                                </a>
-                            </li>
+                            {{--<li class="periodic-nav-li periodic-item-nav-3">--}}
+                                {{--<a href="#">--}}
+                                    {{--<i class="fa fa-search"></i>--}}
+                                    {{--<span>Пошук</span>--}}
+                                {{--</a>--}}
+                            {{--</li>--}}
                         </ul>
                     </nav>
                 </div>

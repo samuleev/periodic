@@ -24,12 +24,18 @@ class ArticleDao implements Dao {
         return DB::table('article')->where('journal_edition_id', $editionId)->orderby('sort_order')->get();
     }
 
+    static function findByTopicPaginated($topicId, $pageSize)
+    {
+        return DB::table('article')->where('topic_id', $topicId)
+            ->orderByRaw("name COLLATE utf8_unicode_ci ASC")->paginate($pageSize);
+    }
+
     static function findByAuthor($authorId)
     {
         return DB::table('article')
             ->join('article_to_author', 'article_to_author.article_id', '=', 'article.article_id')
             ->where('article_to_author.author_id', $authorId)
-            ->orderby('name')->get();
+            ->orderByRaw("name COLLATE utf8_unicode_ci ASC")->get();
     }
 
     static function findById($id)
