@@ -50,7 +50,7 @@
 
 <div class="row">
     <div class="col-md-12 top10">
-        <a href="{{{ $journal->google_scholar }}}">Розподіл «quotation» (Google Scholar)</a>
+        <a target="_blank" href="{{{ $journal->google_scholar }}}">Розподіл «quotation» (Google Scholar)</a>
     </div>
 </div>
 
