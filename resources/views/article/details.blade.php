@@ -112,7 +112,7 @@
                     $searchName = "";
                     $words = explode(" ", $article->name);
                     $delimiter = "";
-                    for ($i = 0; $i < 3; $i++)
+                    for ($i = 0; $i < min(3, count($words)); $i++)
                     {
                         if ($i > 0) {
                             $delimiter = "+";
