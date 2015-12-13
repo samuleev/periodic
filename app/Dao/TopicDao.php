@@ -5,7 +5,7 @@ namespace App\Dao;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
-class TopicDao implements Dao {
+class TopicDao implements Dao, CustomPaging {
 
     static function findById($id)
     {
@@ -58,5 +58,15 @@ class TopicDao implements Dao {
             return null;
         }
         return $topic[0];
+    }
+
+    static function find($skip, $take)
+    {
+        return DB::table('topic')->orderby('topic_id')->skip($skip)->take($take)->get();
+    }
+
+    static function count()
+    {
+        return DB::table('topic')->count();
     }
 }

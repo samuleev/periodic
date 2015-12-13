@@ -5,8 +5,7 @@ namespace App\Dao;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
-class JournalDao implements Dao
-{
+class JournalDao implements Dao, CustomPaging {
 
     static function findById($id)
     {
@@ -44,4 +43,13 @@ class JournalDao implements Dao
         throw new Exception('Not implemented yet');
     }
 
+    static function find($skip, $take)
+    {
+        return DB::table('journal')->orderby('journal_id')->skip($skip)->take($take)->get();
+    }
+
+    static function count()
+    {
+        return DB::table('journal')->count();
+    }
 }

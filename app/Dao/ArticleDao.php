@@ -5,7 +5,7 @@ namespace App\Dao;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
-class ArticleDao implements Dao {
+class ArticleDao implements Dao, CustomPaging {
 
     static function findContentByYear($selectedYear)
     {
@@ -47,6 +47,16 @@ class ArticleDao implements Dao {
     static function findAll()
     {
         return DB::table('article')->orderby('article_id')->get();
+    }
+
+    static function find($skip, $take)
+    {
+        return DB::table('article')->orderby('article_id')->skip($skip)->take($take)->get();
+    }
+
+    static function count()
+    {
+        return DB::table('article')->count();
     }
 
     static function persist($article)

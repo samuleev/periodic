@@ -5,7 +5,7 @@ namespace App\Dao;
 
 use Illuminate\Support\Facades\DB;
 
-class AuthorDao implements Dao {
+class AuthorDao implements Dao, CustomPaging {
 
     static function findById($id)
     {
@@ -61,5 +61,15 @@ class AuthorDao implements Dao {
             ->orderby('name', 'ASC')
             ->orderby('patronymic', 'ASC')
             ->get();
+    }
+
+    static function find($skip, $take)
+    {
+        return DB::table('author')->orderby('author_id')->skip($skip)->take($take)->get();
+    }
+
+    static function count()
+    {
+        return DB::table('author')->count();
     }
 }

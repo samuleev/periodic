@@ -25,5 +25,10 @@ Route::get('/year', array('uses' => 'YearController@index', 'as' => 'year.index'
 Route::get('/year/{selectedYear}', array('uses' => 'ArticleController@byYear', 'as' => 'year.details'))->where(array('selectedYear' => '[1-2][0-9]{3}'));
 Route::get('/topic', array('uses' => 'TopicController@index', 'as' => 'topic.index'));
 Route::get('/topic/{id}', array('uses' => 'TopicController@show', 'as' => 'topic.details'))->where('id', '[1-9][0-9]*');
-Route::get('/sitemap-article.xml', array('uses' => 'SitemapController@article', 'as' => 'sitemap.article'));
-Route::get('/sitemap-pdf.xml', array('uses' => 'SitemapController@pdf', 'as' => 'sitemap.pdf'));
+Route::get('/sitemap.txt', array('uses' => 'SitemapController@main', 'as' => 'sitemap.main'));
+Route::get('/sitemap-article{page}.xml', array('uses' => 'SitemapController@article', 'as' => 'sitemap.article'))->where('page', '[1-9][0-9]*');
+Route::get('/sitemap-pdf{page}.xml', array('uses' => 'SitemapController@pdf', 'as' => 'sitemap.pdf'))->where('page', '[1-9][0-9]*');
+Route::get('/sitemap-topic{page}.xml', array('uses' => 'SitemapController@topic', 'as' => 'sitemap.topic'))->where('page', '[1-9][0-9]*');
+Route::get('/sitemap-author{page}.xml', array('uses' => 'SitemapController@author', 'as' => 'sitemap.author'))->where('page', '[1-9][0-9]*');
+Route::get('/sitemap-edition{page}.xml', array('uses' => 'SitemapController@edition', 'as' => 'sitemap.edition'))->where('page', '[1-9][0-9]*');
+Route::get('/sitemap-journal{page}.xml', array('uses' => 'SitemapController@journal', 'as' => 'sitemap.journal'))->where('page', '[1-9][0-9]*');

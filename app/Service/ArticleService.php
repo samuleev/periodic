@@ -7,16 +7,6 @@ use stdClass;
 
 class ArticleService {
 
-    public static function getArticlesAdditionalJournalInfo()
-    {
-        return DB::table('article')
-            ->select('article.article_id', 'article.sort_order', 'journal_edition.issue_year',
-                'journal_edition.number_in_year', 'journal.prefix')
-            ->join('journal_edition', 'journal_edition.journal_edition_id', '=', 'article.journal_edition_id')
-            ->join('journal', 'journal.journal_id', '=', 'journal_edition.journal_id')
-            ->orderby('article.article_id')->get();
-    }
-
     public static function getEnrichedArticle(stdClass $article)
     {
         $articles = array();
