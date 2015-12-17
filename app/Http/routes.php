@@ -28,7 +28,5 @@ Route::get('/topic/{id}', array('uses' => 'TopicController@show', 'as' => 'topic
 Route::get('/sitemap.txt', array('uses' => 'SitemapController@main', 'as' => 'sitemap.main'));
 Route::get('/sitemap-article{page}.xml', array('uses' => 'SitemapController@article', 'as' => 'sitemap.article'))->where('page', '[1-9][0-9]*');
 Route::get('/sitemap-pdf{page}.xml', array('uses' => 'SitemapController@pdf', 'as' => 'sitemap.pdf'))->where('page', '[1-9][0-9]*');
-Route::get('/sitemap-topic{page}.xml', array('uses' => 'SitemapController@topic', 'as' => 'sitemap.topic'))->where('page', '[1-9][0-9]*');
 Route::get('/sitemap-author{page}.xml', array('uses' => 'SitemapController@author', 'as' => 'sitemap.author'))->where('page', '[1-9][0-9]*');
-Route::get('/sitemap-edition{page}.xml', array('uses' => 'SitemapController@edition', 'as' => 'sitemap.edition'))->where('page', '[1-9][0-9]*');
-Route::get('/sitemap-journal{page}.xml', array('uses' => 'SitemapController@journal', 'as' => 'sitemap.journal'))->where('page', '[1-9][0-9]*');
+Route::get('/sitemap-misc.xml', array('uses' => 'SitemapController@misc', 'as' => 'sitemap.misc'));

@@ -4,7 +4,7 @@
     @foreach($articles as $article)
         <url>
             <loc>http://www.hups.mil.gov.ua/periodic-app/article/{{{$article->article_id}}}</loc>
-            <lastmod>{{{$last_mod_date}}}</lastmod>
+            <lastmod>{{{str_replace(' ', 'T', $article->updated) . "+00:00"}}}</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
         </url>

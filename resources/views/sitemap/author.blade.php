@@ -4,7 +4,7 @@
     @foreach($authors as $author)
         <url>
             <loc>http://www.hups.mil.gov.ua/periodic-app/author/{{{$author->author_id}}}</loc>
-            <lastmod>{{{$last_mod_date}}}</lastmod>
+            <lastmod>{{{str_replace(' ', 'T', $author->updated) . "+00:00"}}}</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
         </url>
