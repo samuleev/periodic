@@ -33,6 +33,7 @@ body{
 .bottom30 { margin-bottom:30px; }
 
 .border {border: 1px solid rgba(86,86,124,.2);}
+.border-bottom {border-bottom: 1px solid rgba(86,86,124,.2);}
 
 .padding15 {
     padding-top: 15px;
@@ -193,4 +194,15 @@ body{
 }
 .vw-site-bottom-bar-right {
   text-align: right;
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Main Page
+ * -------------------------------------------------------------------------- */
+.journal-type {
+    line-height:30px;
+    display: block;
+    background: #3facd6;
+    color: #ffffff;
 }

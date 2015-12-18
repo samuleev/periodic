@@ -35,7 +35,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <h5> {{{ $journal->name }}} </h5>
+                                <h5>{{{ $journal->name }}}</h5>
                             </div>
                         </div>
 
@@ -96,7 +96,7 @@
                     Свідоцтво про державну реєстрацію:
                 </div>
                 <div class="col-md-10">
-                    <a href={{{ url('/public/data/'.$journal->prefix.'/'.$journal->gov_registration_file) }}}>{{{ $journal->gov_registration}}}</a>
+                    <a target="_blank" href={{{ url('/public/data/'.$journal->prefix.'/'.$journal->gov_registration_file) }}}>{{{ $journal->gov_registration}}}</a>
                 </div>
             </div>
 

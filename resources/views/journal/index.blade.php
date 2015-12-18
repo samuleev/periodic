@@ -13,21 +13,23 @@
 @section('content')
     @if(count($journals))
         <div class="container main-content">
-            @foreach($journals as $index =>  $journal)
-                @if($index % 2 == 0)
+            <div class="row" style="margin-top:21px;">
+                <div class="col-md-4">
+                    <img src="/public/img/archive-title-img.jpg">
+                </div>
+                <div class="col-md-8" style="margin-bottom:21px;">
+                    <p><strong>Наукові видання університету мають державну реєстрацію.</strong></p>
+                    <p>Електронні версії видань своєчасно розміщуються у електронній базі наукових видань <strong>Державної бібліотеки імені Вернадського</strong>, необмежений доступ до якої мають усі користувачі мережі Інтернет.</p>
+                    <p style="text-align:justify;">Чотири наукових видання університету входять до наукометричних баз даних та до <a href="http://old.mon.gov.ua/ua/activity/563/perelik-naukovikh-fakhovikh-vidan/6797/" target="_blank">«Переліку наукових фахових видань України, в яких можуть публікуватися результати дисертаційних робіт на здобуття наукових ступенів доктора і кандидата наук»</a>.</p>
+                    <p><strong>Телефон для зв’язку:</strong><br>(057) 704-96-53 (<i>запросити редакцію, кімнати 113, 114</i>)</p>
+                </div>
+            </div>
+            @foreach($journals as $index => $journal)
                     <div class="row top10">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             @include('journal.index_element')
                         </div>
-                    @if($index == (count($journals) - 1))
-                    </div> {{-- row --}}
-                    @endif
-                @else
-                        <div class="col-md-6">
-                            @include('journal.index_element')
-                        </div>
-                    </div> {{-- row --}}
-                @endif
+                    </div>
             @endforeach
         </div> {{-- container --}}
     @else
