@@ -36,7 +36,7 @@
                                 <small>{!! $journal->materials_accept !!}</small>
                                 <br><br>
                                 <a target="_blank" href="/public/data/submission-guidelines.pdf">
-                                    <img src={{{ url('/public/data/pdf_icon-20.png') }}} />
+                                    <img src={{{ url('/public/img/pdf_icon-20.png') }}} />
                                     Вимоги до оформлення статей
                                 </a>
                             </div>
@@ -51,7 +51,7 @@
 
                                 <br><br>
                                 <a href="{{{ $journal->google_scholar }}}" target="_blank">
-                                    <img src={{{ url('/public/data/google-scholar-20.jpg') }}} />
+                                    <img src={{{ url('/public/img/google-scholar-20.jpg') }}} />
                                     Розподіл «quotation» (Google Scholar)
                                 </a>
                             </div>
