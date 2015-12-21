@@ -13,7 +13,7 @@
     <script async src="{{ asset('/public/js/bootstrap.min.js') }}"></script>
     <!-- Awesome Icons -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="/periodic-app/public/data/favicon.png">
+    <link rel="shortcut icon" href={{{ url('/public/img/favicon.png') }}}>
 </head>
 <body>
 <script>

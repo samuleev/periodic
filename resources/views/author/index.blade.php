@@ -21,7 +21,7 @@
 
             <div class="row" style="margin-top:21px;">
                 <div class="col-md-4">
-                    <img src="/public/img/list-of-authors.jpg">
+                    <img src={{{ url('/public/img/list-of-authors.jpg') }}}>
                 </div>
                 <div class="col-md-8" style="margin-bottom:21px;">
                     <p><strong>Перелік авторів видань Харківського університету Повітряних Сил.</strong></p>

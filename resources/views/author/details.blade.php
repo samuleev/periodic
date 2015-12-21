@@ -39,7 +39,7 @@
             </div>
             <div class="row top10">
                 <div class="col-md-12">
-                    <img src={{{ url('/public/data/google-scholar.jpg') }}} />
+                    <img src={{{ url('/public/img/google-scholar.jpg') }}} />
                     <a target="_blank" href={{{"http://scholar.google.com.ua/scholar?as_q=site%3Airbis-nbuv.gov.ua&as_sauthors=" . $authorSearchName . "&hl=uk&btnG=&as_sdt=0%2C5"}}}>
                         Цитованість автора</a>
                 </div>
