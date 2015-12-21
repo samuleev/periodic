@@ -35,7 +35,7 @@
                                 <br><br>
                                 <small>{!! $journal->materials_accept !!}</small>
                                 <br><br>
-                                <a target="_blank" href="/public/data/submission-guidelines.pdf">
+                                <a target="_blank" href={{{ url('/public/data/submission-guidelines.pdf') }}}>
                                     <img src={{{ url('/public/img/pdf_icon-20.png') }}} />
                                     Вимоги до оформлення статей
                                 </a>
