@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        @if((!empty($name) || !empty($author) || !empty($year)) && (isset($articles) && count($articles) == 0))
+        @if((!empty($name) || !empty($author) || !empty($year)) && (!isset($articles) || count($articles) == 0))
             <div class="row top10">
                 <div class="col-md-12">
                     <h4>За вказаними критеріями публікаціїй не знайдено.</h4>
