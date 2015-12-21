@@ -19,14 +19,35 @@
 
         <div class="container">
 
-            <div class="row top10">
-                <div class="col-md-1">
-                    <b>УКР / РУС</b>
+            <div class="row" style="margin-top:21px;">
+                <div class="col-md-4">
+                    <img src="/public/img/list-of-authors.jpg">
                 </div>
-                <div class="col-md-11">
-                    <div class="container">
-                        <div class="btn-toolbar">
-                            <div class="btn-group btn-group-sm">
+                <div class="col-md-8" style="margin-bottom:21px;">
+                    <p><strong>Перелік авторів видань Харківського університету Повітряних Сил.</strong></p>
+                    <p>Данний алфавітний показчик включає прізвища та ініціали авторів чиї публікації входять до періодичних видань Харківського університету Повітряних Сил. </p>
+                    <p>Прізвища та ініціали авторів наведені у мові на якій вони були опубліковані у виданні.</p>
+                    <p>При виборі певного артора можна переглянути всі його публікації.</p>
+                    <p><strong>З побажаннями та пропозиціями можна звертатися:</strong><br>за телефоном (057) 704-96-53 (<i>запросити редакцію, кімнати 113, 114</i>)</p>
+                </div>
+            </div>
+
+            <div class="row top10">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#ua-ru" aria-controls="ua-ru" role="tab" data-toggle="tab"> УКРАЇНСЬКА / РУССКИЙ </a></li>
+                    <li role="presentation"><a href="#en" aria-controls="profile" role="tab" data-toggle="tab"> ENGLISH </a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="ua-ru">
+                        <div class="btn-toolbar top10">
+                            <div class="col-md-12">
+                                <h4>Оберіть першу літеру прізвища автора:</h4>
+                            </div>
+                            <div class="btn-group btn-group-sm"  style="margin-left:15px;">
                                 <button class="btn btn-default" onclick="updateAuthors('А')">А</button>
                                 <button class="btn btn-default" onclick="updateAuthors('Б')">Б</button>
                                 <button class="btn btn-default" onclick="updateAuthors('В')">В</button>
@@ -65,17 +86,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="row top10">
-                <div class="col-md-1">
-                    <b>ENG</b>
-                </div>
-                <div class="col-md-11">
-                    <div class="container">
-                        <div class="btn-toolbar">
-                            <div class="btn-group btn-group-sm">
+                    <div role="tabpanel" class="tab-pane" id="en">
+                        <div class="btn-toolbar top10">
+                            <div class="col-md-12">
+                                <h4>Оберіть першу літеру прізвища автора:</h4>
+                            </div>
+                            <div class="btn-group btn-group-sm" style="margin-left:15px;">
                                 <button class="btn btn-default" onclick="updateAuthors('A')">A</button>
                                 <button class="btn btn-default" onclick="updateAuthors('B')">B</button>
                                 <button class="btn btn-default" onclick="updateAuthors('C')">C</button>
@@ -107,14 +123,15 @@
                     </div>
                 </div>
             </div>
+
         </div>
+
+    <div class="col-md-12 text-center" style="background: url(/public/img/icon-line.png) repeat-x; margin: 15px 0;"><span style="font-size:18px;" class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true"></span></div>
 
     <div id="authors_by_letter">
         <div class="container">
             <div class="row top10">
-                <div class="col-md-12">
-                    <h3>Будь-ласка, оберіть першу літеру прізвища автора</h3>
-                </div>
+                <div style="margin:30px auto; width: 390px; height: 200px; background: url(/public/img/author-arrow.png) no-repeat;"></div>
             </div>
         </div>
     </div>

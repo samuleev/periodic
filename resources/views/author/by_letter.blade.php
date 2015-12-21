@@ -1,9 +1,9 @@
 <div class="container">
 
     @if(count($sub_authors) == 0)
-        <div class="row top10">
+        <div class="row">
             <div class="col-md-12">
-                <h3>В базі даних немає авторів, прізвище яких починається з літери '{{{$letter}}}'</h3>
+                <h4>В базі даних немає авторів, прізвище яких починається з літери '{{{$letter}}}'</h4>
             </div>
         </div>
     @else
