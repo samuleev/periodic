@@ -30,3 +30,5 @@ Route::get('/sitemap-article{page}.xml', array('uses' => 'SitemapController@arti
 Route::get('/sitemap-pdf{page}.xml', array('uses' => 'SitemapController@pdf', 'as' => 'sitemap.pdf'))->where('page', '[1-9][0-9]*');
 Route::get('/sitemap-author{page}.xml', array('uses' => 'SitemapController@author', 'as' => 'sitemap.author'))->where('page', '[1-9][0-9]*');
 Route::get('/sitemap-misc.xml', array('uses' => 'SitemapController@misc', 'as' => 'sitemap.misc'));
+Route::get('/search', array('uses' => 'SearchController@index', 'as' => 'search.index'));
+Route::post('/search', array('uses' => 'SearchController@process', 'as' => 'search.process'));
