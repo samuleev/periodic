@@ -15,7 +15,7 @@
         <div class="container main-content">
             <div class="row" style="margin-top:21px;">
                 <div class="col-md-4">
-                    <img src="/public/img/archive-title-img.jpg">
+                    <img src={{{ url('/public/img/archive-title-img.jpg') }}}>
                 </div>
                 <div class="col-md-8" style="margin-bottom:21px;">
                     <p><strong>Наукові видання університету мають державну реєстрацію.</strong></p>
