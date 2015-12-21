@@ -169,7 +169,7 @@ body{
 .hups-footer-contacts{
   width:100%;
   background: #eeeeee; 
-  margin-top:42px;
+  margin-top:21px;
 }
 .footer-phone-block, .footer-email-block, .footer-post-block{
   padding: 21px 12px;
@@ -206,3 +206,8 @@ body{
     background: #3facd6;
     color: #ffffff;
 }
+
+
+/* -----------------------------------------------------------------------------
+ * List of Author
+ * -------------------------------------------------------------------------- */

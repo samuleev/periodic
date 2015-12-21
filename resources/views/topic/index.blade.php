@@ -11,14 +11,9 @@
 @section('content')
     @if(count($topics))
         <div class="container">
-            <div class="row top10">
-                <div class="col-md-6">
-                    <h3>Тематики</h3>
-                </div>
-                <div class="col-md-6">
-                    {!! str_replace('/?', '?', $topics->render()) !!}
-                </div>
-            </div>
+
+            <div class="col-md-12 text-center" style="margin-top:21px; background: url(/public/img/icon-line.png) repeat-x;"><span style="font-size:18px;" class="glyphicon glyphicon-tags" aria-hidden="true"></span></div>
+
             <div class="row top10">
                 <div class="col-md-12">
                     <table class="table">
@@ -48,7 +43,7 @@
                 </div>
             </div>
             <div class="row top10">
-                <div class="col-md-12">
+                <div class="col-md-12 text-center">
                     {!! str_replace('/?', '?', $topics->render()) !!}
                 </div>
             </div>
