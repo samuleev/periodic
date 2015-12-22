@@ -6,6 +6,7 @@ use App\Dao\ArticleDao;
 use App\Dao\JournalDao;
 use App\Dao\EditionDao;
 use App\Service\ArticleService;
+use Illuminate\Support\Facades\Response;
 
 class EditionController extends Controller {
 
@@ -21,6 +22,24 @@ class EditionController extends Controller {
             'journal' => $journal,
             'articles' => $articles
             ));
+    }
+
+    public function raw($prefix, $selectedYear, $number)
+    {
+        $journal = JournalDao::findByPrefix($prefix);
+        $edition = EditionDao::findByJournalIdAndYearNumber($journal->journal_id, $selectedYear, $number);
+        $articles = ArticleDao::findByEdition($edition->journal_edition_id);
+
+        foreach($articles as $article)
+        {
+            $fileName = ArticleService::getArticleFileName($prefix, $selectedYear,
+                $number, $article->sort_order);
+
+            $article->fileName = $fileName;
+        }
+
+        return Response::view('edition.raw', compact('articles'))
+            ->header('Content-Type', 'text/plain');
     }
 
     public function byYear($prefix, $selectedYear)
