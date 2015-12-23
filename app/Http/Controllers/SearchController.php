@@ -61,7 +61,7 @@ class SearchController extends Controller
     {
         $errors = array();
         if(empty($name) && empty($author) && empty($year)) {
-            $errors[] = 'Для пошуку потрібно заповнити хоча б одне з полів.';
+            $errors[] = "Будь ласка, зоповніть хоча б одне з полів пошуку для використання форми пошуку.";
         }
 
         if(!empty($name) && mb_strlen($name) < 4) {
