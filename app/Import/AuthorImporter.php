@@ -58,6 +58,10 @@ class AuthorImporter {
 
     private static function process($parsedAuthor, $articleId, $index)
     {
+        if(empty($parsedAuthor->surname)) {
+            throw new Exception("Empty author surname");
+        }
+
         $author = AuthorDao::findByFullName($parsedAuthor);
         if(!isset($author))
         {
