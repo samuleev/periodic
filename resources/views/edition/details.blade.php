@@ -15,22 +15,29 @@
 @section('content')
     @if(isset($edition))
         <div class="container">
-
-            <div class="row top10">
+            <div class="row" style="margin-top:21px;">
                 <div class="col-md-2">
                     @if(null !== $edition->picture_file)
-                    <img src={{{ url('/public/data/'.$journal->prefix.'/'.$edition->number.'/'.$edition->picture_file) }}} />
+                    <img  class="img-thumbnail" src={{{ url('/public/data/'.$journal->prefix.'/'.$edition->number.'/'.$edition->picture_file) }}} />
                     @else
-                    <img src={{{ url('/public/data/'.$journal->prefix.'/'.$journal->default_edition_picture) }}} />
+                    <img  class="img-thumbnail" src={{{ url('/public/data/'.$journal->prefix.'/'.$journal->default_edition_picture) }}} />
                     @endif
                 </div>
                 <div class="col-md-10">
-                    {{{ $journal->type}}}
-                    <br/>
-                    <h5>{{{ $journal->name }}}</h5>
-                    <b>{{{ $edition->issue_year }}} рік &nbsp; &nbsp; № {{{ $edition->number_in_year.'('.$edition->number.')' }}} </b>
+                        <div class="col-md-9">
+                            <h4>{{{ $journal->name }}}</h4>
+                        </div>
+                        <div class="col-md-3 text-right" style="line-height:40px;">
+                            <small style="font-weight:bold; text-transform:uppercase;">{{{ $journal->type }}}</small>
+                        </div>
+                    <div class="col-md-12" style="background:rgba(86,86,124,.2); width:100%; height:1px; margin: 0 0 21px 0;"></div>
+                    <div class="col-md-12">
+                        <p><strong>Рік видання:</strong><br>{{{ $edition->issue_year }}} рік</p>
+                        <p><strong>Номер журналу:</strong><br>№ {{{ $edition->number_in_year.'('.$edition->number.')' }}}</p>
+                    </div>
                 </div>
             </div>
+            <div class="col-md-12 text-center" style="margin:21px 0; background: url(/public/img/icon-line.png) repeat-x;"><span class="glyphicon glyphicon-book" style="font-size:18px;" aria-hidden="true"></span></div>
             <?php  $currentTopicId = null; ?>
             @foreach($articles as $editionIndex => $article)
 

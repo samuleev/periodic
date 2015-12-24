@@ -22,126 +22,122 @@
 
         <div class="container">
 
-            <div class="row top10">
+            <div class="row">
+                <div class="col-md-9">
+                    <h3>{{{ $journal->name }}}</h3>
+                </div>
+                <div class="col-md-3 text-right" style="padding-top:22px">
+                    <small style="font-weight:bold; text-transform:uppercase;">{{{ $journal->type }}}</small>
+                </div>
+                <div class="col-md-12" style="background:rgba(86,86,124,.2); width:100%; height:1px; margin: 0 0 21px 0;"></div>
                 <div class="col-md-6" style="width: 390px">
-                    <img src={{{ url('/public/data/'.$journal->prefix.'/'.$journal->picture_file) }}} />
+                    <img class="img-thumbnail" src={{{ url('/public/data/'.$journal->prefix.'/'.$journal->picture_file) }}} />
                 </div>
                 <div class="col-md-6">
-                         <div class="row">
-                            <div class="col-md-12">
-                                {{{ $journal->type }}}
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h5>{{{ $journal->name }}}</h5>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                {{{ $journal->founders}}}, {{{ $journal->founded}}}.
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                Виходить {{{ $journal->period}}}
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                ISSN {{{ $journal->issn}}}
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 top10">
-                                Тематика: {{{ $journal->subject}}}
-                            </div>
-                        </div>
+                    <strong>Видавництво:</strong><br>
+                    {{{ $journal->founders}}}, {{{ $journal->founded}}}.
+                    <br><br>
+                    <strong>Періодичність видання:</strong><br>
+                    Виходить {{{ $journal->period}}}
+                    <br><br>
+                    <strong>ISSN:</strong><br>
+                    {{{ $journal->issn}}}
+                    <br><br>
+                    <strong>Тематика:</strong><br>
+                    <i>{{{ $journal->subject}}}</i>
                  </div>
             </div>
 
-            <div class="row top10 padding15 border">
-                <div class="col-md-6" style="width: 390px">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <strong>РОКИ ВИДАННЯ:</strong>
-                                <br/><br/>
-                            </div>
-                        </div>
-                    @foreach(array_chunk($issueYears, 5) as $fiveYears)
-                            <div class="row">
-                                @foreach($fiveYears as $index => $issueYear)
-                                    <div class="col-md-2">
-                                        <button type="button" class="btn btn-link" onclick="{{{"updateEditions('".$journal->prefix."', ".$issueYear->issue_year.")"}}}"><b>{{{$issueYear->issue_year}}}</b></button> &nbsp;&nbsp;
-                                    </div>
-                                @endforeach
-                            </div>
-                    @endforeach
-
-                    {{--@foreach($issueYears as $index => $issueYear)--}}
-                       {{--<button type="button" class="btn btn-link" onclick="{{{"updateEditions('".$journal->prefix."', ".$issueYear->issue_year.")"}}}"><b>{{{ $issueYear->issue_year }}}</b></button> &nbsp;&nbsp;--}}
-                    {{--@endforeach--}}
-                </div>
+            <div class="row" style="margin-top:31px;">
+                    <div class="col-md-6">
+                        <table class="table table-striped">
+                            <thead>
+                                <th>
+                                    <strong>Роки видання:</strong><br>
+                                </th>
+                            </thead>
+                            <tr>
+                                <td>
+                                    @foreach(array_chunk($issueYears, 5) as $fiveYears)
+                                        @foreach($fiveYears as $index => $issueYear)
+                                            <button type="button" class="btn btn-link" onclick="{{{"updateEditions('".$journal->prefix."', ".$issueYear->issue_year.")"}}}"><b>{{{$issueYear->issue_year}}}</b></button>
+                                        @endforeach
+                                    @endforeach
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                {{--@foreach($issueYears as $index => $issueYear)--}}
+                   {{--<button type="button" class="btn btn-link" onclick="{{{"updateEditions('".$journal->prefix."', ".$issueYear->issue_year.")"}}}"><b>{{{ $issueYear->issue_year }}}</b></button> &nbsp;&nbsp;--}}
+                {{--@endforeach--}}
                 <div id="editions_by_year" class="col-md-6">
+                    <table class="table table-striped">
+                        <thead>
+                        <th>
+                            <strong>Номери за ... рік:</strong><br>
+                        </th>
+                        </thead>
+                        <tr>
+                            <td style="height:51px; line-height: 33px;">
+                                <i><small>Будь ласка оберіть рік видання журналу для відображення номеру публікації.</small></i>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
-            <div class="row top10">
-                <div class="col-md-2">
-                    Свідоцтво про державну реєстрацію:
-                </div>
-                <div class="col-md-10">
-                    <a target="_blank" href={{{ url('/public/data/'.$journal->prefix.'/'.$journal->gov_registration_file) }}}>{{{ $journal->gov_registration}}}</a>
-                </div>
-            </div>
-
-            <div class="row top5">
-                <div class="col-md-2">
-                    Реєстрація у ДАК України:
-                </div>
-                <div class="col-md-10">
-                    {{{ $journal->dak_registration}}}
-                </div>
-            </div>
-
-            <div class="row top5">
-                <div class="col-md-2">
-                    Спеціальність ДАК:
-                </div>
-                <div class="col-md-10">
-                    {{{ $journal->dak_spec}}}
-                </div>
-            </div>
-
-            <div class="row top5">
-                <div class="col-md-2">
-                    Головний редактор:
-                </div>
-                <div class="col-md-10">
-                    {{{ $journal->chief_editor}}}
-                </div>
-            </div>
-
-            <div class="row top5">
-                <div class="col-md-2">
-                    Відповідальні секретарі:
-                </div>
-                <div class="col-md-10">
-                    {{{ $journal->executive_secretary}}}
-                </div>
-            </div>
-
-            <div class="row top5">
-                <div class="col-md-2">
-                    Редакційна рада:
-                </div>
-                <div class="col-md-10">
-                    {{{ $journal->editorial_board}}}
+            <div class="row" style="margin-top:21px;">
+                <div class="col-md-12">
+                    <table class="table">
+                        <tr>
+                            <td style="width:30%;">
+                                <strong>Свідоцтво про державну реєстрацію:</strong>
+                            </td>
+                            <td>
+                                <a target="_blank" href={{{ url('/public/data/'.$journal->prefix.'/'.$journal->gov_registration_file) }}}>{{{ $journal->gov_registration}}}</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:30%;">
+                                <strong>Реєстрація у ДАК України:</strong>
+                            </td>
+                            <td>
+                                {{{ $journal->dak_registration}}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:30%;">
+                                <strong>Спеціальність ДАК:</strong>
+                            </td>
+                            <td>
+                                {{{ $journal->dak_spec}}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:30%;">
+                                <strong>Головний редактор:</strong>
+                            </td>
+                            <td>
+                                {{{ $journal->chief_editor}}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:30%;">
+                                <strong>Відповідальні секретарі:</strong>
+                            </td>
+                            <td>
+                                {{{ $journal->executive_secretary}}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:30%;">
+                                <strong>Редакційна рада:</strong>
+                            </td>
+                            <td>
+                                <i>{{{ $journal->editorial_board}}}</i>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
