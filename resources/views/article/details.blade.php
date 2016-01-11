@@ -148,7 +148,7 @@
                     <small>
                     <i>Бібліографічний опис для цитування:</i><br>
                     {{{$firstAuthor}}}
-                    {{{$article->name}}}&nbsp;@if(count($article->authors)>0)/&nbsp;@include('article.authors')&nbsp;@endif// {{{ $journal->name }}}. - {{{$edition->issue_year}}}. - № {{{$edition->number_in_year}}}. @include('article.pages')
+                    {{{$article->name}}}&nbsp;@if(count($article->authors)>0)/&nbsp;@include('article.authors')&nbsp;@endif// {{{ $journal->name }}}. — {{{$edition->issue_year}}}. — № {{{$edition->number_in_year}}}. @include('article.pages')
                     </small>
                 </div>
             </div>
