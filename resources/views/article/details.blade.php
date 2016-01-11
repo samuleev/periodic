@@ -91,7 +91,7 @@
                     <br/>
                     <b>{{{$article->name}}}</b>&nbsp;@if(count($article->authors)>0)/&nbsp;@include('article.authors')&nbsp;@endif//
                     <a href={{{route('journal.details', $journal->prefix)}}}>{{{ $journal->name }}}.</a>
-                    - {{{$edition->issue_year}}}. - № {{{$edition->number_in_year}}}. @include('article.pages')
+                    — {{{$edition->issue_year}}}. — № {{{$edition->number_in_year}}}. @include('article.pages')
                     <br/>
                     @if($article->topic->name != 'special')
                         Тематика статті: <a href="{{{route('topic.details', array($article->topic->topic_id))}}}">{{{$article->topic->name}}}</a>
