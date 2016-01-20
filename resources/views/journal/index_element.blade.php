@@ -24,6 +24,8 @@
                     <div class="col-md-12 ">
                         <strong>Галузь:</strong> <i>{{{ $journal->dak_spec }}}</i>
                     </div>
+                    @if($journal->publishing)
+
                     <div class="col-md-12 top10">
                         <small>Свідоцтво про державну реєстрацію друкованого засобу масової інформації - <a target="_blank" href={{{ url('/public/data/'.$journal->prefix.'/'.$journal->gov_registration_file) }}}>{{{ $journal->gov_registration }}}</a></small>
                     </div>
@@ -57,6 +59,11 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                            <div class="col-md-12 top10">
+                                <strong>Видання припинено</strong>
+                            </div>
+                    @endif
                 </div>
             </div>
         </div>

@@ -37,12 +37,17 @@
                     <strong>Видавництво:</strong><br>
                     {{{ $journal->founders}}}, {{{ $journal->founded}}}.
                     <br><br>
+                    @if($journal->publishing)
                     <strong>Періодичність видання:</strong><br>
                     Виходить {{{ $journal->period}}}
                     <br><br>
                     <strong>ISSN:</strong><br>
                     {{{ $journal->issn}}}
                     <br><br>
+                    @else
+                        <strong>Видання припинено</strong>
+                        <br><br>
+                    @endif
                     <strong>Тематика:</strong><br>
                     <i>{{{ $journal->subject}}}</i>
                  </div>
@@ -89,6 +94,7 @@
             <div class="row" style="margin-top:21px;">
                 <div class="col-md-12">
                     <table class="table">
+                        @if($journal->publishing)
                         <tr>
                             <td style="width:30%;">
                                 <strong>Свідоцтво про державну реєстрацію:</strong>
@@ -113,6 +119,7 @@
                                 {{{ $journal->dak_spec}}}
                             </td>
                         </tr>
+                        @endif
                         <tr>
                             <td style="width:30%;">
                                 <strong>Головний редактор:</strong>
