@@ -4,3 +4,27 @@
 - edition header - pattern
 - english article name
 
+
+alternative
+    -alternative_id
+    -article_id
+    -language
+    -name
+    -authors
+    -description
+    -keywords
+
+--------------------------------------------------------------------------------------
+D:\wamp\bin\php\php5.5.12\php.exe D:/wamp/www/periodic-app/composer.phar require nuovo/spreadsheet-reader:0.5.11 -n --no-progress
+Warning: This development build of composer is over 60 days old. It is recommended to update it by running "D:/wamp/www/periodic-app/composer.phar self-update" to get the latest version.
+./composer.json has been updated
+> php artisan clear-compiled
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+  - Installing nuovo/spreadsheet-reader (0.5.11)
+    Downloading
+
+Writing lock file
+Generating autoload files
+> php artisan optimize
+Generating optimized class loader

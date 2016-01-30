@@ -19,6 +19,27 @@ class ArticleDao implements Dao, CustomPaging {
             ->orderby('article.name')->get();
     }
 
+    static function findByPeriodic($prefix, $issue_year, $number_in_year, $sort_order) {
+        $article = DB::table('article')
+            ->select('article.article_id', 'article.topic_id', 'article.journal_edition_id',
+                'article.content_file', 'article.start_page', 'article.end_page', 'article.name',
+                'article.description', 'article.keywords', 'article.sort_order', 'article.name_eng',
+                'article.updated', 'article.language', 'article.authors', 'article.udk')
+            ->join('journal_edition', 'journal_edition.journal_edition_id', '=', 'article.journal_edition_id')
+            ->join('journal', 'journal_edition.journal_id', '=', 'journal.journal_id')
+            ->where('journal.prefix', $prefix)
+            ->where('journal_edition.issue_year', $issue_year)
+            ->where('journal_edition.number_in_year', $number_in_year)
+            ->where('article.sort_order', $sort_order)
+            ->get();
+
+        if(count($article) != 1) {
+            throw new Exception("Multiple articles found by unique criteria!");
+        }
+
+        return $article[0];
+    }
+
     static function findByEdition($editionId)
     {
         return DB::table('article')->where('journal_edition_id', $editionId)->orderby('sort_order')->get();

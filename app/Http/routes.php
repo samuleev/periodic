@@ -33,3 +33,4 @@ Route::get('/sitemap-author{page}.xml', array('uses' => 'SitemapController@autho
 Route::get('/sitemap-misc.xml', array('uses' => 'SitemapController@misc', 'as' => 'sitemap.misc'));
 Route::get('/search', array('uses' => 'SearchController@index', 'as' => 'search.index'));
 Route::post('/search', array('uses' => 'SearchController@process', 'as' => 'search.process'));
+Route::get('/referat-import', array('uses' => 'ReferatController@import', 'as' => 'referat-import.main'));
