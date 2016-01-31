@@ -65,6 +65,15 @@
                     <h5>{{{ $journal->name }}}</h5>
                     <b>{{{ $edition->issue_year }}} рік &nbsp; &nbsp; № {{{ $edition->number_in_year.'('.$edition->number.')' }}}</b>
                     <br/><br/>
+                    @if(count($alternatives) > 0)
+                    Аннотації на мовах:
+                        <ul class="nav nav-pills" role="tablist">
+                            <li role="presentation" class="active"><a href={{{route('article.details', array($article->article_id))}}}>{{{$article->language}}}</a></li>
+                            @foreach($alternatives as $alternative)
+                                <li role="presentation"><a href={{{route('alternative.details', array($article->article_id, $alternative->language))}}}>{{{$alternative->language}}}</a></li>
+                            @endforeach
+                        </ul>
+                    @endif
                 </div>
             </div>
 
@@ -94,8 +103,30 @@
                     — {{{$edition->issue_year}}}. — № {{{$edition->number_in_year}}}. @include('article.pages')
                     <br/>
                     @if($article->topic->name != 'special')
-                        Тематика статті: <a href="{{{route('topic.details', array($article->topic->topic_id))}}}">{{{$article->topic->name}}}</a>
+                        <b><i>Тематика статті:</i></b> <a href="{{{route('topic.details', array($article->topic->topic_id))}}}">{{{$article->topic->name}}}</a>
                     @endif
+
+                    @if(!empty($article->udk))
+                        <br/>
+                        <b><i>УДК:</i></b> {{{$article->udk}}}
+                    @endif
+
+                    @if(!empty($article->language))
+                        <br/>
+                        <b><i>Мова статті:</i></b> {{{$article->language}}}
+                    @endif
+
+                    @if(!empty($article->description))
+                        <br/>
+                        {{{$article->description}}}
+                    @endif
+
+                    @if(!empty($article->keywords))
+                        <br/>
+                        <b><i>Ключові слова:</i></b> {{{$article->keywords}}}
+                    @endif
+
+
                 </div>
             </div>
 

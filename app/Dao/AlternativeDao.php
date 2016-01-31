@@ -49,4 +49,11 @@ class AlternativeDao implements Dao {
             ->where('language', $language)
             ->get();
     }
+
+    public static function findByArticleId($article_id)
+    {
+        return DB::table('alternative')
+            ->where('article_id', $article_id)
+            ->get();
+    }
 }
