@@ -100,21 +100,8 @@
                     <br/>
                     <b>{{{$article->name}}}</b>&nbsp;@if(count($article->authors)>0)/&nbsp;@include('article.authors')&nbsp;@endif//
                     <a href={{{route('journal.details', $journal->prefix)}}}>{{{ $journal->name }}}.</a>
-                    — {{{$edition->issue_year}}}. — № {{{$edition->number_in_year}}}. @include('article.pages')
+                    — {{{$edition->issue_year}}}. — № {{{$edition->number_in_year}}}. @include('article.pages_prefix')
                     <br/>
-                    @if($article->topic->name != 'special')
-                        <b><i>Тематика статті:</i></b> <a href="{{{route('topic.details', array($article->topic->topic_id))}}}">{{{$article->topic->name}}}</a>
-                    @endif
-
-                    @if(!empty($article->udk))
-                        <br/>
-                        <b><i>УДК:</i></b> {{{$article->udk}}}
-                    @endif
-
-                    @if(!empty($article->language))
-                        <br/>
-                        <b><i>Мова статті:</i></b> {{{$article->language}}}
-                    @endif
 
                     @if(!empty($article->description))
                         <br/>
@@ -126,7 +113,27 @@
                         <b><i>Ключові слова:</i></b> {{{$article->keywords}}}
                     @endif
 
+                        @if($article->topic->name != 'special')
+                            <br/>
+                            <b><i>Тематика статті:</i></b> <a href="{{{route('topic.details', array($article->topic->topic_id))}}}">{{{$article->topic->name}}}</a>
+                        @endif
 
+                        @if(!empty($article->udk))
+                            <br/>
+                            <b><i>УДК:</i></b> {{{$article->udk}}}
+                        @endif
+
+                        @if(!empty($article->language))
+                            <br/>
+                            <b><i>Мова статті:</i></b>
+                            @if($article->language == 'ukr')
+                                українська
+                            @elseif($article->language == 'rus')
+                                російська
+                            @elseif($article->language == 'eng')
+                                англійська
+                            @endif
+                        @endif
                 </div>
             </div>
 
@@ -179,7 +186,7 @@
                     <small>
                     <i>Бібліографічний опис для цитування:</i><br>
                     {{{$firstAuthor}}}
-                    {{{$article->name}}}&nbsp;@if(count($article->authors)>0)/&nbsp;@include('article.authors')&nbsp;@endif// {{{ $journal->name }}}. — {{{$edition->issue_year}}}. — № {{{$edition->number_in_year}}}. @include('article.pages')
+                    {{{$article->name}}}&nbsp;@if(count($article->authors)>0)/&nbsp;@include('article.authors')&nbsp;@endif// {{{ $journal->name }}}. — {{{$edition->issue_year}}}. — № {{{$edition->number_in_year}}}. @include('article.pages_prefix')
                     </small>
                 </div>
             </div>

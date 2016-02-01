@@ -1,5 +1,2 @@
-@foreach($article->authors as $authorIndex => $author)
-    {{{$author->surname}}}
-    @if(isset($author->name)){{{$author->name}}}.
-        @if(isset($author->patronymic)){{{$author->patronymic}}}.@endif{{{''}}}@endif{{{''}}}@if($authorIndex < (count($article->authors) - 1)),@endif
+@foreach($article->authors as $authorIndex => $author){{{str_replace(' ', '&nbsp;', $author->surname)}}}@if(isset($author->name))&nbsp;{{{$author->name}}}.@if(isset($author->patronymic))&nbsp;{{{$author->patronymic}}}.@endif{{{''}}}@endif{{{''}}}@if($authorIndex < (count($article->authors) - 1)),@endif<wbr>
 @endforeach

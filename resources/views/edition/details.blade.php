@@ -39,32 +39,34 @@
             </div>
             <div class="col-md-12 text-center" style="margin:21px 0; background: url(/public/img/icon-line.png) repeat-x;"><span class="glyphicon glyphicon-book" style="font-size:18px;" aria-hidden="true"></span></div>
             <?php  $currentTopicId = null; ?>
-            @foreach($articles as $editionIndex => $article)
 
-                @if($article->topic_id != $currentTopicId)
-                    <?php  $currentTopicId = $article->topic_id; ?>
-                    @if($article->topic->visible)
-                    <div class="row top10">
-                        <div class="col-md-12">
-                            <b> {{{ $article->topic->name }}} </b>
-                        </div>
-                    </div>
+            <table class="table table-hover">
+                <thead>
+                <th style="text-align:center;">№</th>
+                <th style="text-align:center;">Назва публікації</th>
+                <th style="text-align:center;">Автори публікації</th>
+                <th style="text-align:center;">Сторінки</th>
+                </thead>
+                <tbody>
+                @foreach($articles as $article)
+                    @if($article->topic_id != $currentTopicId)
+                        <?php  $currentTopicId = $article->topic_id; ?>
+                        @if($article->topic->visible)
+                            <tr>
+                            <td colspan="4" style="width:100%; text-align:center;"><b><i> {{{ $article->topic->name }}} </i></b></td>
+                            </tr>
+                        @endif
                     @endif
-                @endif
-
-                <div class="row top10">
-                    <div class="col-md-1" style="width: 20px">
-                        {{{ $article->sort_order }}}.
-                    </div>
-                    <div class="col-md-7">
-                        @include('edition.authors')
-
-                        <a href="{{{ route('article.details', array($article->article_id)) }}}">{{{ $article->name.'.' }}}</a>
-
-                        @include('article.pages')
-                    </div>
-                </div>
-            @endforeach
+                    <tr>
+                        <td style="width:5%;">{{{ $article->sort_order }}}.</td>
+                        <td style="width:55%;"><a href="{{{ route('article.details', array($article->article_id)) }}}">{{{ $article->name }}}</a>
+                        </td>
+                        <td style="width:30%;">@include('edition.authors')</td>
+                        <td style="width:5%;">@include('article.pages')</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
     @else
         <p>No edition</p>
