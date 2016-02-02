@@ -9,7 +9,7 @@
                     href={{{route('article.details', array($article->article_id))}}}>@include('article.language_translate_small')</a></li>
     @else
         <li role="presentation"><a
-                    href={{{route('article.details', array($article->article_id))}}}>{{{$article->language}}}</a></li>
+                    href={{{route('article.details', array($article->article_id))}}}>@include('article.language_translate_small')</a></li>
     @endif
     @foreach($alternatives as $iteratedAlternative)
             <?php
