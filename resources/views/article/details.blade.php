@@ -60,19 +60,45 @@
                     @endif
                 </div>
                 <div class="col-md-10">
-                    {{{ $journal->type}}}
-                    <br/>
-                    <h5>{{{ $journal->name }}}</h5>
-                    <b>{{{ $edition->issue_year }}} рік &nbsp; &nbsp; № {{{ $edition->number_in_year.'('.$edition->number.')' }}}</b>
-                    <br/><br/>
+                    <div>
+                        <h4>{{{$article->name}}}</h4>
+                    </div>
+                    @if(count($article->authors)>0)
+                        <div>
+                            @include('article.authors')
+                        </div>
+                    @endif
+                    <div class="top5">
+                        <a href={{{route('journal.details', $journal->prefix)}}}>{{{ $journal->name }}}.</a>
+                        — {{{$edition->issue_year}}}. — № {{{$edition->number_in_year.'('.$edition->number.')'}}}. @include('article.pages_prefix')
+                    </div>
+                    @if($article->topic->name != 'special')
+                        <div class="top5">
+                            <b><i>Тематика статті:</i></b> <a href="{{{route('topic.details', array($article->topic->topic_id))}}}">{{{$article->topic->name}}}</a>
+                        </div>
+                    @endif
+                    @if(!empty($article->udk))
+                        <div class="top5">
+                            <b><i>УДК</i></b> {{{$article->udk}}}
+                        </div>
+                    @endif
+                    @if(!empty($article->language))
+                        <div class="top5">
+                            <b><i>Мова статті:</i></b>
+                            @if($article->language == 'ukr')
+                                українська
+                            @elseif($article->language == 'rus')
+                                російська
+                            @elseif($article->language == 'eng')
+                                англійська
+                            @endif
+                        </div>
+                    @endif
                     @if(count($alternatives) > 0)
-                    Аннотації на мовах:
-                        <ul class="nav nav-pills" role="tablist">
-                            <li role="presentation" class="active"><a href={{{route('article.details', array($article->article_id))}}}>{{{$article->language}}}</a></li>
-                            @foreach($alternatives as $alternative)
-                                <li role="presentation"><a href={{{route('alternative.details', array($article->article_id, $alternative->language))}}}>{{{$alternative->language}}}</a></li>
-                            @endforeach
-                        </ul>
+                        <div class="top5">
+                            Анотації на мовах:
+                            @include('article.languages')
+                        </div>
                     @endif
                 </div>
             </div>
@@ -96,12 +122,6 @@
                         }
                     }
                     ?>
-                    {{{$firstAuthor}}}
-                    <br/>
-                    <b>{{{$article->name}}}</b>&nbsp;@if(count($article->authors)>0)/&nbsp;@include('article.authors')&nbsp;@endif//
-                    <a href={{{route('journal.details', $journal->prefix)}}}>{{{ $journal->name }}}.</a>
-                    — {{{$edition->issue_year}}}. — № {{{$edition->number_in_year}}}. @include('article.pages_prefix')
-                    <br/>
 
                     @if(!empty($article->description))
                         <br/>
@@ -113,27 +133,7 @@
                         <b><i>Ключові слова:</i></b> {{{$article->keywords}}}
                     @endif
 
-                        @if($article->topic->name != 'special')
-                            <br/>
-                            <b><i>Тематика статті:</i></b> <a href="{{{route('topic.details', array($article->topic->topic_id))}}}">{{{$article->topic->name}}}</a>
-                        @endif
 
-                        @if(!empty($article->udk))
-                            <br/>
-                            <b><i>УДК:</i></b> {{{$article->udk}}}
-                        @endif
-
-                        @if(!empty($article->language))
-                            <br/>
-                            <b><i>Мова статті:</i></b>
-                            @if($article->language == 'ukr')
-                                українська
-                            @elseif($article->language == 'rus')
-                                російська
-                            @elseif($article->language == 'eng')
-                                англійська
-                            @endif
-                        @endif
                 </div>
             </div>
 

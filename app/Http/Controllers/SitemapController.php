@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dao\AlternativeDao;
 use App\Dao\ArticleDao;
 use App\Dao\AuthorDao;
 use App\Dao\JournalDao;
@@ -23,6 +24,7 @@ class SitemapController extends Controller {
         $sitemaps = array_merge($sitemaps, self::getItems(ArticleDao::class, 'sitemap-article'));
         $sitemaps = array_merge($sitemaps, self::getItems(ArticleWithJournalInfoService::class, 'sitemap-pdf'));
         $sitemaps = array_merge($sitemaps, self::getItems(AuthorDao::class, 'sitemap-author'));
+        $sitemaps = array_merge($sitemaps, self::getItems(AlternativeDao::class, 'sitemap-alternative'));
         $sitemaps[] = "sitemap-misc.xml";
         $last_mod_date = date('c',time());
         return Response::view('sitemap.main', compact('sitemaps', 'last_mod_date'))
@@ -45,6 +47,13 @@ class SitemapController extends Controller {
     {
         $articles = ArticleDao::find(($page - 1) * self::SITEMAP_SIZE, self::SITEMAP_SIZE);
         return Response::view('sitemap.article', compact('articles'))
+            ->header('Content-Type', 'application/xml');
+    }
+
+    public function alternative($page)
+    {
+        $alternatives = AlternativeDao::find(($page - 1) * self::SITEMAP_SIZE, self::SITEMAP_SIZE);
+        return Response::view('sitemap.alternative', compact('alternatives'))
             ->header('Content-Type', 'application/xml');
     }
 

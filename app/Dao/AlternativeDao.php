@@ -1,16 +1,21 @@
 <?php
 
-namespace app\Dao;
+namespace App\Dao;
 
 use Exception;
 use Illuminate\Support\Facades\DB;
 
-class AlternativeDao implements Dao {
+class AlternativeDao implements Dao, CustomPaging {
 
     static function findById($id)
     {
         $alternative = DB::table('alternative')->where('alternative_id', $id)->get();
         return $alternative[0];
+    }
+
+    static function find($skip, $take)
+    {
+        return DB::table('alternative')->orderby('alternative_id')->skip($skip)->take($take)->get();
     }
 
     static function findAll()
@@ -55,5 +60,10 @@ class AlternativeDao implements Dao {
         return DB::table('alternative')
             ->where('article_id', $article_id)
             ->get();
+    }
+
+    static function count()
+    {
+        return DB::table('alternative')->count();
     }
 }

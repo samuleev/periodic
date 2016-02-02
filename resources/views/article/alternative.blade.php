@@ -31,33 +31,28 @@
                     @endif
                 </div>
                 <div class="col-md-10">
-                    {{{ $journal->type}}}
-                    <br/>
-                    <h5>{{{ $journal->name }}}</h5>
-                    <b>{{{ $edition->issue_year }}} рік &nbsp; &nbsp; № {{{ $edition->number_in_year.'('.$edition->number.')' }}}</b>
-                    <br/><br/>
+                    <div>
+                        <h4>{{{$alternative->name}}}</h4>
+                    </div>
+                    <div>
+                        {{{$alternative->authors}}}
+                    </div>
                     @if(count($alternatives) > 0)
-                        Аннотації на мовах:
-                        <ul class="nav nav-pills" role="tablist">
-                            <li role="presentation"><a href={{{route('article.details', array($article->article_id))}}}>{{{$article->language}}}</a></li>
-                            @foreach($alternatives as $iteratedAlternative)
-                                @if($iteratedAlternative == $alternative)
-                                    <li role="presentation" class="active" ><a href={{{route('alternative.details', array($article->article_id, $iteratedAlternative->language))}}}>{{{$iteratedAlternative->language}}}</a></li>
-                                @else
-                                    <li role="presentation"><a href={{{route('alternative.details', array($article->article_id, $iteratedAlternative->language))}}}>{{{$iteratedAlternative->language}}}</a></li>
-                                @endif
-                            @endforeach
-                        </ul>
+                        <div class="top5">
+                            @if($alternative->language == 'ukr')
+                                Анотації на мовах:
+                            @elseif($alternative->language == 'rus')
+                                Аннотации на языках:
+                            @elseif($alternative->language == 'eng')
+                                Annotations languages:
+                            @endif
+                            @include('article.languages')
+                        </div>
                     @endif
                 </div>
             </div>
             <div class="row top10">
                 <div class="col-md-12">
-                    <b>{{{$alternative->name}}}</b>
-                    <br/>
-                    {{{$alternative->authors}}}
-                    <br/>
-
                     @if(!empty($alternative->description))
                         <br/>
                         {{{$alternative->description}}}
@@ -65,7 +60,15 @@
 
                     @if(!empty($alternative->keywords))
                         <br/>
-                        <b><i>Ключові слова:</i></b> {{{$alternative->keywords}}}
+                        <b><i>
+                                @if($alternative->language == 'ukr')
+                                    Ключові слова:
+                                @elseif($alternative->language == 'rus')
+                                    Ключевые слова:
+                                @elseif($alternative->language == 'eng')
+                                    Keywords:
+                                @endif
+                        </i></b> {{{$alternative->keywords}}}
                     @endif
                 </div>
             </div>
@@ -74,7 +77,14 @@
                 <div class="col-md-12">
                     <img src={{{ url('/public/img/pdf_icon.ico') }}} />
                     <a href={{{route('article.download', array($article->article_id, $fileName))}}} >
-                        Повний текст PDF - {{{$article->file_size}}}</a>
+                        @if($alternative->language == 'ukr')
+                            Повний текст PDF
+                        @elseif($alternative->language == 'rus')
+                            Полный текст PDF
+                        @elseif($alternative->language == 'eng')
+                            Full text PDF
+                        @endif
+                         - {{{$article->file_size}}}</a>
                 </div>
             </div>
         </div>
