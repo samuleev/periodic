@@ -46,6 +46,7 @@
                             @elseif($alternative->language == 'eng')
                                 Annotations languages:
                             @endif
+
                             @include('article.languages')
                         </div>
                     @endif
