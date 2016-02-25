@@ -151,11 +151,15 @@ body{
 }
 .periodic-breadcrumb{
     list-style-type: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 0px;
 }
 .periodic-breadcrumb li{
     line-height:38px;
     font-size:12px;
-    float:left;
+    display: inline;
 }
 .periodic-breadcrumb>li+li:before{
     padding:0 5px;
