@@ -28,7 +28,7 @@ class SitemapController extends Controller {
         $sitemaps[] = "sitemap-misc.xml";
         $last_mod_date = date('c',time());
         return Response::view('sitemap.main', compact('sitemaps', 'last_mod_date'))
-            ->header('Content-Type', 'text/plain');
+            ->header('Content-Type', 'application/xml');
     }
 
     private function getItems($customPaging, $prefix)
