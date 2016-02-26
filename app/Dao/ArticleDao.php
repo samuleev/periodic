@@ -10,11 +10,14 @@ class ArticleDao implements Dao, CustomPaging {
     static function findContentByYear($selectedYear)
     {
         return DB::table('article')
+            ->select('article.article_id', 'article.name', 'journal.prefix', 'journal_edition.issue_year',
+                'journal_edition.number_in_year', 'article.sort_order')
             ->join('journal_edition', 'journal_edition.journal_edition_id', '=', 'article.journal_edition_id')
+            ->join('journal', 'journal.journal_id', '=', 'journal_edition.journal_id')
             ->where('journal_edition.issue_year', $selectedYear)
             ->where(function ($query) {
                 $query->where('article.topic_id', '<>', 1) // skip special articles like Титул, Авторы
-                    ->orWhere(DB::raw('LENGTH(name)'), '>', 70); // some useful articles may not have topic
+                    ->orWhere(DB::raw('LENGTH(article.name)'), '>', 70); // some useful articles may not have topic
             })
             ->orderby('article.name')->get();
     }

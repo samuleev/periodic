@@ -79,6 +79,13 @@ class ArticleController extends Controller {
     public function byYear($selectedYear)
     {
         $articles = ArticleDao::findContentByYear($selectedYear);
+        foreach($articles as $article)
+        {
+            $fileName = ArticleService::getArticleFileName($article->prefix, $article->issue_year,
+                $article->number_in_year, $article->sort_order);
+
+            $article->fileName = $fileName;
+        }
         return view('year.details')->with(array('selectedYear' => $selectedYear,
             'articles' => $articles));
     }

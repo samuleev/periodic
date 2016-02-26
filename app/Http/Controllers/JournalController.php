@@ -8,6 +8,12 @@ use App\Http\Requests;
 
 class JournalController extends Controller
 {
+
+    public function root()
+    {
+        return redirect(route('journal.index'), 301);
+    }
+
     public function index()
     {
         $journals = JournalDao::findAll();

@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/', array('uses' => 'JournalController@root', 'as' => 'journal.root'));
 Route::get('/journal', array('uses' => 'JournalController@index', 'as' => 'journal.index'));
 Route::get('/journal/{prefix}', array('uses' => 'JournalController@show', 'as' => 'journal.details'))->where('prefix', '[a-z]*');
 Route::get('/journal/{prefix}/{selectedYear}', array('uses' => 'EditionController@byYear', 'as' => 'editions.by_year'))->where(array('prefix' => '[a-z]*', 'selectedYear' => '[1-2][0-9]{3}'));

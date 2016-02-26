@@ -13,7 +13,8 @@
             @foreach($articles as $article)
             <div class="row top10">
                 <div class="col-md-12">
-                    <a href="{{{ route('article.details', array($article->article_id)) }}}">{{{ $article->name }}}</a>
+                    <a href={{{route('article.download', array($article->article_id, $article->fileName))}}} >
+                    {{{ $article->name }}}</a>
                 </div>
             </div>
             @endforeach
