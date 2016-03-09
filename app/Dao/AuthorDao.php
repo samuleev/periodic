@@ -2,7 +2,6 @@
 
 namespace App\Dao;
 
-
 use Illuminate\Support\Facades\DB;
 
 class AuthorDao implements Dao, CustomPaging {
@@ -10,7 +9,7 @@ class AuthorDao implements Dao, CustomPaging {
     static function findById($id)
     {
         $author = DB::table('author')->where('author_id', $id)->get();
-        return $author[0];
+        return DaoUtil::returnSingleElement($author);
     }
 
     static function findAll()

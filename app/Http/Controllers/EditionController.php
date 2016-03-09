@@ -5,15 +5,22 @@ namespace App\Http\Controllers;
 use App\Dao\ArticleDao;
 use App\Dao\JournalDao;
 use App\Dao\EditionDao;
+use App\Exceptions\NoElementException;
 use App\Service\ArticleService;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Response;
 
 class EditionController extends Controller {
 
     public function show($prefix, $selectedYear, $number)
     {
-        $journal = JournalDao::findByPrefix($prefix);
-        $edition = EditionDao::findByJournalIdAndYearNumber($journal->journal_id, $selectedYear, $number);
+        try {
+            $journal = JournalDao::findByPrefix($prefix);
+            $edition = EditionDao::findByJournalIdAndYearNumber($journal->journal_id, $selectedYear, $number);
+        } catch (NoElementException $e) {
+            App::abort(404, 'Edition not found');
+        }
+
         $articles = ArticleDao::findByEdition($edition->journal_edition_id);
         $articles = ArticleService::getEnrichedArticles($articles);
 
@@ -26,8 +33,13 @@ class EditionController extends Controller {
 
     public function raw($prefix, $selectedYear, $number)
     {
-        $journal = JournalDao::findByPrefix($prefix);
-        $edition = EditionDao::findByJournalIdAndYearNumber($journal->journal_id, $selectedYear, $number);
+        try {
+            $journal = JournalDao::findByPrefix($prefix);
+            $edition = EditionDao::findByJournalIdAndYearNumber($journal->journal_id, $selectedYear, $number);
+        } catch (NoElementException $e) {
+            App::abort(404, 'Edition not found');
+        }
+
         $articles = ArticleDao::findByEdition($edition->journal_edition_id);
 
         foreach($articles as $article)

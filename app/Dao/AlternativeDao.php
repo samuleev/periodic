@@ -10,7 +10,7 @@ class AlternativeDao implements Dao, CustomPaging {
     static function findById($id)
     {
         $alternative = DB::table('alternative')->where('alternative_id', $id)->get();
-        return $alternative[0];
+        return DaoUtil::returnSingleElement($alternative);
     }
 
     static function find($skip, $take)

@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Dao\ArticleDao;
 use App\Dao\AuthorDao;
+use App\Exceptions\NoElementException;
 use App\Service\ArticleService;
+use Illuminate\Support\Facades\App;
 
 class AuthorController extends Controller {
 
     public function show($authorId)
     {
-        $author = AuthorDao::findById($authorId);
+        try {
+            $author = AuthorDao::findById($authorId);
+        } catch (NoElementException $e) {
+            App::abort(404, 'Author not found');
+        }
         $articles = ArticleDao::findByAuthor($authorId);
         $articles = ArticleService::getEnrichedArticles($articles);
 

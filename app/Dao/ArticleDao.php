@@ -36,11 +36,7 @@ class ArticleDao implements Dao, CustomPaging {
             ->where('article.sort_order', $sort_order)
             ->get();
 
-        if(count($article) != 1) {
-            throw new Exception("Multiple articles found by unique criteria!");
-        }
-
-        return $article[0];
+        return DaoUtil::returnSingleElement($article);
     }
 
     static function findByEdition($editionId)
@@ -65,7 +61,8 @@ class ArticleDao implements Dao, CustomPaging {
     static function findById($id)
     {
         $article = DB::table('article')->where('article_id', $id)->get();
-        return $article[0];
+
+        return DaoUtil::returnSingleElement($article);
     }
 
     static function findAll()

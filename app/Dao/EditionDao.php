@@ -44,17 +44,15 @@ class EditionDao implements Dao {
             ->where('issue_year', $year)
             ->where('number_in_year', $number)
             ->get();
-        if (count($journal) == 0)
-        {
-            return null;
-        }
-        return $journal[0];
+
+        return DaoUtil::returnSingleElement($journal);
     }
 
     static function findById($id)
     {
         $edition = DB::table('journal_edition')->where('journal_edition_id', $id)->get();
-        return $edition[0];
+
+        return DaoUtil::returnSingleElement($edition);
     }
 
     static function findAll()

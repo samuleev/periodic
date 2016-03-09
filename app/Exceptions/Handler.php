@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Dao\ErrorUriDao;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -42,10 +43,22 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if (self::isRedirectCase($request, $e)) {
+            return redirect('/journal', 301);
+        }
+
         if ($e instanceof ModelNotFoundException) {
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
 
         return parent::render($request, $e);
     }
+
+    private function isRedirectCase($request, Exception $e) {
+        if ($e instanceof NotFoundHttpException) {
+            return ErrorUriDao::uriExists($request->getRequestUri());
+        }
+        return false;
+    }
+
 }

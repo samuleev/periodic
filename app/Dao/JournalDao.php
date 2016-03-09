@@ -10,7 +10,8 @@ class JournalDao implements Dao, CustomPaging {
     static function findById($id)
     {
         $journal = DB::table('journal')->where('journal_id', $id)->get();
-        return $journal[0];
+
+        return DaoUtil::returnSingleElement($journal);
     }
 
     static function findAll()
@@ -31,11 +32,7 @@ class JournalDao implements Dao, CustomPaging {
     static function findByPrefix($prefix)
     {
         $journal = DB::table('journal')->where('prefix', $prefix)->get();
-        if (count($journal) == 0)
-        {
-            return null;
-        }
-        return $journal[0];
+        return DaoUtil::returnSingleElement($journal);
     }
 
     static function persist($valueObject)

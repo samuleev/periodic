@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Dao\JournalDao;
 use App\Dao\EditionDao;
+use App\Exceptions\NoElementException;
 use App\Http\Requests;
+use Illuminate\Support\Facades\App;
 
 class JournalController extends Controller
 {
@@ -22,7 +24,11 @@ class JournalController extends Controller
 
     public function show($prefix)
     {
-        $journal = JournalDao::findByPrefix($prefix);
+        try {
+            $journal = JournalDao::findByPrefix($prefix);
+        } catch (NoElementException $e) {
+            App::abort(404, 'Journal not found');
+        }
         $issueYears = EditionDao::listYears($journal->journal_id);
         return view('journal.details')->with(array('journal' => $journal, 'issueYears' => $issueYears));
     }

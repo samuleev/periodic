@@ -10,7 +10,8 @@ class TopicDao implements Dao, CustomPaging {
     static function findById($id)
     {
         $topic = DB::table('topic')->where('topic_id', $id)->get();
-        return $topic[0];
+
+        return DaoUtil::returnSingleElement($topic);
     }
 
     static function findAll()

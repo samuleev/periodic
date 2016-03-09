@@ -6,8 +6,10 @@ use App\Dao\AlternativeDao;
 use App\Dao\ArticleDao;
 use App\Dao\EditionDao;
 use App\Dao\JournalDao;
+use App\Exceptions\NoElementException;
 use App\Service\ArticleService;
 use Exception;
+use Illuminate\Support\Facades\App;
 
 class ArticleController extends Controller {
 
@@ -34,7 +36,11 @@ class ArticleController extends Controller {
     }
 
     private function getArticleData($articleId) {
-        $articleRow = ArticleDao::findById($articleId);
+        try {
+            $articleRow = ArticleDao::findById($articleId);
+        } catch (NoElementException $e) {
+            App::abort(404, 'Article not found');
+        }
         $article = ArticleService::getEnrichedArticle($articleRow);
 
         $edition = EditionDao::findById($articleRow->journal_edition_id);
@@ -55,7 +61,11 @@ class ArticleController extends Controller {
     }
 
     public function download($articleId, $fileName) {
-        $articleRow = ArticleDao::findById($articleId);
+        try {
+            $articleRow = ArticleDao::findById($articleId);
+        } catch (NoElementException $e) {
+            App::abort(404, 'Article not found');
+        }
         $article = ArticleService::getEnrichedArticle($articleRow);
 
         $edition = EditionDao::findById($articleRow->journal_edition_id);
