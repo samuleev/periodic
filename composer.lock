@@ -500,7 +500,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/f8cd022c4fecd4f6ee7e891c83e282ffc5c4234c",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/2b67d708cecbf6006c73634eec0ae34af3f8caa9",
                 "reference": "f8cd022c4fecd4f6ee7e891c83e282ffc5c4234c",
                 "shasum": ""
             },

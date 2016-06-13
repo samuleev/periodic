@@ -54,7 +54,7 @@
             </div>
 
             <div class="row" style="margin-top:31px;">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <table class="table table-striped">
                             <thead>
                                 <th>
@@ -75,7 +75,7 @@
                 {{--@foreach($issueYears as $index => $issueYear)--}}
                    {{--<button type="button" class="btn btn-link" onclick="{{{"updateEditions('".$journal->prefix."', ".$issueYear->issue_year.")"}}}"><b>{{{ $issueYear->issue_year }}}</b></button> &nbsp;&nbsp;--}}
                 {{--@endforeach--}}
-                <div id="editions_by_year" class="col-md-6">
+                <div id="editions_by_year" class="col-md-8">
                     <table class="table table-striped">
                         <thead>
                         <th>
@@ -96,7 +96,15 @@
                     <table class="table">
                         @if($journal->publishing)
                         <tr>
-                            <td style="width:30%;">
+                                <td style="width:33%;">
+                                    <strong>Анотаційні системи та бази даних:</strong>
+                                </td>
+                                <td>
+                                    <?php include public_path() . '/data/'.$journal->prefix.'/static-include.html'; ?>
+                                </td>
+                        </tr>
+                        <tr>
+                            <td style="width:33%;">
                                 <strong>Свідоцтво про державну реєстрацію:</strong>
                             </td>
                             <td>
@@ -104,7 +112,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width:30%;">
+                            <td style="width:33%;">
                                 <strong>Реєстрація у ДАК України:</strong>
                             </td>
                             <td>
@@ -112,7 +120,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width:30%;">
+                            <td style="width:33%;">
                                 <strong>Спеціальність ДАК:</strong>
                             </td>
                             <td>
@@ -121,7 +129,7 @@
                         </tr>
                         @endif
                         <tr>
-                            <td style="width:30%;">
+                            <td style="width:33%;">
                                 <strong>Головний редактор:</strong>
                             </td>
                             <td>
@@ -129,7 +137,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width:30%;">
+                            <td style="width:33%;">
                                 <strong>Відповідальні секретарі:</strong>
                             </td>
                             <td>
@@ -137,7 +145,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width:30%;">
+                            <td style="width:33%;">
                                 <strong>Редакційна рада:</strong>
                             </td>
                             <td>

@@ -1,3 +1,15 @@
+- identity page
+- records page
+- ids page
+- ListMetadataFormats
+
+
+
+
+
+
+
+
 - update meta
 - list alternatives on article details
 - alternatives routes / patterns

@@ -28,9 +28,9 @@ class ReferatImporter {
             $referat->getEditionNumber(), $referat->getArticleNumber());
 
         if($article->name != $referat->getMainContent()->name){
-            throw new Exception('Article names not match:' . $article->name . ' --- '
-                . $referat->getMainContent()->name);
-            //echo $article->name . ' --- <br> ' . $referat->getMainContent()->name. '<br><br>';
+//            throw new Exception('Article names not match:' . $article->name . ' --- '
+//                . $referat->getMainContent()->name);
+            echo $article->name . ' --- <br> ' . $referat->getMainContent()->name. '<br><br>';
         }
 
         self::upadateArticle($article, $referat);
