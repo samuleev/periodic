@@ -69,13 +69,13 @@
 
                     <dc:format>application/pdf</dc:format>
 
-                    <dc:identifier>{!!$baseURL . 'article/' . $article->article_id!!}</dc:identifier>
+                    <dc:identifier>{!!$baseAppURL . 'article/' . $article->article_id!!}</dc:identifier>
                     <dc:source xml:lang="uk-UA">{!!$article->journal_name!!}. — {!!$article->edition_issue_year!!}. — № {!!$article->edition_number_in_year.'('.$article->edition_number.')'!!}. @include('article.pages')</dc:source>
                     <dc:source xml:lang="ru-RU">{!!$article->journal_name_rus!!}. — {!!$article->edition_issue_year!!}. — № {!!$article->edition_number_in_year.'('.$article->edition_number.')'!!}. @include('article.pages')</dc:source>
                     <dc:source xml:lang="en-US">{!!$article->journal_name_eng!!}. — {!!$article->edition_issue_year!!}. — № {!!$article->edition_number_in_year.'('.$article->edition_number.')'!!}. @include('article.pages')</dc:source>
                     <dc:source>{!!$article->journal_issn!!}</dc:source>
                     <dc:language>{!!$article->language!!}</dc:language>
-                    <dc:relation>{!!$baseURL . 'article/' . $article->article_id . '/' . $article->fileName!!}</dc:relation>
+                    <dc:relation>{!!$baseAppURL . 'article/' . $article->article_id . '/' . $article->fileName!!}</dc:relation>
 
                 </oai_dc:dc>
             </metadata>

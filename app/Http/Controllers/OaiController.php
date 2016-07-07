@@ -42,14 +42,16 @@ class OaiController extends Controller {
 
     public function listIdentifiers(Request $request) {
         $values = self::getCommonValues($request);
-        return Response::view('oai.metadata', $values)
+        self::checkMetadataPrefix($request);
+
+        $articles = ArticleDao::findContentIdentifiers();
+        $values['articles'] = $articles;
+
+        return Response::view('oai.identifiers', $values)
             ->header('Content-Type', 'application/xml');
     }
 
-    public function listRecords(Request $request) {
-        $values = self::getCommonValues($request);
-        $resumptionToken = $request->input('resumptionToken');
-
+    private function checkMetadataPrefix(Request $request) {
         $metadataPrefix = $request->input('metadataPrefix');
         if(empty($metadataPrefix)) {
             throw new \Exception("Missing metadataPrefix parameter");
@@ -58,6 +60,14 @@ class OaiController extends Controller {
         if($metadataPrefix != self::METADATA_PREFIX_DC) {
             throw new \Exception("Incorrect metadataPrefix parameter");
         }
+    }
+
+    public function listRecords(Request $request) {
+        $values = self::getCommonValues($request);
+
+        self::checkMetadataPrefix($request);
+
+        $resumptionToken = $request->input('resumptionToken');
 
         if ($resumptionToken == null) {
             $resumptionToken = 0;
@@ -107,7 +117,8 @@ class OaiController extends Controller {
     }
 
     public function listSets(Request $request) {
-        return Response::view('oai.records')
+        $values = self::getCommonValues($request);
+        return Response::view('oai.sets', $values)
             ->header('Content-Type', 'application/xml');
     }
 
@@ -141,7 +152,7 @@ class OaiController extends Controller {
             'deletedRecord' => 'persistent',
             'granularity' => 'YYYY-MM-DDThh:mm:ssZ',
             'metadataPrefix' => 'oai_dc',
-            'baseURL' => 'http://www.hups.mil.gov.ua/periodic-app/'
+            'baseAppURL' => 'http://www.hups.mil.gov.ua/periodic-app/'
         );
     }
 
