@@ -7,6 +7,38 @@ use Illuminate\Support\Facades\DB;
 
 class ArticleDao implements Dao, CustomPaging {
 
+    static function findContentCustomPaginated($skip, $take)
+    {
+        return DB::table('article')
+            ->select('article.article_id', 'article.name', 'journal_edition.issue_year',
+                'article.language', 'article.topic_id', 'article.udk', 'article.keywords', 'article.updated',
+                'article.description', 'journal_edition.issue_year as edition_issue_year',
+                'journal.name as journal_name', 'journal.name_eng as journal_name_eng',
+                'journal.name_rus as journal_name_rus', 'journal.issn as journal_issn',
+                'journal_edition.issue_year as edition_issue_year',
+                'journal_edition.number_in_year as edition_number_in_year',
+                'journal_edition.number as edition_number',
+                'article.start_page', 'article.end_page', 'article.sort_order',
+                'article.authors as authorNamesLine', 'journal.prefix as journal_prefix')
+            ->join('journal_edition', 'journal_edition.journal_edition_id', '=', 'article.journal_edition_id')
+            ->join('journal', 'journal.journal_id', '=', 'journal_edition.journal_id')
+            ->whereNotNull('article.language')
+            ->orderby('article.article_id', 'asc')
+            ->skip($skip)->take($take)->get();
+    }
+
+    static function getContentCount()
+    {
+        $count = DB::table('article')
+            ->select(DB::raw('count(article.article_id) as article_count'))
+            ->join('journal_edition', 'journal_edition.journal_edition_id', '=', 'article.journal_edition_id')
+            ->join('journal', 'journal.journal_id', '=', 'journal_edition.journal_id')
+            ->whereNotNull('article.language')
+            ->get();
+
+        return DaoUtil::returnSingleElement($count)->article_count;
+    }
+
     static function findContentByYear($selectedYear)
     {
         return DB::table('article')
