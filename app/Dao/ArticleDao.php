@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class ArticleDao implements Dao, CustomPaging {
 
-    static function findContentCustomPaginated($skip, $take)
+    static function findContentCustomPaginated($skip, $take, $from, $until)
     {
         return DB::table('article')
             ->select('article.article_id', 'article.name', 'journal_edition.issue_year',
@@ -23,17 +23,21 @@ class ArticleDao implements Dao, CustomPaging {
             ->join('journal_edition', 'journal_edition.journal_edition_id', '=', 'article.journal_edition_id')
             ->join('journal', 'journal.journal_id', '=', 'journal_edition.journal_id')
             ->whereNotNull('article.language')
+            ->where('article.updated', '>=', $from)
+            ->where('article.updated', '<=', $until)
             ->orderby('article.article_id', 'asc')
             ->skip($skip)->take($take)->get();
     }
 
-    static function getContentCount()
+    static function getContentCount($from, $until)
     {
         $count = DB::table('article')
             ->select(DB::raw('count(article.article_id) as article_count'))
             ->join('journal_edition', 'journal_edition.journal_edition_id', '=', 'article.journal_edition_id')
             ->join('journal', 'journal.journal_id', '=', 'journal_edition.journal_id')
             ->whereNotNull('article.language')
+            ->where('article.updated', '>=', $from)
+            ->where('article.updated', '<=', $until)
             ->get();
 
         return DaoUtil::returnSingleElement($count)->article_count;

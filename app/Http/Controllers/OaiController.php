@@ -14,9 +14,11 @@ class OaiController extends Controller {
 
     const PAGE_SIZE = 100;
     const METADATA_PREFIX_DC = 'oai_dc';
+    const MIN_FROM = '2000-00-00 00:00:00';
+    const MAX_UNTIL = '2222-00-00 00:00:00';
 
     public function main(Request $request) {
-        $verb = $request->input('verb');
+        $verb = self::getQueryValue($request, 'verb');
 
         switch ($verb) {
             case 'Identify': return self::identify($request);
@@ -26,6 +28,19 @@ class OaiController extends Controller {
             case 'ListSets': return self::listSets($request);
             default: App::abort(404, 'Verb not found');
         }
+    }
+
+    private function getQueryValue(Request $request, $key) {
+        $query = array_change_key_case($request->query->all(), CASE_LOWER);
+        $key = strtolower($key);
+        if (!array_key_exists($key, $query)) {
+            return null;
+        }
+        return $query[strtolower ($key)];
+    }
+
+    public function mainPost(Request $request) {
+        return self::main($request);
     }
 
     public function identify(Request $request) {
@@ -52,13 +67,15 @@ class OaiController extends Controller {
     }
 
     private function checkMetadataPrefix(Request $request) {
-        $metadataPrefix = $request->input('metadataPrefix');
-        if(empty($metadataPrefix)) {
-            throw new \Exception("Missing metadataPrefix parameter");
-        }
+        if (null == self::getQueryValue($request, 'resumptionToken')) {
+            $metadataPrefix = self::getQueryValue($request, 'metadataPrefix');
+            if (empty($metadataPrefix)) {
+                throw new \Exception("Missing metadataPrefix parameter");
+            }
 
-        if($metadataPrefix != self::METADATA_PREFIX_DC) {
-            throw new \Exception("Incorrect metadataPrefix parameter");
+            if ($metadataPrefix != self::METADATA_PREFIX_DC) {
+                throw new \Exception("Incorrect metadataPrefix parameter");
+            }
         }
     }
 
@@ -67,13 +84,25 @@ class OaiController extends Controller {
 
         self::checkMetadataPrefix($request);
 
-        $resumptionToken = $request->input('resumptionToken');
+        $resumptionToken = self::getQueryValue($request, 'resumptionToken');
 
         if ($resumptionToken == null) {
             $resumptionToken = 0;
         }
 
-        $articles = ArticleDao::findContentCustomPaginated($resumptionToken, self::PAGE_SIZE);
+        $from = self::MIN_FROM;
+        $from_temp = self::getQueryValue($request, 'from');
+        if ($from_temp != null) {
+            $from = $from_temp;
+        }
+
+        $until = self::MAX_UNTIL;
+        $until_temp = self::getQueryValue($request, 'until');
+        if ($until_temp != null) {
+            $until = $until_temp;
+        }
+
+        $articles = ArticleDao::findContentCustomPaginated($resumptionToken, self::PAGE_SIZE, $from, $until);
         $articles = ArticleService::getEnrichedArticles($articles);
         foreach($articles as $article)
         {
@@ -98,10 +127,15 @@ class OaiController extends Controller {
             self::xmlEscape($article);
         }
         $values['articles'] = $articles;
-        $values['expirationDate'] = self::getDateAsString(time() + 86400);
-        $values['completeListSize'] = ArticleDao::getContentCount();
+        $values['expirationDate'] = self::getDateAsString(time() + 86400 * 2);
+        $values['completeListSize'] = ArticleDao::getContentCount($from, $until);
         $values['cursor'] = $resumptionToken;
-        $values['resumptionToken'] = $resumptionToken + self::PAGE_SIZE;
+
+        if ($resumptionToken + self::PAGE_SIZE > $values['completeListSize']) {
+            $values['resumptionToken'] = "";
+        } else {
+            $values['resumptionToken'] = $resumptionToken + self::PAGE_SIZE;
+        }
 
         return Response::view('oai.records', $values)
             ->header('Content-Type', 'application/xml');
@@ -180,6 +214,9 @@ class OaiController extends Controller {
 
     private function assignAlternativeAuthorNames($alternative, $authorNamesLine) {
         $alternative->authorNames = explode(",", $authorNamesLine);
+        foreach($alternative->authorNames as $authorIndex => $authorName) {
+            $alternative->authorNames[$authorIndex] = trim($authorName);
+        }
     }
 
     private function setShortLanguage($languageProvider) {
