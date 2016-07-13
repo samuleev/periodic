@@ -17,6 +17,20 @@ class OaiController extends Controller {
     const MIN_FROM = '2000-00-00 00:00:00';
     const MAX_UNTIL = '2222-00-00 00:00:00';
 
+    private static $RECORDS_ARGUMENTS = array('verb', 'from', 'until', 'metadataprefix', 'set', 'resumptiontoken');
+
+    const ERROR_BAD_ARGUMENT = 0;
+    const ERROR_BAD_RESUMPTION_TOKEN = 1;
+    const ERROR_NO_RECORDS_MATCH = 3;
+    const ERROR_NO_SET_HIERARCHY = 4;
+
+    private static $ERROR_CODES = array(
+        self::ERROR_BAD_ARGUMENT => 'badArgument',
+        self::ERROR_BAD_RESUMPTION_TOKEN => 'badResumptionToken',
+        2 => 'cannotDisseminateFormat',
+        self::ERROR_NO_RECORDS_MATCH => 'noRecordsMatch',
+        self::ERROR_NO_SET_HIERARCHY => 'noSetHierarchy');
+
     public function main(Request $request) {
         $verb = self::getQueryValue($request, 'verb');
 
@@ -30,8 +44,60 @@ class OaiController extends Controller {
         }
     }
 
+    private function getErrorPage($request, $errorCode, $errorMessage) {
+        $values = self::getCommonValues($request);
+        $values['errorCode'] = $errorCode;
+        $values['errorMessage'] = $errorMessage;
+
+        return Response::view('oai.error', $values)
+            ->header('Content-Type', 'application/xml');
+    }
+
+    private function checkRecordsArguments($request) {
+        $query = self::getQueryValues($request);
+
+        if (array_key_exists('resumptiontoken', $query) && array_key_exists('metadataprefix', $query)) {
+            throw new OaiError('illegal parameter - "metadataprefix"', self::ERROR_BAD_ARGUMENT);
+        }
+
+        foreach($query as $key => $value) {
+            if (!in_array($key, self::$RECORDS_ARGUMENTS)) {
+                throw new OaiError('illegal parameter - ' . $key, self::ERROR_BAD_ARGUMENT);
+            }
+        }
+
+        if (array_key_exists('set', $query)
+            && $query['set'] != self::getCommonValues($request)['defaultSetSpec']) {
+                throw new OaiError('Incorrect set - ' . $query['set'], self::ERROR_NO_SET_HIERARCHY);
+        }
+
+        if (array_key_exists('from', $query) && array_key_exists('until', $query)
+            && strlen($query['from']) != strlen($query['until'])) {
+            throw new OaiError('from granularity != until granularity', self::ERROR_BAD_ARGUMENT);
+        }
+
+        foreach(self::$RECORDS_ARGUMENTS as $argument) {
+            $parts = explode($argument . '=', strtolower($request->getUri()));
+            if (count($parts) > 2) {
+                throw new OaiError('Duplicate argument - '. $argument, self::ERROR_BAD_ARGUMENT);
+            }
+        }
+
+        self::validateDateArgument('from', $query);
+
+        self::validateDateArgument('until', $query);
+
+        return null;
+    }
+
+    private function validateDateArgument($key, $query) {
+        if (array_key_exists($key, $query) && strlen($query[$key]) < 11) {
+            throw new OaiError('Incorrect date format - '. $query[$key], self::ERROR_BAD_ARGUMENT);
+        }
+    }
+
     private function getQueryValue(Request $request, $key) {
-        $query = array_change_key_case($request->query->all(), CASE_LOWER);
+        $query = self::getQueryValues($request);
         $key = strtolower($key);
         if (!array_key_exists($key, $query)) {
             return null;
@@ -39,11 +105,19 @@ class OaiController extends Controller {
         return $query[strtolower ($key)];
     }
 
+    private function getQueryValues(Request $request) {
+        return array_change_key_case($request->query->all(), CASE_LOWER);
+    }
+
     public function mainPost(Request $request) {
         return self::main($request);
     }
 
     public function identify(Request $request) {
+        if(count(self::getQueryValues($request)) > 1) {
+            return self::getErrorPage($request, 'badArgument', 'illegal parameter(s)');
+        }
+
         $values = self::getCommonValues($request);
         return Response::view('oai.identify', $values)
             ->header('Content-Type', 'application/xml');
@@ -56,39 +130,46 @@ class OaiController extends Controller {
     }
 
     public function listIdentifiers(Request $request) {
-        $values = self::getCommonValues($request);
-        self::checkMetadataPrefix($request);
-
-        $articles = ArticleDao::findContentIdentifiers();
-        $values['articles'] = $articles;
-
-        return Response::view('oai.identifiers', $values)
-            ->header('Content-Type', 'application/xml');
+        try {
+            $data = self::getArticleValues($request);
+            return Response::view('oai.identifiers', $data)
+                ->header('Content-Type', 'application/xml');
+        } catch (OaiError $e) {
+            return self::getErrorPage($request, self::$ERROR_CODES[$e->getCode()], $e->getMessage());
+        }
     }
 
     private function checkMetadataPrefix(Request $request) {
         if (null == self::getQueryValue($request, 'resumptionToken')) {
             $metadataPrefix = self::getQueryValue($request, 'metadataPrefix');
             if (empty($metadataPrefix)) {
-                throw new \Exception("Missing metadataPrefix parameter");
+                throw new OaiError("Missing metadataPrefix parameter", self::ERROR_BAD_ARGUMENT);
             }
 
             if ($metadataPrefix != self::METADATA_PREFIX_DC) {
-                throw new \Exception("Incorrect metadataPrefix parameter");
+                throw new OaiError("Incorrect metadataPrefix parameter", self::ERROR_BAD_ARGUMENT);
             }
         }
     }
 
     public function listRecords(Request $request) {
+        return Response::view('oai.records', self::getArticleValues($request))
+            ->header('Content-Type', 'application/xml');
+    }
+
+    private function checkToken($token, $completeListSize) {
+        if (is_numeric($token) && $token >= 0 && $token <= $completeListSize) {
+            return;
+        }
+        throw new OaiError("Incorrect resumptionToken", self::ERROR_BAD_RESUMPTION_TOKEN);
+    }
+
+    private function getArticleValues(Request $request) {
         $values = self::getCommonValues($request);
 
+        self::checkRecordsArguments($request);
+
         self::checkMetadataPrefix($request);
-
-        $resumptionToken = self::getQueryValue($request, 'resumptionToken');
-
-        if ($resumptionToken == null) {
-            $resumptionToken = 0;
-        }
 
         $from = self::MIN_FROM;
         $from_temp = self::getQueryValue($request, 'from');
@@ -101,6 +182,18 @@ class OaiController extends Controller {
         if ($until_temp != null) {
             $until = $until_temp;
         }
+
+        $values['completeListSize'] = ArticleDao::getContentCount($from, $until);
+        if ($values['completeListSize'] == 0) {
+            throw new OaiError('0 records', self::ERROR_NO_RECORDS_MATCH);
+        }
+
+        $resumptionToken = self::getQueryValue($request, 'resumptionToken');
+
+        if ($resumptionToken == null) {
+            $resumptionToken = 0;
+        }
+        self::checkToken($resumptionToken, $values['completeListSize']);
 
         $articles = ArticleDao::findContentCustomPaginated($resumptionToken, self::PAGE_SIZE, $from, $until);
         $articles = ArticleService::getEnrichedArticles($articles);
@@ -128,7 +221,6 @@ class OaiController extends Controller {
         }
         $values['articles'] = $articles;
         $values['expirationDate'] = self::getDateAsString(time() + 86400 * 2);
-        $values['completeListSize'] = ArticleDao::getContentCount($from, $until);
         $values['cursor'] = $resumptionToken;
 
         if ($resumptionToken + self::PAGE_SIZE > $values['completeListSize']) {
@@ -137,8 +229,7 @@ class OaiController extends Controller {
             $values['resumptionToken'] = $resumptionToken + self::PAGE_SIZE;
         }
 
-        return Response::view('oai.records', $values)
-            ->header('Content-Type', 'application/xml');
+        return $values;
     }
 
     private function xmlEscape($array) {
@@ -186,7 +277,8 @@ class OaiController extends Controller {
             'deletedRecord' => 'persistent',
             'granularity' => 'YYYY-MM-DDThh:mm:ssZ',
             'metadataPrefix' => 'oai_dc',
-            'baseAppURL' => 'http://www.hups.mil.gov.ua/periodic-app/'
+            'baseAppURL' => 'http://www.hups.mil.gov.ua/periodic-app/',
+            'defaultSetSpec' => 'DEFAULT'
         );
     }
 

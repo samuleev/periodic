@@ -9,8 +9,12 @@
         @foreach($articles as $article)
         <header>
             <identifier>{!!$scheme . $delimiter . $repositoryIdentifier . $delimiter . 'article/'. $article->article_id!!}</identifier>
-            <datestamp>{!!$article->edition_issue_year!!}</datestamp>
+            <datestamp>{!!$article->updated!!}</datestamp>
+            <setSpec>{!!$defaultSetSpec!!}</setSpec>
         </header>
         @endforeach
+            <resumptionToken expirationDate="{!!$expirationDate!!}"
+                             completeListSize="{!!$completeListSize!!}"
+                             cursor="{!!$cursor!!}">{!!$resumptionToken!!}</resumptionToken>
     </ListIdentifiers>
 </OAI-PMH>

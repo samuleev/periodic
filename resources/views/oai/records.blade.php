@@ -11,6 +11,7 @@
             <header>
                 <identifier>{!!$scheme . $delimiter . $repositoryIdentifier . $delimiter . 'article/'. $article->article_id!!}</identifier>
                 <datestamp>{!!$article->updated!!}</datestamp>
+                <setSpec>{!!$defaultSetSpec!!}</setSpec>
             </header>
             <metadata>
                 <oai_dc:dc

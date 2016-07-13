@@ -43,16 +43,6 @@ class ArticleDao implements Dao, CustomPaging {
         return DaoUtil::returnSingleElement($count)->article_count;
     }
 
-    static function findContentIdentifiers()
-    {
-        return DB::table('article')
-            ->select('article.article_id', 'journal_edition.issue_year as edition_issue_year')
-            ->join('journal_edition', 'journal_edition.journal_edition_id', '=', 'article.journal_edition_id')
-            ->whereNotNull('article.language')
-            ->orderby('article.article_id', 'asc')
-            ->get();
-    }
-
     static function findContentByYear($selectedYear)
     {
         return DB::table('article')
