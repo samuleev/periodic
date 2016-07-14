@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/
 		http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
     <responseDate>{{{$responseDate}}}</responseDate>
-    <request verb="ListSets">{{{$baseUrl}}}</request>
+    <request>{{{$baseUrl}}}</request>
     <error code="{{{$errorCode}}}">{{{$errorMessage}}}</error>
 </OAI-PMH>
 

@@ -362,7 +362,7 @@ class OaiController extends Controller {
 
     private function getCommonValues(Request $request) {
         $values = array(
-            'repositoryName' => 'Наукові видання Харківського університету Повітряних Сил',
+            'repositoryName' => 'Наукові видання Харківського національного університету Повітряних Сил',
             'responseDate' => self::getResponseDate(),
             'baseUrl' => self::getBaseUrl($request),
             'scheme' => 'oai',
@@ -370,7 +370,7 @@ class OaiController extends Controller {
             'delimiter' => ':',
             'protocolVersion' => '2.0',
             'adminEmail' => 'journal.hups@gmail.com',
-            'earliestDatestamp' => '2012-01-12T03:30:58Z',
+            'earliestDatestamp' => '2012-01-12T00:00:00Z',
             'deletedRecord' => 'persistent',
             'granularity' => 'YYYY-MM-DDThh:mm:ssZ',
             'metadataPrefix' => 'oai_dc',
