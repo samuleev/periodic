@@ -45,7 +45,7 @@ class OaiController extends Controller {
             case 'ListIdentifiers': return self::listIdentifiers($request);
             case 'ListSets': return self::listSets($request);
             case 'GetRecord': return self::getRecord($request);
-            default: App::abort(404, 'Verb not found');
+            default: return self::getErrorPage($request, 'badVerb', 'Unknown verb');
         }
     }
 
@@ -129,7 +129,7 @@ class OaiController extends Controller {
     }
 
     private function validateDateArgument($key, $query) {
-        if (array_key_exists($key, $query) && strlen($query[$key]) < 11) {
+        if (array_key_exists($key, $query) && strlen($query[$key]) < 10) {
             throw new OaiError('Incorrect date format - '. $query[$key], self::ERROR_BAD_ARGUMENT);
         }
     }
@@ -228,8 +228,13 @@ class OaiController extends Controller {
     }
 
     public function listRecords(Request $request) {
-        return Response::view('oai.records', self::getArticleValues($request))
-            ->header('Content-Type', 'application/xml');
+        try {
+            $data = self::getArticleValues($request);
+            return Response::view('oai.records', $data)
+                ->header('Content-Type', 'application/xml');
+        } catch (OaiError $e) {
+            return self::getErrorPage($request, self::$ERROR_CODES[$e->getCode()], $e->getMessage());
+        }
     }
 
     private function checkToken($token, $completeListSize) {
