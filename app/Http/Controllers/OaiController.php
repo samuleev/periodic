@@ -35,6 +35,8 @@ class OaiController extends Controller {
         self::ERROR_NO_SET_HIERARCHY => 'noSetHierarchy',
         self::ERROR_ID_DOES_NOT_EXIST => 'idDoesNotExist');
 
+    private $isPost = false;
+
     public function main(Request $request) {
         $verb = self::getQueryValue($request, 'verb');
 
@@ -144,10 +146,16 @@ class OaiController extends Controller {
     }
 
     private function getQueryValues(Request $request) {
+        if ($this->isPost) {
+            parse_str($request->getContent(), $output);
+            return array_change_key_case($output, CASE_LOWER);
+        }
         return array_change_key_case($request->query->all(), CASE_LOWER);
     }
 
     public function mainPost(Request $request) {
+        $this->isPost = true;
+
         return self::main($request);
     }
 
@@ -260,7 +268,12 @@ class OaiController extends Controller {
         $until = self::MAX_UNTIL;
         $until_temp = self::getQueryValue($request, 'until');
         if ($until_temp != null) {
-            $until = $until_temp;
+            if(strlen($until_temp) == 10) {
+            // day granularity
+                $until = $until_temp . 'T23:59:59Z';
+            } else {
+                $until = $until_temp;
+            }
         }
 
         $values['completeListSize'] = ArticleDao::getContentCount($from, $until);
@@ -340,7 +353,7 @@ class OaiController extends Controller {
     }
 
     private function convertArticleUpdateDate($article) {
-        $article->updated = date("Y-m-d\\Th:i:s\\Z", strtotime($article->updated));
+        $article->updated = date("Y-m-d\\TH:i:s\\Z", strtotime($article->updated));
     }
 
     private function getBaseUrl(Request $request) {
