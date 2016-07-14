@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Dao\AlternativeDao;
 use App\Dao\ArticleDao;
+use App\Dao\DaoUtil;
 use App\Referat\ReferatParser;
 use App\Service\ArticleService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Response;
+use App\Exceptions\NoElementException;
 
 class OaiController extends Controller {
 
@@ -23,13 +25,15 @@ class OaiController extends Controller {
     const ERROR_BAD_RESUMPTION_TOKEN = 1;
     const ERROR_NO_RECORDS_MATCH = 3;
     const ERROR_NO_SET_HIERARCHY = 4;
+    const ERROR_ID_DOES_NOT_EXIST = 5;
 
     private static $ERROR_CODES = array(
         self::ERROR_BAD_ARGUMENT => 'badArgument',
         self::ERROR_BAD_RESUMPTION_TOKEN => 'badResumptionToken',
         2 => 'cannotDisseminateFormat',
         self::ERROR_NO_RECORDS_MATCH => 'noRecordsMatch',
-        self::ERROR_NO_SET_HIERARCHY => 'noSetHierarchy');
+        self::ERROR_NO_SET_HIERARCHY => 'noSetHierarchy',
+        self::ERROR_ID_DOES_NOT_EXIST => 'idDoesNotExist');
 
     public function main(Request $request) {
         $verb = self::getQueryValue($request, 'verb');
@@ -40,9 +44,43 @@ class OaiController extends Controller {
             case 'ListMetadataFormats': return self::listMetadataFormats($request);
             case 'ListIdentifiers': return self::listIdentifiers($request);
             case 'ListSets': return self::listSets($request);
+            case 'GetRecord': return self::getRecord($request);
             default: App::abort(404, 'Verb not found');
         }
     }
+
+
+    private function getRecord(Request $request) {
+        try {
+            $query = self::getQueryValues($request);
+
+            if (!array_key_exists('identifier', $query)
+                || !array_key_exists('metadataprefix', $query)) {
+                throw new OaiError('not enough parameters"', self::ERROR_BAD_ARGUMENT);
+            }
+
+            if ($query['metadataprefix'] != self::getCommonValues($request)['metadataPrefix']) {
+                throw new OaiError("Incorrect metadataPrefix parameter", self::ERROR_BAD_ARGUMENT);
+            }
+
+
+            $articleId = self::getArticleId($query['identifier'], $request);
+            $articles = ArticleDao::findContentById($articleId);
+            $articles = ArticleService::getEnrichedArticles($articles);
+            $article = DaoUtil::returnSingleElement($articles);
+            self::enrichArticle($article);
+
+            $values = self::getCommonValues($request);
+            $values['article'] = $article;
+
+            return Response::view('oai.record', $values)
+                ->header('Content-Type', 'application/xml');
+
+        }  catch (OaiError $e) {
+            return self::getErrorPage($request, self::$ERROR_CODES[$e->getCode()], $e->getMessage());
+        }
+    }
+
 
     private function getErrorPage($request, $errorCode, $errorMessage) {
         $values = self::getCommonValues($request);
@@ -124,9 +162,46 @@ class OaiController extends Controller {
     }
 
     public function listMetadataFormats(Request $request) {
+        $query = self::getQueryValues($request);
+
+        if (array_key_exists('identifier', $query)) {
+
+            try {
+                self::getArticleId($query['identifier'], $request);
+            } catch (OaiError $e) {
+                return self::getErrorPage($request, self::$ERROR_CODES[$e->getCode()], $e->getMessage());
+            }
+
+        }
+
         $values = self::getCommonValues($request);
+
         return Response::view('oai.metadata', $values)
             ->header('Content-Type', 'application/xml');
+    }
+
+    private function getArticleId($oaiId, $request) {
+        $oaiPrefix = self::getCommonValues($request)['id_prefix'];
+        if (!self::startsWith($oaiId, $oaiPrefix)) {
+            throw new OaiError("Incorrect id prefix", self::ERROR_ID_DOES_NOT_EXIST);
+        }
+
+        $articleId = substr($oaiId, strlen($oaiPrefix));
+        if (!is_numeric($articleId)) {
+            throw new OaiError("Id not numeric", self::ERROR_ID_DOES_NOT_EXIST);
+        }
+
+        try {
+            ArticleDao::findById($articleId);
+        } catch (NoElementException $e) {
+            throw new OaiError("Id not found in db", self::ERROR_ID_DOES_NOT_EXIST);
+        }
+
+        return $articleId;
+    }
+
+    private function startsWith($string, $query) {
+        return substr($string, 0, strlen($query)) === $query;
     }
 
     public function listIdentifiers(Request $request) {
@@ -199,25 +274,7 @@ class OaiController extends Controller {
         $articles = ArticleService::getEnrichedArticles($articles);
         foreach($articles as $article)
         {
-            $alternatives = AlternativeDao::findByArticleId($article->article_id);
-            $article->alternatives = $alternatives;
-
-            self::setShortLanguage($article);
-            self::assignMainAuthorNames($article);
-            self::convertArticleUpdateDate($article);
-
-            $article->fileName = ArticleService::getArticleFileName($article->journal_prefix, $article->edition_issue_year,
-                $article->edition_number_in_year, $article->sort_order);
-
-
-            foreach ($article->alternatives as $alternative) {
-                self::setShortLanguage($alternative);
-                self::assignAlternativeAuthorNames($alternative, $alternative->authors);
-
-                self::xmlEscape($alternative);
-            }
-
-            self::xmlEscape($article);
+            self::enrichArticle($article);
         }
         $values['articles'] = $articles;
         $values['expirationDate'] = self::getDateAsString(time() + 86400 * 2);
@@ -230,6 +287,28 @@ class OaiController extends Controller {
         }
 
         return $values;
+    }
+
+    private function enrichArticle($article) {
+        $alternatives = AlternativeDao::findByArticleId($article->article_id);
+        $article->alternatives = $alternatives;
+
+        self::setShortLanguage($article);
+        self::assignMainAuthorNames($article);
+        self::convertArticleUpdateDate($article);
+
+        $article->fileName = ArticleService::getArticleFileName($article->journal_prefix, $article->edition_issue_year,
+            $article->edition_number_in_year, $article->sort_order);
+
+
+        foreach ($article->alternatives as $alternative) {
+            self::setShortLanguage($alternative);
+            self::assignAlternativeAuthorNames($alternative, $alternative->authors);
+
+            self::xmlEscape($alternative);
+        }
+
+        self::xmlEscape($article);
     }
 
     private function xmlEscape($array) {
@@ -264,7 +343,7 @@ class OaiController extends Controller {
     }
 
     private function getCommonValues(Request $request) {
-        return array(
+        $values = array(
             'repositoryName' => 'Наукові видання Харківського університету Повітряних Сил',
             'responseDate' => self::getResponseDate(),
             'baseUrl' => self::getBaseUrl($request),
@@ -280,6 +359,12 @@ class OaiController extends Controller {
             'baseAppURL' => 'http://www.hups.mil.gov.ua/periodic-app/',
             'defaultSetSpec' => 'DEFAULT'
         );
+
+        $id_prefix = $values['scheme'] . $values['delimiter'] . $values['repositoryIdentifier'] . $values['delimiter'] . 'article/';
+
+        $values['id_prefix'] = $id_prefix;
+
+        return $values;
     }
 
     private function assignMainAuthorNames($article) {

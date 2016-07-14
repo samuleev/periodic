@@ -9,24 +9,33 @@ class ArticleDao implements Dao, CustomPaging {
 
     static function findContentCustomPaginated($skip, $take, $from, $until)
     {
-        return DB::table('article')
-            ->select('article.article_id', 'article.name', 'journal_edition.issue_year',
-                'article.language', 'article.topic_id', 'article.udk', 'article.keywords', 'article.updated',
-                'article.description', 'journal_edition.issue_year as edition_issue_year',
-                'journal.name as journal_name', 'journal.name_eng as journal_name_eng',
-                'journal.name_rus as journal_name_rus', 'journal.issn as journal_issn',
-                'journal_edition.issue_year as edition_issue_year',
-                'journal_edition.number_in_year as edition_number_in_year',
-                'journal_edition.number as edition_number',
-                'article.start_page', 'article.end_page', 'article.sort_order',
-                'article.authors as authorNamesLine', 'journal.prefix as journal_prefix')
-            ->join('journal_edition', 'journal_edition.journal_edition_id', '=', 'article.journal_edition_id')
-            ->join('journal', 'journal.journal_id', '=', 'journal_edition.journal_id')
+        return self::getArticleContentPredicat()
             ->whereNotNull('article.language')
             ->where('article.updated', '>=', $from)
             ->where('article.updated', '<=', $until)
             ->orderby('article.article_id', 'asc')
             ->skip($skip)->take($take)->get();
+    }
+
+    static function findContentById($id)
+    {
+        return self::getArticleContentPredicat()
+            ->where('article_id', $id)->get();
+    }
+
+    private static function getArticleContentPredicat() {
+        return DB::table('article')->select('article.article_id', 'article.name', 'journal_edition.issue_year',
+            'article.language', 'article.topic_id', 'article.udk', 'article.keywords', 'article.updated',
+            'article.description', 'journal_edition.issue_year as edition_issue_year',
+            'journal.name as journal_name', 'journal.name_eng as journal_name_eng',
+            'journal.name_rus as journal_name_rus', 'journal.issn as journal_issn',
+            'journal_edition.issue_year as edition_issue_year',
+            'journal_edition.number_in_year as edition_number_in_year',
+            'journal_edition.number as edition_number',
+            'article.start_page', 'article.end_page', 'article.sort_order',
+            'article.authors as authorNamesLine', 'journal.prefix as journal_prefix')
+            ->join('journal_edition', 'journal_edition.journal_edition_id', '=', 'article.journal_edition_id')
+            ->join('journal', 'journal.journal_id', '=', 'journal_edition.journal_id') ;
     }
 
     static function getContentCount($from, $until)
