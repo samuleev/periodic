@@ -41,8 +41,13 @@
                     <strong>Періодичність видання:</strong><br>
                     Виходить {{{ $journal->period}}}
                     <br><br>
-                    <strong>ISSN:</strong><br>
+                    <strong>ISSN:</strong>&nbsp
                     {{{ $journal->issn}}}
+                        @if(isset($journal->eissn))
+                            &nbsp&nbsp
+                            <strong>ISSN(Online):</strong>&nbsp
+                            {{{ $journal->eissn}}}
+                        @endif
                     <br><br>
                     @else
                         <strong>Видання припинено</strong>

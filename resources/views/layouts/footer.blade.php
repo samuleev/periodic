@@ -16,13 +16,13 @@
 			<div class="col-sm-3 footer-email-block">							
 				<div class="row">
 					<div class="col-sm-2"><i class="fa fa-envelope"></i></div>
-					<div class="col-sm-10"><span class="contact-email-footer">nachalnik_hups@meta.ua</span></div>
+					<div class="col-sm-10"><span class="contact-email-footer">red.hnups@gmail.com</span></div>
 				</div>	
 			</div>
 			<div class="col-sm-3 footer-email-block">							
 				<div class="row">
 					<div class="col-sm-2"><i class="fa fa-envelope"></i></div>
-					<div class="col-sm-10"><span class="contact-email-footer">info@hups.mil.gov.ua</span></div>
+					<div class="col-sm-10"><span class="contact-email-footer">red@hups.mil.gov.ua</span></div>
 				</div>	
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 				</div>
 				<div class="vw-site-bottom-bar-right">
 					<span class="vw-site-social-profile">
-						<a class="vw-site-social-profile-icon vw-site-social-email" href="mailto:info@hups.mil.gov.ua" title="Email">
+						<a class="vw-site-social-profile-icon vw-site-social-email" href="mailto:red.hnups@gmail.com" title="Email">
 							<i class="icon-social-email"></i>
 						</a>
 						<a class="vw-site-social-profile-icon vw-site-social-facebook" href="https://facebook.com/nachalnik.hups" title="Facebook">

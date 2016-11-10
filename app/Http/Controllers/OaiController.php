@@ -277,9 +277,6 @@ class OaiController extends Controller {
         }
 
         $values['completeListSize'] = ArticleDao::getContentCount($from, $until);
-        if ($values['completeListSize'] == 0) {
-            throw new OaiError('0 records', self::ERROR_NO_RECORDS_MATCH);
-        }
 
         $resumptionToken = self::getQueryValue($request, 'resumptionToken');
 
@@ -287,6 +284,10 @@ class OaiController extends Controller {
             $resumptionToken = 0;
         }
         self::checkToken($resumptionToken, $values['completeListSize']);
+
+        if ($values['completeListSize'] == 0) {
+            throw new OaiError('0 records', self::ERROR_NO_RECORDS_MATCH);
+        }
 
         $articles = ArticleDao::findContentCustomPaginated($resumptionToken, self::PAGE_SIZE, $from, $until);
         $articles = ArticleService::getEnrichedArticles($articles);

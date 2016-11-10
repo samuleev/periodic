@@ -41,6 +41,11 @@
                                     <img src={{{ url('/public/img/pdf_icon-20.png') }}} />
                                     Вимоги до оформлення статей
                                 </a>
+                                <br>
+                                <a target="_blank" href={{{ url('/public/data/review_blank_hnups.pdf') }}}>
+                                    <img src={{{ url('/public/img/pdf_icon-20.png') }}} />
+                                    Бланк рецензії
+                                </a>
                             </div>
                             <div class="col-md-6">
                                 <strong>Наукометричні показники (<i><small>на  {{{ $journal->index_update }}}</small></i>):</strong>
