@@ -12,10 +12,10 @@
 
 @stop
 
-@section('bread_crumps')
-    <li>@include('crumps.journal_list')</li>
-    <li>@include('crumps.journal')</li>
-    <li>@include('crumps.edition')</li>
+@section('bread_crumbs')
+    <li>@include('crumbs.journal_list')</li>
+    <li>@include('crumbs.journal')</li>
+    <li>@include('crumbs.edition')</li>
     <li class="active">{{{$alternative->name}}}</li>
 @stop
 

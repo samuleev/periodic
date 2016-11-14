@@ -4,8 +4,8 @@
     <title>{{{$topic->name}}}</title>
 @stop
 
-@section('bread_crumps')
-    <li>@include('crumps.topic_list')</li>
+@section('bread_crumbs')
+    <li>@include('crumbs.topic_list')</li>
     <li class="active">{{{$topic->name}}}</li>
 @stop
 

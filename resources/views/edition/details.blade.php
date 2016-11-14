@@ -6,9 +6,9 @@
     <meta name="description" content="{{{ $journal->subject}}}" >
 @stop
 
-@section('bread_crumps')
-        <li>@include('crumps.journal_list')</li>
-        <li>@include('crumps.journal')</li>
+@section('bread_crumbs')
+        <li>@include('crumbs.journal_list')</li>
+        <li>@include('crumbs.journal')</li>
         <li class="active">{{{$edition->number_in_year."(".$edition->number.")'".$edition->issue_year}}}</li>
 @stop
 

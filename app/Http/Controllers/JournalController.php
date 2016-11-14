@@ -22,6 +22,12 @@ class JournalController extends Controller
         return view('journal.index', compact('journals'));
     }
 
+    public function indexEng()
+    {
+        $journals = JournalDao::findAll();
+        return view('eng.journal.index', compact('journals'));
+    }
+
     public function show($prefix)
     {
         try {

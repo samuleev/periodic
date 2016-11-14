@@ -11,8 +11,8 @@
     @endif
 @stop
 
-@section('bread_crumps')
-    <li>@include('crumps.author_list')</li>
+@section('bread_crumbs')
+    <li>@include('crumbs.author_list')</li>
     <li class="active">@include('author.name')</li>
 @stop
 

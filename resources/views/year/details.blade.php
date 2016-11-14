@@ -4,7 +4,7 @@
     <title>Перелік статей за {{{ $selectedYear }}} рік</title>
 @stop
 
-@section('bread_crumps')
+@section('bread_crumbs')
 @stop
 
 @section('content')

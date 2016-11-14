@@ -4,7 +4,7 @@
     <title>Перелік років виданнь</title>
 @stop
 
-@section('bread_crumps')
+@section('bread_crumbs')
 @stop
 
 @section('content')

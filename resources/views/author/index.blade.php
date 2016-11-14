@@ -6,7 +6,7 @@
     <meta name="description" content="Перелік авторів видань Харківського університету Повітряних Сил" >
 @stop
 
-@section('bread_crumps')
+@section('bread_crumbs')
     <li class="active">Автори</li>
 @stop
 

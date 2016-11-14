@@ -4,7 +4,7 @@
     <title>Тематики</title>
 @stop
 
-@section('bread_crumps')
+@section('bread_crumbs')
     <li class="active">Тематики</li>
 @stop
 

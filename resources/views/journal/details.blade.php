@@ -6,8 +6,8 @@
     <meta name="description" content="{{{ $journal->subject}}}" >
 @stop
 
-@section('bread_crumps')
-        <li>@include('crumps.journal_list')</li>
+@section('bread_crumbs')
+        <li>@include('crumbs.journal_list')</li>
         <li class="active">{{{ $journal->name }}}</li>
 @stop
 

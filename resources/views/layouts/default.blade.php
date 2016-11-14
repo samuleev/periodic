@@ -27,7 +27,7 @@
 
 </script>
 @include('layouts.header')
-@include('layouts.menu')
+@include('layouts.crumbs')
 @yield('content')
 @include('layouts.footer')
 </body>

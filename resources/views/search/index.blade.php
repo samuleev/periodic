@@ -6,7 +6,7 @@
     <meta name="description" content="Пошук публікацій Харківського університету Повітряних Сил">
 @stop
 
-@section('bread_crumps')
+@section('bread_crumbs')
     <li class="active">Пошук публікацій</li>
 @stop
 
