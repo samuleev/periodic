@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('eng.layouts.default')
 
 @section('seo_headers')
     <title>Publications of Ivan Kozhedub Kharkiv National Air Force University</title>
@@ -8,6 +8,13 @@
 
 @section('bread_crumbs')
         <li class="active">Publications</li>
+@stop
+
+@section('lang_switch')
+    <a style="color:#FFFFFF;text-decoration: none;" href="{{{route('journal.index')}}}" alt="Українська версія">
+        <img src={{{ url('/public/img/ukr.png') }}}>
+        УКР
+    </a>
 @stop
 
 @section('content')

@@ -10,7 +10,11 @@
 			<div class="col-sm-3 footer-post-block">							
 				<div class="row">
 					<div class="col-sm-2"><i class="fa fa-building"></i></div>
-					<div class="col-sm-10"><span class="contact-post-footer">м. Харкiв (61023)<br> вул. Сумська 77/79</span></div>
+					<div class="col-sm-10"><span class="contact-post-footer">
+                            @section('footer_address')
+                            м. Харкiв (61023)<br> вул. Сумська 77/79
+                            @show
+                        </span></div>
 				</div>	
 			</div>
 			<div class="col-sm-3 footer-email-block">							
