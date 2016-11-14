@@ -57,7 +57,7 @@
             <div class="col-md-2">
                 <div style="padding: 8px 0 0 20px;"></div>
                 @section('lang_switch')
-                    <a style="color:#FFFFFF;text-decoration: none;" href="{{{route('eng.journal.index')}}}" alt="english version">
+                    <a style="color:#FFFFFF;text-decoration: none;" href="{{{route('eng.journal.index')}}}" alt="English version">
                         <img src={{{ url('/public/img/eng.png') }}}>
                         ENG
                     </a>

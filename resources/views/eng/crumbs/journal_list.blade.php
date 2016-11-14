@@ -1,0 +1,1 @@
+<a href="{{{route('eng.journal.index')}}}">Publications</a>

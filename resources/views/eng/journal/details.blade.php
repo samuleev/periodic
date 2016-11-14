@@ -1,20 +1,20 @@
-@extends('layouts.default')
+@extends('eng.layouts.default')
 
 @section('seo_headers')
-    <title>{{{ $journal->name }}} - {{{ $journal->type }}}</title>
-    <meta name="keywords" content="{{{ $journal->dak_spec}}}" >
-    <meta name="description" content="{{{ $journal->subject}}}" >
+    <title>{{{ $journal->name_eng }}} - {{{ $journal->type_eng }}}</title>
+    <meta name="keywords" content="{{{ $journal->dak_spec_eng}}}" >
+    <meta name="description" content="{{{ $journal->subject_eng}}}" >
 @stop
 
 @section('bread_crumbs')
-        <li>@include('crumbs.journal_list')</li>
-        <li class="active">{{{ $journal->name }}}</li>
+        <li>@include('eng.crumbs.journal_list')</li>
+        <li class="active">{{{ $journal->name_eng }}}</li>
 @stop
 
 @section('lang_switch')
-    <a style="color:#FFFFFF;text-decoration: none;" href="{{{route('eng.journal.details', array($journal->prefix))}}}" alt="English version">
-        <img src={{{ url('/public/img/eng.png') }}}>
-        ENG
+    <a style="color:#FFFFFF;text-decoration: none;" href="{{{route('journal.details', array($journal->prefix))}}}" alt="Українська версія">
+        <img src={{{ url('/public/img/ukr.png') }}}>
+        УКР
     </a>
 @stop
 
@@ -23,7 +23,7 @@
 
         <script type="text/javascript">
             function updateEditions(prefix, selectedYear) {
-                $('#editions_by_year').load('' + prefix + '/' + selectedYear);
+                $('#editions_by_year').load('/periodic-app/journal/' + prefix + '/' + selectedYear + '/eng');
             }
         </script>
 
@@ -31,22 +31,22 @@
 
             <div class="row">
                 <div class="col-md-9">
-                    <h3>{{{ $journal->name }}}</h3>
+                    <h3>{{{ $journal->name_eng }}}</h3>
                 </div>
                 <div class="col-md-3 text-right" style="padding-top:22px">
-                    <small style="font-weight:bold; text-transform:uppercase;">{{{ $journal->type }}}</small>
+                    <small style="font-weight:bold; text-transform:uppercase;">{{{ $journal->type_eng }}}</small>
                 </div>
                 <div class="col-md-12" style="background:rgba(86,86,124,.2); width:100%; height:1px; margin: 0 0 21px 0;"></div>
                 <div class="col-md-6" style="width: 390px">
                     <img class="img-thumbnail" src={{{ url('/public/data/'.$journal->prefix.'/'.$journal->picture_file) }}} />
                 </div>
                 <div class="col-md-6">
-                    <strong>Видавництво:</strong><br>
-                    {{{ $journal->founders}}}, {{{ $journal->founded}}}.
+                    <strong>Founders:</strong><br>
+                    {{{ $journal->founders_eng}}}, {{{ $journal->founded}}}.
                     <br><br>
                     @if($journal->publishing)
-                    <strong>Періодичність видання:</strong><br>
-                    Виходить {{{ $journal->period}}}
+                    <strong>Publication frequency:</strong><br>
+                        Published {{{ $journal->period_eng}}}
                     <br><br>
                     <strong>ISSN:</strong>&nbsp
                     {{{ $journal->issn}}}
@@ -57,11 +57,11 @@
                         @endif
                     <br><br>
                     @else
-                        <strong>Видання припинено</strong>
+                        <strong>Publication is terminated</strong>
                         <br><br>
                     @endif
-                    <strong>Тематика:</strong><br>
-                    <i>{{{ $journal->subject}}}</i>
+                    <strong>Subject:</strong><br>
+                    <i>{{{ $journal->subject_eng}}}</i>
                  </div>
             </div>
 
@@ -70,7 +70,7 @@
                         <table class="table table-striped">
                             <thead>
                                 <th>
-                                    <strong>Роки видання:</strong><br>
+                                    <strong>Imprint date:</strong><br>
                                 </th>
                             </thead>
                             <tr>
@@ -91,12 +91,12 @@
                     <table class="table table-striped">
                         <thead>
                         <th>
-                            <strong>Номери за ... рік:</strong><br>
+                            <strong>Numbers for:</strong><br>
                         </th>
                         </thead>
                         <tr>
                             <td style="height:51px; line-height: 33px;">
-                                <i><small>Будь ласка оберіть рік видання журналу для відображення номеру публікації.</small></i>
+                                <i><small>Please select the journal imprint date  to reflect the number of publication.</small></i>
                             </td>
                         </tr>
                     </table>
@@ -109,7 +109,7 @@
                         @if($journal->publishing)
                         <tr>
                                 <td style="width:33%;">
-                                    <strong>Анотаційні системи та бази даних:</strong>
+                                    <strong>Annotative systems and databases:</strong>
                                 </td>
                                 <td>
                                     <?php include public_path() . '/data/'.$journal->prefix.'/static-include.html'; ?>
@@ -117,32 +117,32 @@
                         </tr>
                         <tr>
                             <td style="width:33%;">
-                                <strong>Свідоцтво про державну реєстрацію:</strong>
+                                <strong>The State Registration Certificate:</strong>
                             </td>
                             <td>
-                                <a target="_blank" href={{{ url('/public/data/'.$journal->prefix.'/'.$journal->gov_registration_file) }}}>{{{ $journal->gov_registration}}}</a>
+                                <a target="_blank" href={{{ url('/public/data/'.$journal->prefix.'/'.$journal->gov_registration_file) }}}>{{{ $journal->gov_registration_eng}}}</a>
                             </td>
                         </tr>
                         <tr>
                             <td style="width:33%;">
-                                <strong>Реєстрація у ДАК України:</strong>
+                                <strong>Ukrainian DAK Registration:</strong>
                             </td>
                             <td>
-                                {{{ $journal->dak_registration}}}
+                                {{{ $journal->dak_registration_eng}}}
                             </td>
                         </tr>
                         <tr>
                             <td style="width:33%;">
-                                <strong>Спеціальність ДАК:</strong>
+                                <strong>DAK speciality:</strong>
                             </td>
                             <td>
-                                {{{ $journal->dak_spec}}}
+                                {{{ $journal->dak_spec_eng}}}
                             </td>
                         </tr>
                         @endif
                         <tr>
                             <td style="width:33%;">
-                                <strong>Головний редактор:</strong>
+                                <strong>Editor-in-Chief:</strong>
                             </td>
                             <td>
                                 {{{ $journal->chief_editor}}}
@@ -150,7 +150,7 @@
                         </tr>
                         <tr>
                             <td style="width:33%;">
-                                <strong>Відповідальні секретарі:</strong>
+                                <strong>Executive Secretary:</strong>
                             </td>
                             <td>
                                 {{{ $journal->executive_secretary}}}
@@ -158,7 +158,7 @@
                         </tr>
                         <tr>
                             <td style="width:33%;">
-                                <strong>Редакційна рада:</strong>
+                                <strong>Editorial Board:</strong>
                             </td>
                             <td>
                                 <i>{{{ $journal->editorial_board}}}</i>

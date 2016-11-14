@@ -38,7 +38,7 @@
 			<div class="col-sm-12">
 				<div class="vw-site-bottom-bar-left">
 					<div class="vw-copyright">
-						© 2001—2015 | Kharkiv national University of Air Force | Харківський національний університет Повітряних Сил
+						© Ivan Kozhedub Kharkiv National Air Force University | Харківський національний університет Повітряних Сил
 					</div>
 				</div>
 				<div class="vw-site-bottom-bar-right">

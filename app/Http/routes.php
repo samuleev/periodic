@@ -14,8 +14,10 @@
 Route::get('/', array('uses' => 'JournalController@root', 'as' => 'journal.root'));
 Route::get('/journal', array('uses' => 'JournalController@index', 'as' => 'journal.index'));
 Route::get('/journal/eng', array('uses' => 'JournalController@indexEng', 'as' => 'eng.journal.index'));
+Route::get('/journal/{prefix}/eng', array('uses' => 'JournalController@showEng', 'as' => 'eng.journal.details'))->where('prefix', '[a-z]*');
 Route::get('/journal/{prefix}', array('uses' => 'JournalController@show', 'as' => 'journal.details'))->where('prefix', '[a-z]*');
 Route::get('/journal/{prefix}/{selectedYear}', array('uses' => 'EditionController@byYear', 'as' => 'editions.by_year'))->where(array('prefix' => '[a-z]*', 'selectedYear' => '[1-2][0-9]{3}'));
+Route::get('/journal/{prefix}/{selectedYear}/eng', array('uses' => 'EditionController@byYearEng', 'as' => 'eng.editions.by_year'))->where(array('prefix' => '[a-z]*', 'selectedYear' => '[1-2][0-9]{3}'));
 Route::get('/journal/{prefix}/{selectedYear}/{number}', array('uses' => 'EditionController@show', 'as' => 'edition.details'))->where(array('prefix' => '[a-z]*', 'selectedYear' => '[1-2][0-9]{3}', 'number' => '[1-9][0-9]*'));
 Route::get('/journal/{prefix}/{selectedYear}/{number}/raw', array('uses' => 'EditionController@raw', 'as' => 'edition.raw'))->where(array('prefix' => '[a-z]*', 'selectedYear' => '[1-2][0-9]{3}', 'number' => '[1-9][0-9]*'));
 Route::get('/article/{id}', array('uses' => 'ArticleController@show', 'as' => 'article.details'))->where('id', '[1-9][0-9]*');

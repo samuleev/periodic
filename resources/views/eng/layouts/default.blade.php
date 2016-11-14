@@ -12,7 +12,7 @@
 
 @section('main_menu')
     <li class="periodic-nav-li">
-        <a href="{{{route('journal.index')}}}">
+        <a href="{{{route('eng.journal.index')}}}">
             <i class="fa fa-book"></i>
             <span>Publications</span>
         </a>

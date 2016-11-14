@@ -56,8 +56,18 @@ class EditionController extends Controller {
 
     public function byYear($prefix, $selectedYear)
     {
+        return self::byYearPattern($prefix, $selectedYear, 'edition.by_year_ajax');
+    }
+
+    public function byYearEng($prefix, $selectedYear)
+    {
+        return self::byYearPattern($prefix, $selectedYear, 'eng.edition.by_year_ajax');
+    }
+
+    private function byYearPattern($prefix, $selectedYear, $view)
+    {
         $editions = EditionDao::listNumbersInYear($prefix, $selectedYear);
-        return view('edition.by_year_ajax')->with(array(
+        return view($view)->with(array(
             'prefix' => $prefix,
             'editions' => $editions,
             'selectedYear' => $selectedYear));
