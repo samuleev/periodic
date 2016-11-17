@@ -31,6 +31,25 @@ class EditionController extends Controller {
             ));
     }
 
+    public function showEng($prefix, $selectedYear, $number)
+    {
+        try {
+            $journal = JournalDao::findByPrefix($prefix);
+            $edition = EditionDao::findByJournalIdAndYearNumber($journal->journal_id, $selectedYear, $number);
+        } catch (NoElementException $e) {
+            App::abort(404, 'Edition not found');
+        }
+
+        $articles = ArticleDao::findByEdition($edition->journal_edition_id);
+        $articles = ArticleService::getEnrichedArticles($articles);
+
+        return view('eng.edition.details')->with(array(
+            'edition' => $edition,
+            'journal' => $journal,
+            'articles' => $articles
+        ));
+    }
+
     public function raw($prefix, $selectedYear, $number)
     {
         try {

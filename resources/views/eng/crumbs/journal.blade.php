@@ -1,0 +1,1 @@
+<a href={{{route('journal.details', $journal->prefix)}}}>{{{$journal->name_eng}}}</a>
