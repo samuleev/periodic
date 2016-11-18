@@ -47,6 +47,17 @@
         <li class="active">{{{$article->name}}}</li>
 @stop
 
+@section('lang_switch')
+    @foreach($alternatives as $iteratedAlternative)
+        @if($iteratedAlternative->language == 'eng')
+            <a style="color:#FFFFFF;text-decoration: none;" href="{{{ route('alternative.details', array($article->article_id, 'eng')) }}}" alt="English version">
+                <img src={{{ url('/public/img/eng.png') }}}>
+                ENG
+            </a>
+        @endif
+    @endforeach
+@stop
+
 @section('content')
     @if(isset($article))
         <div class="container">

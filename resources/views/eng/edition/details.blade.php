@@ -12,6 +12,13 @@
         <li class="active">{{{$edition->number_in_year."(".$edition->number.")'".$edition->issue_year}}}</li>
 @stop
 
+@section('lang_switch')
+    <a style="color:#FFFFFF;text-decoration: none;" href="{{{route('edition.details', array($journal->prefix, $edition->issue_year, $edition->number_in_year))}}}" alt="Українська версія">
+        <img src={{{ url('/public/img/ukr.png') }}}>
+        УКР
+    </a>
+@stop
+
 @section('content')
     @if(isset($edition))
         <div class="container">
@@ -24,10 +31,10 @@
                     @endif
                 </div>
                 <div class="col-md-10">
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <h4>{{{ $journal->name_eng }}}</h4>
                         </div>
-                        <div class="col-md-3 text-right" style="line-height:40px;">
+                        <div class="col-md-4 text-right" style="line-height:40px;">
                             <small style="font-weight:bold; text-transform:uppercase;">{{{ $journal->type_eng }}}</small>
                         </div>
                     <div class="col-md-12" style="background:rgba(86,86,124,.2); width:100%; height:1px; margin: 0 0 21px 0;"></div>

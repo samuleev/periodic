@@ -12,6 +12,14 @@
         <li class="active">{{{$edition->number_in_year."(".$edition->number.")'".$edition->issue_year}}}</li>
 @stop
 
+@section('lang_switch')
+    <a style="color:#FFFFFF;text-decoration: none;"
+       href="{{{route('eng.edition.details', array($journal->prefix, $edition->issue_year, $edition->number_in_year))}}}" alt="English version">
+        <img src={{{ url('/public/img/eng.png') }}}>
+        ENG
+    </a>
+@stop
+
 @section('content')
     @if(isset($edition))
         <div class="container">

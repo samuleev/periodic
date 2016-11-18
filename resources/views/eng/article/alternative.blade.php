@@ -20,10 +20,12 @@
 @stop
 
 @section('lang_switch')
+    @if($article->language == 'ukr')
     <a style="color:#FFFFFF;text-decoration: none;" href="{{{ route('article.details', array($article->article_id)) }}}" alt="Українська версія">
         <img src={{{ url('/public/img/ukr.png') }}}>
         УКР
     </a>
+    @endif
 @stop
 
 @section('content')
