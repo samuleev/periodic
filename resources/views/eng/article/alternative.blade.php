@@ -15,7 +15,7 @@
 @section('bread_crumbs')
     <li>@include('eng.crumbs.journal_list')</li>
     <li>@include('eng.crumbs.journal')</li>
-    <li>@include('crumbs.edition')</li>
+    <li>@include('eng.crumbs.edition')</li>
     <li class="active">{{{$alternative->name}}}</li>
 @stop
 
