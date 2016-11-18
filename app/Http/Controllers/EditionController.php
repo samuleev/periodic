@@ -47,11 +47,13 @@ class EditionController extends Controller {
 
         EnglishService::mapAlternativesToArticles($articles, $alternatives);
         EnglishService::renameCommonTitles($articles);
+        $engArticles = EnglishService::removeNonEnglish($articles);
+        EnglishService::mapEngArticleAuthors($engArticles);
 
         return view('eng.edition.details')->with(array(
             'edition' => $edition,
             'journal' => $journal,
-            'articles' => $articles
+            'articles' => $engArticles
         ));
     }
 

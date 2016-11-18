@@ -37,4 +37,22 @@ class EnglishService {
             }
         }
     }
+
+    public static function removeNonEnglish($articles) {
+        $engArticles = array();
+        foreach($articles as $article) {
+            if ($article->language == "eng" || isset($article->alternative)) {
+                $engArticles[] = $article;
+            }
+        }
+        return $engArticles;
+    }
+
+    public static function mapEngArticleAuthors($articles) {
+        foreach($articles as $article) {
+            if ($article->language == "eng") {
+                $article->authors = explode(', ', $article->authors);
+            }
+        }
+    }
 }

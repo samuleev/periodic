@@ -23,6 +23,11 @@ class ArticleController extends Controller {
         $articleData = self::getArticleData($articleId);
         $alternative = self::findAlternativeByLanguage($articleData['alternatives'], $language);
         $articleData['alternative'] = $alternative;
+
+        if($alternative->language == 'eng') {
+            return view('eng.article.alternative')->with($articleData);
+        }
+
         return view('article.alternative')->with($articleData);
     }
 
