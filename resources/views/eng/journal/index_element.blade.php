@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-9">
                     <h4 style="margin:0;">
-                        <a href={{{route('journal.details', $journal->prefix)}}}>
+                        <a href={{{route('eng.journal.details', $journal->prefix)}}}>
                             <span class="glyphicon glyphicon-book" aria-hidden="true" style="font-size:18px; margin-right:10px;"></span>
                             {{{ $journal->name_eng }}}
                         </a>
@@ -18,7 +18,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-4 top10 bottom10">
-                    <a href={{{route('journal.details', $journal->prefix)}}}><img class="img-thumbnail" src={{{ url('/public/data/'.$journal->prefix.'/'.$journal->picture_file) }}} /> </a>
+                    <a href={{{route('eng.journal.details', $journal->prefix)}}}><img class="img-thumbnail" src={{{ url('/public/data/'.$journal->prefix.'/'.$journal->picture_file) }}} /> </a>
                 </div>
                 <div class="col-md-8 top10 bottom10">
                     <div class="col-md-12 ">

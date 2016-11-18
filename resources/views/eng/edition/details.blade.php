@@ -62,7 +62,13 @@
                         <td style="width:5%;">{{{ $orderNumber }}}.</td>
                         <td style="width:50%;">
                             @if(isset($article->alternative))
-                                <a href="{{{ route('alternative.details', array($article->article_id, 'eng')) }}}">{{{ $article->alternative->name }}}</a>
+                                <a href="{{{ route('alternative.details', array($article->article_id, 'eng')) }}}">
+                                    @if (empty($article->name_eng))
+                                        {{{ $article->alternative->name }}}
+                                    @else
+                                        {{{ $article->name_eng }}}
+                                    @endif
+                                </a>
                             @else
                                 <a href="{{{ route('article.details', array($article->article_id)) }}}">{{{ $article->name }}}</a>
                             @endif

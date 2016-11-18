@@ -29,7 +29,7 @@
                     <p style="text-align:justify;">Four scientific publications are a part of science-metric data base and  <a href="http://old.mon.gov.ua/ua/activity/563/perelik-naukovikh-fakhovikh-vidan/6797/" target="_blank">«List of scientific professional publications of Ukraine, where results of theses for the degree of doctor and candidate»</a>.</p>
                     <p style="text-align:justify;">KNAFU editors of scientific publications follow  the recommendations of the Ethics SCOPUS publications Committee, and base on the experience of authoritative international  and national journals and founders.</p>
                     <p><a href="{{{ url('/public/data/publication_ethics_hnups.pdf') }}}" target="_blank">KNAFU ethical rules of scientific publications</a></p>
-                    <p><strong>Contact telephone number:</strong> (067) 998-02-70</p>
+                    <p><strong>Contact telephone number:</strong> +38-067-998-02-70</p>
                 </div>
             </div>
             @foreach($journals as $index => $journal)
