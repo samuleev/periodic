@@ -39,6 +39,15 @@ class AlternativeDao implements Dao, CustomPaging {
                 'keywords' => $alternative->keywords]);
     }
 
+    static function findByEditionAndLanguage($journal_edition_id, $language) {
+        return DB::table('alternative')->select('alternative.alternative_id', 'alternative.article_id',
+            'alternative.name', 'alternative.authors', 'alternative.description', 'alternative.keywords',
+            'alternative.updated', 'alternative.language')
+            ->join('article', 'article.article_id', '=', 'alternative.article_id')
+            ->where('article.journal_edition_id', $journal_edition_id)
+            ->where('alternative.language', $language)->get();
+    }
+
     private static function checkAlternativeExists($article_id, $language)
     {
         if (count(self::findByArticleIdAndLanguage($article_id, $language)) != 0)

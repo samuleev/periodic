@@ -43,26 +43,20 @@
             <table class="table table-hover">
                 <thead>
                 <th style="text-align:center;">#</th>
-                <th style="text-align:center;">Article title</th>
+                <th style="text-align:center;">Title</th>
                 <th style="text-align:center;">Authors</th>
                 <th style="text-align:center;">Pages</th>
                 </thead>
                 <tbody>
+                <?php  $orderNumber = 0; ?>
                 @foreach($articles as $article)
-                    @if($article->topic_id != $currentTopicId)
-                        <?php  $currentTopicId = $article->topic_id; ?>
-                        @if($article->topic->visible)
-                            <tr>
-                            <td colspan="4" style="width:100%; text-align:center;"><b><i> {{{ $article->topic->name }}} </i></b></td>
-                            </tr>
-                        @endif
-                    @endif
+                    <?php  $orderNumber++; ?>
                     <tr>
-                        <td style="width:5%;">{{{ $article->sort_order }}}.</td>
-                        <td style="width:55%;"><a href="{{{ route('article.details', array($article->article_id)) }}}">{{{ $article->name }}}</a>
+                        <td style="width:5%;">{{{ $orderNumber }}}.</td>
+                        <td style="width:50%;"><a href="{{{ route('article.details', array($article->article_id)) }}}">{{{ $article->name }}}</a>
                         </td>
-                        <td style="width:30%;">@include('edition.authors')</td>
-                        <td style="width:5%;">@include('article.pages')</td>
+                        <td style="width:27%;">@include('eng.edition.authors')</td>
+                        <td style="width:7%;">@include('article.pages')</td>
                     </tr>
                 @endforeach
                 </tbody>

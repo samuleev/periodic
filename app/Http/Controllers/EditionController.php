@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Dao\AlternativeDao;
 use App\Dao\ArticleDao;
 use App\Dao\JournalDao;
 use App\Dao\EditionDao;
 use App\Exceptions\NoElementException;
 use App\Service\ArticleService;
+use App\Service\EnglishService;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Response;
 
@@ -41,7 +43,10 @@ class EditionController extends Controller {
         }
 
         $articles = ArticleDao::findByEdition($edition->journal_edition_id);
-        $articles = ArticleService::getEnrichedArticles($articles);
+        $alternatives = AlternativeDao::findByEditionAndLanguage($edition->journal_edition_id, "eng");
+
+        EnglishService::mapAlternativesToArticles($articles, $alternatives);
+        EnglishService::renameCommonTitles($articles);
 
         return view('eng.edition.details')->with(array(
             'edition' => $edition,
