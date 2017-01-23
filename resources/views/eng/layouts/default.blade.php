@@ -6,7 +6,7 @@
     <a class="vw-site-logo-link" href="http://www.hups.mil.gov.ua">
         <!-- Site Logo -->
         <h1 class="vw-site-title">Ivan Kozhedub Kharkiv National Air Force University (KNAFU)</h1>
-        <h2 class="vw-site-tagline">Archive of scientific publications</h2>
+        <h2 class="vw-site-tagline">Scientific publications</h2>
     </a>
 @stop
 

@@ -9,8 +9,8 @@
 						</div></a>
 						<a class="vw-site-logo-link" href="http://www.hups.mil.gov.ua">
 							<!-- Site Logo -->		
-							<h1 class="vw-site-title">Харківський національний університет Повітряних Сил ім. І. Кожедуба</h1>
-							<h2 class="vw-site-tagline">Архiв наукових видань</h2>
+							<h1 class="vw-site-title">Харківський національний університет Повітряних Сил імені Івана Кожедуба</h1>
+							<h2 class="vw-site-tagline">Наукові видання</h2>
 						</a>
                         @show
 					</div>
@@ -43,6 +43,12 @@
                                     <span>Тематики</span>
                                 </a>
                             </li>
+                                <li class="periodic-nav-li periodic-item-nav-2">
+                                    <a href="{{{route('page.cooperation')}}}">
+                                        <i class="fa fa-folder"></i>
+                                        <span>Співпраця</span>
+                                    </a>
+                                </li>
                             <li class="periodic-nav-li periodic-item-nav-3">
                                 <a href="{{{route('search.index')}}}">
                                     <i class="fa fa-search"></i>

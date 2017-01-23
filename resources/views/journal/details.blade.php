@@ -133,7 +133,7 @@
                         </tr>
                         <tr>
                             <td style="width:33%;">
-                                <strong>Спеціальність ДАК:</strong>
+                                <strong>Галузь науки:</strong>
                             </td>
                             <td>
                                 {{{ $journal->dak_spec}}}
@@ -150,7 +150,7 @@
                         </tr>
                         <tr>
                             <td style="width:33%;">
-                                <strong>Відповідальні секретарі:</strong>
+                                <strong>Відповідальний секретар:</strong>
                             </td>
                             <td>
                                 {{{ $journal->executive_secretary}}}
@@ -158,10 +158,10 @@
                         </tr>
                         <tr>
                             <td style="width:33%;">
-                                <strong>Редакційна рада:</strong>
+                                <strong>Редакційна колегія:</strong>
                             </td>
                             <td>
-                                <i>{{{ $journal->editorial_board}}}</i>
+                                <i>{!! $journal->editorial_board !!}</i>
                             </td>
                         </tr>
                     </table>

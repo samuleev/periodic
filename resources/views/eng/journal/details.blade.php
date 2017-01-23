@@ -133,19 +133,18 @@
                         </tr>
                         <tr>
                             <td style="width:33%;">
-                                <strong>DAK speciality:</strong>
+                                <strong>Speciality:</strong>
                             </td>
                             <td>
                                 {{{ $journal->dak_spec_eng}}}
                             </td>
                         </tr>
-                        @endif
                         <tr>
                             <td style="width:33%;">
                                 <strong>Editor-in-Chief:</strong>
                             </td>
                             <td>
-                                {{{ $journal->chief_editor}}}
+                                {{{ $journal->chief_editor_eng}}}
                             </td>
                         </tr>
                         <tr>
@@ -153,7 +152,7 @@
                                 <strong>Executive Secretary:</strong>
                             </td>
                             <td>
-                                {{{ $journal->executive_secretary}}}
+                                {{{ $journal->executive_secretary_eng}}}
                             </td>
                         </tr>
                         <tr>
@@ -161,9 +160,10 @@
                                 <strong>Editorial Board:</strong>
                             </td>
                             <td>
-                                <i>{{{ $journal->editorial_board}}}</i>
+                                <i>{!! $journal->editorial_board_eng !!}</i>
                             </td>
                         </tr>
+                        @endif
                     </table>
                 </div>
             </div>

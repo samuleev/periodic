@@ -26,11 +26,13 @@
                 </div>
             </div>
             @foreach($journals as $index => $journal)
+                    @if($journal->publishing)
                     <div class="row top10">
                         <div class="col-md-12">
                             @include('journal.index_element')
                         </div>
                     </div>
+                    @endif
             @endforeach
         </div> {{-- container --}}
     @else

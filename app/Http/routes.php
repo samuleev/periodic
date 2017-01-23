@@ -43,3 +43,4 @@ Route::post('/search', array('uses' => 'SearchController@process', 'as' => 'sear
 Route::get('/referat-import', array('uses' => 'ReferatController@import', 'as' => 'referat-import.main'));
 Route::get('/oai', array('uses' => 'OaiController@main', 'as' => 'oai.main'));
 Route::post('/oai', array('uses' => 'OaiController@mainPost', 'as' => 'oai.mainPost'));
+Route::get('/cooperation', array('uses' => 'PageController@cooperation', 'as' => 'page.cooperation'));
