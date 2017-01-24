@@ -148,6 +148,14 @@
                             </td>
                         </tr>
                         <tr>
+                                <td style="width:33%;">
+                                    <strong>Deputy Editor-in-Chief:</strong>
+                                </td>
+                                <td>
+                                    {{{ $journal->deputy_editor_eng}}}
+                                </td>
+                        </tr>
+                        <tr>
                             <td style="width:33%;">
                                 <strong>Executive Secretary:</strong>
                             </td>

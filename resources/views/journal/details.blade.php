@@ -148,6 +148,14 @@
                                 {{{ $journal->chief_editor}}}
                             </td>
                         </tr>
+                            <tr>
+                                <td style="width:33%;">
+                                    <strong>Заступник головного редактора:</strong>
+                                </td>
+                                <td>
+                                    {{{ $journal->deputy_editor}}}
+                                </td>
+                            </tr>
                         <tr>
                             <td style="width:33%;">
                                 <strong>Відповідальний секретар:</strong>
