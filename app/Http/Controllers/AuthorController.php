@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\App;
 
 class AuthorController extends Controller {
 
+    public function top50() {
+        $authors = AuthorDao::getTop(50);
+        return view('author.top50')->with(array('authors' => $authors));
+    }
+
     public function show($authorId)
     {
         try {

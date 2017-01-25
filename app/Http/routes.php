@@ -28,6 +28,7 @@ Route::get('/import', array('uses' => 'ImportController@import', 'as' => 'import
 Route::get('/author', array('uses' => 'AuthorController@index', 'as' => 'author.index'));
 Route::get('/author/by_letter/{letter}', array('uses' => 'AuthorController@showByFirstSurnameLetter', 'as' => 'author.show_by_letter'))->where('letter', '[\w\W]{1,2}');
 Route::get('/author/{id}', array('uses' => 'AuthorController@show', 'as' => 'author.details'))->where('id', '[1-9][0-9]*');
+Route::get('/author/top50', array('uses' => 'AuthorController@top50', 'as' => 'author.top50'));
 Route::get('/year', array('uses' => 'YearController@index', 'as' => 'year.index'));
 Route::get('/year/{selectedYear}', array('uses' => 'ArticleController@byYear', 'as' => 'year.details'))->where(array('selectedYear' => '[1-2][0-9]{3}'));
 Route::get('/topic', array('uses' => 'TopicController@index', 'as' => 'topic.index'));
@@ -45,4 +46,5 @@ Route::get('/oai', array('uses' => 'OaiController@main', 'as' => 'oai.main'));
 Route::post('/oai', array('uses' => 'OaiController@mainPost', 'as' => 'oai.mainPost'));
 Route::get('/cooperation', array('uses' => 'PageController@cooperation', 'as' => 'page.cooperation'));
 Route::get('/scholar_update', array('uses' => 'PageController@scholar_update', 'as' => 'page.scholar_update'));
+
 

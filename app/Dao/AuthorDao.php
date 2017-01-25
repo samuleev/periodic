@@ -52,6 +52,17 @@ class AuthorDao implements Dao, CustomPaging {
         return $author[0];
     }
 
+    static function getTop($take) {
+        return DB::table('author')
+            ->select('author.author_id', 'author.surname', 'author.name', 'author.patronymic',
+                DB::raw('count(article_to_author.article_id) as number'))
+            ->join('article_to_author', 'author.author_id', '=', 'article_to_author.author_id')
+            ->groupby('author.author_id')
+            ->orderby(DB::raw('count(article_to_author.article_id)'), 'desc')
+            ->orderby('author.surname', 'asc')
+            ->skip(0)->take($take)->get();
+    }
+
     static function findByFirstSurnameLetter($letter)
     {
         return DB::table('author')

@@ -37,6 +37,12 @@
                                     <span>Автори</span>
                                 </a>
                             </li>
+                                <li class="periodic-nav-li periodic-item-nav-1">
+                                    <a href="{{{route('author.top50')}}}">
+                                        <i class="fa fa-trophy"></i>
+                                        <span>ТОП-50 авторів</span>
+                                    </a>
+                                </li>
                             <li class="periodic-nav-li periodic-item-nav-2">
                                 <a href="{{{route('topic.index')}}}">
                                     <i class="fa fa-folder"></i>
@@ -45,7 +51,7 @@
                             </li>
                                 <li class="periodic-nav-li periodic-item-nav-2">
                                     <a href="{{{route('page.cooperation')}}}">
-                                        <i class="fa fa-folder"></i>
+                                        <i class="fa fa-handshake-o"></i>
                                         <span>Співпраця</span>
                                     </a>
                                 </li>

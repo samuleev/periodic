@@ -2,8 +2,8 @@
 
 @section('seo_headers')
     <title>Перелік авторів видань Харківського університету Повітряних Сил</title>
-    <meta name="keywords" content="автор, наукове видання, хупс" >
-    <meta name="description" content="Перелік авторів видань Харківського університету Повітряних Сил" >
+    <meta name="keywords" content="автор, наукове видання, хнупс" >
+    <meta name="description" content="Перелік авторів видань Харківського національного університету Повітряних Сил" >
 @stop
 
 @section('bread_crumbs')
