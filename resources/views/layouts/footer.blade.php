@@ -4,7 +4,7 @@
 			<div class="col-sm-3 footer-phone-block">
 				<div class="row">
 					<div class="col-sm-2"><i class="fa fa-phone"></i></div>
-					<div class="col-sm-10"><span class="contact-phone-footer">057 700 21 65<br>057 704 96 45</span></div>
+					<div class="col-sm-10"><span class="contact-phone-footer">(067) 998 02 70<br>(057) 704 91 97</span></div>
 				</div>							
 			</div>
 			<div class="col-sm-3 footer-post-block">							
