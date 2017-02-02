@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\App;
 class AuthorController extends Controller {
 
     public function top50() {
-        $authors = AuthorDao::getTop(50);
+        $authors = AuthorDao::getTopCombined(50);
         return view('author.top50')->with(array('authors' => $authors));
     }
 
@@ -22,7 +22,7 @@ class AuthorController extends Controller {
         } catch (NoElementException $e) {
             App::abort(404, 'Author not found');
         }
-        $articles = ArticleDao::findByAuthor($authorId);
+        $articles = ArticleDao::findByAuthorCombined($authorId);
         $articles = ArticleService::getEnrichedArticles($articles);
 
         return view('author.details')->with(array('author' => $author, 'articles' => $articles));
