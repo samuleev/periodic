@@ -40,7 +40,9 @@ Route::get('/sitemap-author{page}.xml', array('uses' => 'SitemapController@autho
 Route::get('/sitemap-alternative{page}.xml', array('uses' => 'SitemapController@alternative', 'as' => 'sitemap.alternative'))->where('page', '[1-9][0-9]*');
 Route::get('/sitemap-misc.xml', array('uses' => 'SitemapController@misc', 'as' => 'sitemap.misc'));
 Route::get('/search', array('uses' => 'SearchController@index', 'as' => 'search.index'));
+Route::get('/search/eng', array('uses' => 'SearchController@index', 'as' => 'eng.search.index'));
 Route::post('/search', array('uses' => 'SearchController@process', 'as' => 'search.process'));
+Route::post('/search/eng', array('uses' => 'SearchController@process', 'as' => 'eng.search.process'));
 Route::get('/referat-import', array('uses' => 'ReferatController@import', 'as' => 'referat-import.main'));
 Route::get('/oai', array('uses' => 'OaiController@main', 'as' => 'oai.main'));
 Route::post('/oai', array('uses' => 'OaiController@mainPost', 'as' => 'oai.mainPost'));

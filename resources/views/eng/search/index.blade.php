@@ -1,19 +1,19 @@
-@extends('layouts.default')
+@extends('eng.layouts.default')
 
 @section('seo_headers')
-    <title>Пошук публікацій</title>
-    <meta name="keywords" content="науковий журнал, збірник наукових праць, технічні науки, військові науки">
-    <meta name="description" content="Пошук публікацій Харківського університету Повітряних Сил">
+    <title>Publication Search</title>
+    <meta name="keywords" content="Publication Search form KNAFU">
+    <meta name="description" content="Publication Search form KNAFU">
 @stop
 
 @section('bread_crumbs')
-    <li class="active">Пошук публікацій</li>
+    <li class="active">Publication Search</li>
 @stop
 
 @section('lang_switch')
-    <a style="color:#FFFFFF;text-decoration: none;" href="{{{route('eng.search.index')}}}" alt="English version">
-        <img src={{{ url('/public/img/eng.png') }}}>
-        ENG
+    <a style="color:#FFFFFF;text-decoration: none;" href="{{{route('search.index')}}}" alt="Українська версія">
+        <img src={{{ url('/public/img/ukr.png') }}}>
+        УКР
     </a>
 @stop
 
@@ -32,20 +32,20 @@
         @endif
         <div class="row">
             <div class="col-md-6">
-                <h4>Форма пошуку</h4>
-                <p>За допомогою форми пошуку є змога знайти публікації, що Вас зацікавили за мінімальну кількість часу.</p>
-                <p><strong>Вимоги до заповнення форми пошуку:</strong></p>
-                <p>Назва публікації - повне або часткове найменування публікації.</p>
-                <p>Прізвище автора - повне або часткове прізвище автора публікації.</p>
-                <p>Рік видання - рік коли було опубліковано у форматі "1988".</p>
-                <p><i>Для здійснення пошуку необхідно заповнити хоча б одне поле форми.</i></p>
+                <h4>Search form</h4>
+                <p>There is an opportunity to find the publication you are interested in with the help of Search Form.</p>
+                <p><strong>Search Form requirements:</strong></p>
+                <p>Title of the publication - full or partial title of publication.</p>
+                <p>Author’s surname - full or partial author’s surname of publication.</p>
+                <p>Year of publication - the year when the article was published must be in the format like "1988".</p>
+                <p><i>To make a search it is necessary to fill at least one field of the form.</i></p>
             </div>
             <div class="col-md-6 well">
                 <div class="row">
                     <div class="col-md-12">
-                        {!! Form::open(array('id' => 'searchForm', 'route' => 'search.process')) !!}
+                        {!! Form::open(array('id' => 'searchForm', 'route' => 'eng.search.process')) !!}
 
-                        {!! Form::label('name', 'Назва публікації', array('class'=>'control-label')) !!}
+                        {!! Form::label('name', 'Title of the publication', array('class'=>'control-label')) !!}
                         @if(isset($name))
                             {!! Form::text('name', $name, array('class'=>'form-control')) !!}
                         @else
@@ -56,7 +56,7 @@
 
                 <div class="row top10">
                     <div class="col-md-6">
-                        {!! Form::label('author', 'Прізвище автора', array('class'=>'control-label')) !!}
+                        {!! Form::label('author', 'Author’s surname', array('class'=>'control-label')) !!}
                         @if(isset($author))
                             {!! Form::text('author', $author, array('class'=>'form-control')) !!}
                         @else
@@ -64,7 +64,7 @@
                         @endif
                     </div>
                     <div class="col-md-6">
-                        {!! Form::label('year', 'Рік видання', array('class'=>'control-label')) !!}
+                        {!! Form::label('year', 'Date of publication', array('class'=>'control-label')) !!}
                         @if(isset($year))
                             {!! Form::text('year', $year, array('class'=>'form-control')) !!}
                         @else
@@ -75,7 +75,7 @@
 
                 <div class="row" style="margin-top:21px;">
                     <div class="col-md-12">
-                        {!! Form::submit('Почати пошук', array('class'=>'btn btn-default', 'style' => 'float: right;')) !!}
+                        {!! Form::submit('Search', array('class'=>'btn btn-default', 'style' => 'float: right;')) !!}
                         {!! Form::close() !!}
                     </div>
                 </div>
@@ -87,7 +87,7 @@
             <div class="row top10">
                 <div class="col-md-12 text-center" style="background: url(/public/img/icon-line.png) repeat-x;"><span style="font-size:20px;" class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
                 <div class="col-md-12" style="margin:21px 0 0 0;">
-                    <div class="alert alert-info" role="alert"><strong><i>За вказаними критеріями публікаціїй не знайдено.</i></strong></div>
+                    <div class="alert alert-info" role="alert"><strong><i>No publication found for defined criteria.</i></strong></div>
                 </div>
             </div>
         @endif
@@ -97,10 +97,10 @@
             <div class="row top10">
                     <table class="table table-hover">
                         <thead>
-                            <th style="text-align:center;">Назва публікації</th>
-                            <th style="text-align:center;">Автори публікації</th>
-                            <th style="text-align:center;">Назва журналу</th>
-                            <th style="text-align:center;">Рік / Випуск</th>
+                            <th style="text-align:center;">Title</th>
+                            <th style="text-align:center;">Authors</th>
+                            <th style="text-align:center;">Journal</th>
+                            <th style="text-align:center;">Year / Issue</th>
                         </thead>
                         <tbody>
                         @foreach($articles as $article)
