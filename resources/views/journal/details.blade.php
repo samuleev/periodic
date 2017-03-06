@@ -125,7 +125,7 @@
                         </tr>
                         <tr>
                             <td style="width:33%;">
-                                <strong>Реєстрація у ДАК України:</strong>
+                                <strong>Реєстрація у МОН України:</strong>
                             </td>
                             <td>
                                 {{{ $journal->dak_registration}}}

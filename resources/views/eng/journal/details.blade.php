@@ -125,7 +125,7 @@
                         </tr>
                         <tr>
                             <td style="width:33%;">
-                                <strong>Ukrainian DAK Registration:</strong>
+                                <strong>MES of Ukraine Registration:</strong>
                             </td>
                             <td>
                                 {{{ $journal->dak_registration_eng}}}
