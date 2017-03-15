@@ -11,6 +11,11 @@ class PageController extends Controller {
         return view('page.cooperation');
     }
 
+    public function cooperationEng()
+    {
+        return view('eng.page.cooperation');
+    }
+
     public function scholar_update()
     {
         ScholarUpdateService::updateScholar();

@@ -31,6 +31,12 @@
                                     <span>Видання</span>
                                 </a>
                             </li>
+                                <li class="periodic-nav-li periodic-item-nav-2">
+                                    <a href="{{{route('chapter.index')}}}">
+                                        <i class="fa fa-folder"></i>
+                                        <span>Тематика</span>
+                                    </a>
+                                </li>
                             <li class="periodic-nav-li periodic-item-nav-1">
                                 <a href="{{{route('author.index')}}}">
                                     <i class="fa fa-users"></i>
@@ -43,12 +49,6 @@
                                         <span>ТОП-50 авторів</span>
                                     </a>
                                 </li>
-                            <li class="periodic-nav-li periodic-item-nav-2">
-                                <a href="{{{route('chapter.index')}}}">
-                                    <i class="fa fa-folder"></i>
-                                    <span>Тематики</span>
-                                </a>
-                            </li>
                                 <li class="periodic-nav-li periodic-item-nav-2">
                                     <a href="{{{route('page.cooperation')}}}">
                                         <i class="fa fa-handshake-o"></i>

@@ -1,11 +1,11 @@
 @extends('layouts.default')
 
 @section('seo_headers')
-    <title>Тематики</title>
+    <title>Тематика</title>
 @stop
 
 @section('bread_crumbs')
-    <li class="active">Тематики</li>
+    <li class="active">Тематика</li>
 @stop
 
 @section('content')

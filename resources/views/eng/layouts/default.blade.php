@@ -17,6 +17,12 @@
             <span>Publications</span>
         </a>
     </li>
+    <li class="periodic-nav-li periodic-item-nav-1">
+        <a href="{{{route('eng.page.cooperation')}}}">
+            <i class="fa fa-handshake-o"></i>
+            <span>Cooperation</span>
+        </a>
+    </li>
     <li class="periodic-nav-li periodic-item-nav-3">
         <a href="{{{route('eng.search.index')}}}">
             <i class="fa fa-search"></i>
