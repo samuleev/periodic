@@ -42,7 +42,7 @@
                                     Requirements for articles
                                 </a>
                                 <br>
-                                <a target="_blank" href={{{ url('/public/data/review_blank_hnups.pdf') }}}>
+                                <a target="_blank" href={{{ url('/public/data/review_blank_hnups_eng.pdf') }}}>
                                     <img src={{{ url('/public/img/pdf_icon-20.png') }}} />
                                     Review blank
                                 </a>

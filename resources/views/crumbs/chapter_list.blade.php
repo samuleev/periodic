@@ -1,0 +1,1 @@
+<a href="{{{route('chapter.index')}}}">Тематики</a>

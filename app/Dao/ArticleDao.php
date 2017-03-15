@@ -95,6 +95,16 @@ class ArticleDao implements Dao, CustomPaging {
             ->orderByRaw("name COLLATE utf8_unicode_ci ASC")->paginate($pageSize);
     }
 
+    static function findByChapterPaginated($chapterId, $pageSize)
+    {
+        return self::getArticleContentPredicat()
+            ->join('topic_to_chapter', 'topic_to_chapter.topic_id', '=', 'article.topic_id')
+            ->whereNotNull('article.language')
+            ->where('chapter_id', $chapterId)
+            ->orderByRaw("article.name COLLATE utf8_unicode_ci ASC")
+            ->paginate($pageSize);
+    }
+
     static function findByAuthor($authorId)
     {
         return DB::table('article')

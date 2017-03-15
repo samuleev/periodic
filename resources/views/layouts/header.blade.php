@@ -44,7 +44,7 @@
                                     </a>
                                 </li>
                             <li class="periodic-nav-li periodic-item-nav-2">
-                                <a href="{{{route('topic.index')}}}">
+                                <a href="{{{route('chapter.index')}}}">
                                     <i class="fa fa-folder"></i>
                                     <span>Тематики</span>
                                 </a>
