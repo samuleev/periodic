@@ -18,6 +18,12 @@
         </a>
     </li>
     <li class="periodic-nav-li periodic-item-nav-1">
+        <a href="{{{route('eng.chapter.index')}}}">
+            <i class="fa fa-folder"></i>
+            <span>Subjects</span>
+        </a>
+    </li>
+    <li class="periodic-nav-li periodic-item-nav-1">
         <a href="{{{route('eng.page.cooperation')}}}">
             <i class="fa fa-handshake-o"></i>
             <span>Cooperation</span>

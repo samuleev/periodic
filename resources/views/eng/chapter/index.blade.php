@@ -1,17 +1,17 @@
-@extends('layouts.default')
+@extends('eng.layouts.default')
 
 @section('seo_headers')
-    <title>Тематика</title>
+    <title>Subjects</title>
 @stop
 
 @section('bread_crumbs')
-    <li class="active">Тематика</li>
+    <li class="active">Subjects</li>
 @stop
 
 @section('lang_switch')
-    <a style="color:#FFFFFF;text-decoration: none;" href="{{{route('eng.chapter.index')}}}" alt="English version">
-        <img src={{{ url('/public/img/eng.png') }}}>
-        ENG
+    <a style="color:#FFFFFF;text-decoration: none;" href="{{{ route('chapter.index') }}}" alt="Українська версія">
+        <img src={{{ url('/public/img/ukr.png') }}}>
+        УКР
     </a>
 @stop
 
@@ -21,7 +21,7 @@
         <br>
         @foreach($journals as $journalIndex => $journal)
             @if($journal->publishing)
-                @include('chapter.single')
+                @include('eng.chapter.single')
             @endif
         @endforeach
         </div>

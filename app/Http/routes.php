@@ -50,6 +50,7 @@ Route::get('/cooperation', array('uses' => 'PageController@cooperation', 'as' =>
 Route::get('/cooperation/eng', array('uses' => 'PageController@cooperationEng', 'as' => 'eng.page.cooperation'));
 Route::get('/scholar_update', array('uses' => 'PageController@scholar_update', 'as' => 'page.scholar_update'));
 Route::get('/chapter', array('uses' => 'ChapterController@index', 'as' => 'chapter.index'));
+Route::get('/chapter/eng', array('uses' => 'ChapterController@indexEng', 'as' => 'eng.chapter.index'));
 Route::get('/chapter/{id}', array('uses' => 'ChapterController@show', 'as' => 'chapter.details'))->where('id', '[1-9][0-9]*');
 
 

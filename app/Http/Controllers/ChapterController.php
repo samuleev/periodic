@@ -12,12 +12,19 @@ class ChapterController extends Controller {
 
     const PAGE_SIZE = 50;
 
-    public function index()
-    {
+    public function index() {
+        return self::baseIndex('chapter.index');
+    }
+
+    public function indexEng() {
+        return self::baseIndex('eng.chapter.index');
+    }
+
+    private function baseIndex($viewName) {
         $chapters = ChapterDao::findAll();
         $journals = JournalDao::findAll();
         self::assignChaptersToJournals($chapters, $journals);
-        return view('chapter.index')->with(array('journals' => $journals));
+        return view($viewName)->with(array('journals' => $journals));
     }
 
     private function assignChaptersToJournals($chapters, $journals) {
@@ -36,7 +43,7 @@ class ChapterController extends Controller {
         } catch (NoElementException $e) {
             App::abort(404, 'Topic not found');
         }
-        $articles = ArticleDao::findByTopicPaginated($chapterId, self::PAGE_SIZE);
+        $articles = ArticleDao::findByChapterPaginated($chapterId, self::PAGE_SIZE);
         return view('chapter.details')->with(array('chapter' => $chapter,
             'articles' => $articles));
     }
