@@ -14,7 +14,7 @@ Version: 1.0
  * Main Stylesheets
  * -------------------------------------------------------------------------- */
 body{
-    font-family: Arial, Helvetica, sans-serif,Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 400;
     font-style: normal;
     color: #777777;
@@ -212,5 +212,12 @@ body{
 
 
 /* -----------------------------------------------------------------------------
- * Search
+ * Fonts
  * -------------------------------------------------------------------------- */
+@font-face {
+    font-family: 'digital_counter_7regular';
+    src: url('/periodic-app/public/fonts/digital_counter_7-webfont.woff2') format('woff2'),
+    url('/periodic-app/public/fonts/digital_counter_7-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

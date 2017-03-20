@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dao\ArticleDao;
 use App\Dao\JournalDao;
 use App\Dao\EditionDao;
 use App\Exceptions\NoElementException;
@@ -19,13 +20,15 @@ class JournalController extends Controller
     public function index()
     {
         $journals = JournalDao::findAll();
-        return view('journal.index', compact('journals'));
+        $articleCount = ArticleDao::countContent();
+        return view('journal.index')->with(array('journals' => $journals, 'articleCount' => $articleCount->article_count));
     }
 
     public function indexEng()
     {
         $journals = JournalDao::findAll();
-        return view('eng.journal.index', compact('journals'));
+        $articleCount = ArticleDao::countContent();
+        return view('eng.journal.index')->with(array('journals' => $journals, 'articleCount' => $articleCount->article_count));
     }
 
     public function show($prefix)

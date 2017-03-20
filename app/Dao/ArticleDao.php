@@ -165,4 +165,15 @@ class ArticleDao implements Dao, CustomPaging {
             ->where('name', $name)
             ->orderby('sort_order')->get();
     }
+
+    static function countContent()
+    {
+        $count = DB::table('article')->select(DB::raw('count(article.article_id) as article_count'))
+            ->join('topic', 'topic.topic_id', '=', 'article.topic_id')
+            ->where('topic.name', '!=', 'special')
+            ->get();
+
+        return DaoUtil::returnSingleElement($count);
+    }
+
 }
