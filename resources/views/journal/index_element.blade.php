@@ -48,12 +48,20 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <strong>Наукометричні показники (<i><small>на  {{{ $journal->index_update }}}</small></i>):</strong>
-                                <br><br>
-                                <small>«quotation» = {{{ $journal->quotation }}} <br> індекс Хірша h = {{{ $journal->h_index }}} <br> індекс i10 = {{{ $journal->i10 }}}</small>
+                                <strong>Наукометричні показники:</strong>
+                                <br>
+                                @if($journal->google_metric)
+                                    <br>
+                                    <small>
+                                    <a href="https://scholar.google.com.ua/citations?view_op=top_venues&hl=en&vq=uk">
+                                        Google Scholar Top 100 publications (Ukrainian)
+                                    </a>
+                                     – {{{ $journal->google_metric }}}</small>
+                                @endif
 
                                 @if($journal->icv)
-                                    <br><small>ICV (Index Copernicus Value) – {{{ $journal->icv }}}</small>
+                                    <br>
+                                    <small>ICV (Index Copernicus Value) – {{{ $journal->icv }}}</small>
                                 @endif
 
                                 <br><br>

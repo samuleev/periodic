@@ -29,7 +29,11 @@ class SearchService {
             $baseQuery = $baseQuery->where('journal_edition.issue_year', '=', $year);
         }
 
-        $articlesPaginator = $baseQuery->orderby('article.article_id')->paginate($pageSize);
+        $baseQuery = $baseQuery->orderby('journal_edition.issue_year', 'desc')
+            ->orderby('journal.sort_order', 'desc')
+            ->orderby('journal_edition.number_in_year', 'desc');
+
+        $articlesPaginator = $baseQuery->paginate($pageSize);
 
         return self::enreachPaginator($articlesPaginator);
 

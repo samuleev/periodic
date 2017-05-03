@@ -192,15 +192,17 @@
             </div>
             @endif
 
+            @if(count($article->authors)>0)
             <div class="row top10">
                 <div class="col-md-12">
                     <small>
                     <i>Бібліографічний опис для цитування:</i><br>
                     {{{$firstAuthor}}}
-                    {{{$article->name}}}&nbsp;@if(count($article->authors)>0)/&nbsp;@include('article.authors')&nbsp;@endif// {{{ $journal->name }}}. — {{{$edition->issue_year}}}. — № {{{$edition->number_in_year}}}. @include('article.pages_prefix')
+                    {{{$article->name}}}&nbsp;/&nbsp;@include('article.authors')&nbsp;// {{{ $journal->name }}}. — {{{$edition->issue_year}}}. — № {{{$edition->number_in_year}}}. @include('article.pages_prefix')
                     </small>
                 </div>
             </div>
+            @endif
 
         </div>
 
