@@ -57,10 +57,10 @@
                                 @endif
 
                                 <br><br>
-                                <a href="{{{ $journal->google_scholar }}}" target="_blank">
-                                    <img src={{{ url('/public/img/google-scholar-20.jpg') }}} />
-                                    Distribution «quotation» (Google Scholar)
-                                </a>
+                                {{--<a href="{{{ $journal->google_scholar }}}" target="_blank">--}}
+                                    {{--<img src={{{ url('/public/img/google-scholar-20.jpg') }}} />--}}
+                                    {{--Distribution «quotation» (Google Scholar)--}}
+                                {{--</a>--}}
                             </div>
                         </div>
                     </div>

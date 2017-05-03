@@ -14,22 +14,23 @@
     @if(count($journals))
         <div class="container main-content">
             <div class="row" style="margin-top:21px;">
-                <div class="col-md-3">
-                    <div style="border:1px solid darkgrey;">
-                    <br>
-                    <br>
-                    <div>
-                        <p style="text-align:center; font-weight: bold">Загальна кількість публікацій</p>
-                        <p style="letter-spacing: 1px; font-family: digital_counter_7regular; font-size: 60px; color: #000000; background-color: #ddddff; text-align:center">{{{$articleCount}}}</p>
-                        <p style="text-align:center; font-weight: bold">з 1996 року</p>
-                    </div>
-                        <br>
-                        <br>
-                    </div>
-
-                    {{--<img src={{{ url('/public/img/archive-title-img.jpg') }}}>--}}
+                <div class="col-md-4">
+                    {{--<div style="border:1px solid darkgrey;">--}}
+                    {{--<br>--}}
+                    {{--<br>--}}
+                    {{--<div>--}}
+                        {{--<p style="text-align:center; font-weight: bold">Загальна кількість публікацій</p>--}}
+                        {{--<p style="letter-spacing: 1px; font-family: digital_counter_7regular; font-size: 60px; color: #000000; background-color: #ddddff; text-align:center">{{{$articleCount}}}</p>--}}
+                        {{--<p style="text-align:center; font-weight: bold">з 1996 року</p>--}}
+                    {{--</div>--}}
+                        {{--<br>--}}
+                        {{--<br>--}}
+                    {{--</div>--}}
+                    <a href="{{{ url('/public/img/certificate_001.jpg') }}}" target="_blank">
+                        <img src={{{ url('/public/img/certificate_001_s.jpg') }}}>
+                    </a>
                 </div>
-                <div class="col-md-9" style="margin-bottom:21px;">
+                <div class="col-md-8" style="margin-bottom:21px;">
                     <p style="text-align:justify;">Усі наукові видання університету мають державну реєстрацію та входять до <a href="http://old.mon.gov.ua/ua/activity/563/perelik-naukovikh-fakhovikh-vidan/6797/" target="_blank">„Переліку наукових фахових видань України, в яких можуть публікуватися результати дисертаційних робіт на здобуття наукових ступенів доктора і кандидата наук”</a>.</p>
                     <p style="text-align:justify;">Реферативна інформація зберігається у загальнодержавній реферативній базі даних Державної бібліотеки імені Вернадського „Україніка наукова” та публікується у відповідних тематичних серіях журналу „Джерело”.</p>
                     <p style="text-align:justify;">Видання індексуються міжнародними бібліометричними та наукометричними базами даних: Academic Resource Index, Google Scholar, Index Copernicus, Open Academic Journals Index, Scientific Indexed Service, Universal Impact Factor.</p>

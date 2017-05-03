@@ -37,6 +37,10 @@
     </li>
 @stop
 
+@section('crumbs_root')
+    <li><a href="http://www.hups.mil.gov.ua/nauka/">Science</a></li>
+@overwrite
+
 @section('footer_address')
     Kharkiv (61023)<br> Sumska street 77/79
 @stop

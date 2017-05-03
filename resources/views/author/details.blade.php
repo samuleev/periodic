@@ -49,17 +49,39 @@
                     <b>Публікації автора</b>
                 </div>
             </div>
-            @foreach($articles as $index => $article)
-            <div class="row top10">
-                <div class="col-md-1" style="width: 20px">
-                    {{{ $index + 1 }}}.
+                <div class="row top10">
+                    <div class="col-md-12">
+                        <table class="table table-hover">
+                            <thead>
+                            <th style="text-align:center;">Назва публікації</th>
+                            <th style="text-align:center;">Автори публікації</th>
+                            <th style="text-align:center;">Назва журналу</th>
+                            <th style="text-align:center;">Рік / Випуск</th>
+                            </thead>
+                            <tbody>
+                            @foreach($articles as $article)
+                                <tr>
+                                    <td style="width:45%;"><i><a href="{{{ route('article.details', array($article->article_id)) }}}">{{{ $article->name.'.' }}}</a></i></td>
+                                    <td style="width:20%;"><small>@if(count($article->authors)>0) @include('article.authors') @endif</small></td>
+                                    <td style="width:25%;"><small>{{{ $article->journal_name }}}</small></td>
+                                    <td style="width:15%;"><small><strong>{{{$article->edition_issue_year}}}</strong></small> / <small><strong>№ {{{$article->edition_number_in_year}}}</strong></small></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="col-md-7">
-                    <a href="{{{ route('article.details', array($article->article_id)) }}}">{{{ $article->name.'.' }}}</a>
-                    /&nbsp;@include('edition.authors')
-                </div>
-            </div>
-            @endforeach
+            {{--@foreach($articles as $index => $article)--}}
+            {{--<div class="row top10">--}}
+                {{--<div class="col-md-1" style="width: 20px">--}}
+                    {{--{{{ $index + 1 }}}.--}}
+                {{--</div>--}}
+                {{--<div class="col-md-7">--}}
+                    {{--<a href="{{{ route('article.details', array($article->article_id)) }}}">{{{ $article->name.'.' }}}</a>--}}
+                    {{--/&nbsp;@include('edition.authors')--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--@endforeach--}}
        </div>
 
     @else
