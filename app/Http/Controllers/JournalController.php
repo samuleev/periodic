@@ -43,13 +43,30 @@ class JournalController extends Controller
 
     private function showPattern($prefix, $view)
     {
+        $journal = self::getJournal($prefix);
+        $issueYears = EditionDao::listYears($journal->journal_id);
+        return view($view)->with(array('journal' => $journal, 'issueYears' => $issueYears));
+    }
+
+    public function editor($prefix)
+    {
+        $journal = self::getJournal($prefix);
+        return view('journal.editor')->with(array('journal' => $journal));
+    }
+
+    public function editorEng($prefix)
+    {
+        $journal = self::getJournal($prefix);
+        return view('eng.journal.editor')->with(array('journal' => $journal));
+    }
+
+    private function getJournal($prefix)
+    {
         try {
-            $journal = JournalDao::findByPrefix($prefix);
+            return JournalDao::findByPrefix($prefix);
         } catch (NoElementException $e) {
             App::abort(404, 'Journal not found');
         }
-        $issueYears = EditionDao::listYears($journal->journal_id);
-        return view($view)->with(array('journal' => $journal, 'issueYears' => $issueYears));
     }
 }
 

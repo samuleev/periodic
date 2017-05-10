@@ -144,7 +144,7 @@
                                 <strong>Editor-in-Chief:</strong>
                             </td>
                             <td>
-                                {{{ $journal->chief_editor_eng}}}
+                                <a href="{{{route('eng.journal.editor', array($journal->prefix))}}}">{{{ $journal->chief_editor_eng}}}</a>
                             </td>
                         </tr>
                         <tr>

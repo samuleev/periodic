@@ -145,7 +145,7 @@
                                 <strong>Головний редактор:</strong>
                             </td>
                             <td>
-                                {{{ $journal->chief_editor}}}
+                                <a href="{{{route('journal.editor', array($journal->prefix))}}}">{{{ $journal->chief_editor}}}</a>
                             </td>
                         </tr>
                             <tr>

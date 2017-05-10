@@ -21,6 +21,8 @@ Route::get('/journal/{prefix}/{selectedYear}/eng', array('uses' => 'EditionContr
 Route::get('/journal/{prefix}/{selectedYear}/{number}', array('uses' => 'EditionController@show', 'as' => 'edition.details'))->where(array('prefix' => '[a-z]*', 'selectedYear' => '[1-2][0-9]{3}', 'number' => '[1-9][0-9]*'));
 Route::get('/journal/{prefix}/{selectedYear}/{number}/eng', array('uses' => 'EditionController@showEng', 'as' => 'eng.edition.details'))->where(array('prefix' => '[a-z]*', 'selectedYear' => '[1-2][0-9]{3}', 'number' => '[1-9][0-9]*'));
 Route::get('/journal/{prefix}/{selectedYear}/{number}/raw', array('uses' => 'EditionController@raw', 'as' => 'edition.raw'))->where(array('prefix' => '[a-z]*', 'selectedYear' => '[1-2][0-9]{3}', 'number' => '[1-9][0-9]*'));
+Route::get('/journal/{prefix}/editor', array('uses' => 'JournalController@editor', 'as' => 'journal.editor'))->where('prefix', '[a-z]*');
+Route::get('/journal/{prefix}/editor/eng', array('uses' => 'JournalController@editorEng', 'as' => 'eng.journal.editor'))->where('prefix', '[a-z]*');
 Route::get('/article/{id}', array('uses' => 'ArticleController@show', 'as' => 'article.details'))->where('id', '[1-9][0-9]*');
 Route::get('/article/{id}/{language}', array('uses' => 'ArticleController@alternative', 'as' => 'alternative.details'))->where(array('id' => '[1-9][0-9]*', 'language' => 'ukr|rus|eng'));
 Route::get('/article/{id}/{fileName}', array('uses' => 'ArticleController@download', 'as' => 'article.download'))->where('id', '[1-9][0-9]*');
