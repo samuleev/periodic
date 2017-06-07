@@ -45,7 +45,7 @@
                     {{{ $journal->founders_eng}}}, {{{ $journal->founded}}}.
                     <br><br>
                     @if($journal->publishing)
-                    <strong>Publication frequency:</strong><br>
+                    <strong>Publication frequency:</strong>
                         Published {{{ $journal->period_eng}}}
                     <br><br>
                     <strong>ISSN:</strong>&nbsp
@@ -60,8 +60,13 @@
                         <strong>Publication is terminated</strong>
                         <br><br>
                     @endif
-                    <strong>Subject:</strong><br>
+                    <strong>Subject:</strong>
                     <i>{{{ $journal->subject_eng}}}</i>
+                    <br><br>
+                    <a target="_blank" href={{{ url('/public/data/submission-guidelines-eng.pdf') }}}>
+                        <img src={{{ url('/public/img/pdf_icon.ico') }}} />
+                        Requirements for articles
+                    </a>
                  </div>
             </div>
 

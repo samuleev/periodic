@@ -45,7 +45,7 @@
                     {{{ $journal->founders}}}, {{{ $journal->founded}}}.
                     <br><br>
                     @if($journal->publishing)
-                    <strong>Періодичність видання:</strong><br>
+                    <strong>Періодичність видання:</strong>
                     Виходить {{{ $journal->period}}}
                     <br><br>
                     <strong>ISSN:</strong>&nbsp
@@ -60,8 +60,15 @@
                         <strong>Видання припинено</strong>
                         <br><br>
                     @endif
-                    <strong>Тематика:</strong><br>
+                    <strong>Тематика:</strong>
                     <i>{{{ $journal->subject}}}</i>
+                    <br><br>
+
+                    <a target="_blank" href={{{ url('/public/data/submission-guidelines.pdf') }}}>
+                        <img src={{{ url('/public/img/pdf_icon.ico') }}} />
+                        Вимоги до оформлення статей
+                    </a>
+
                  </div>
             </div>
 
