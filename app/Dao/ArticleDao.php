@@ -119,7 +119,10 @@ class ArticleDao implements Dao, CustomPaging {
             ->join('article_to_author', 'article_to_author.article_id', '=', 'article.article_id')
             ->whereRaw('article_to_author.author_id in (select author_lang.author_lang_id from author_lang where author_lang.author_id = '. $authorId .')')
             ->orWhere('article_to_author.author_id', $authorId)
-            ->orderByRaw("article.name COLLATE utf8_unicode_ci ASC")->get();
+            ->orderby('journal_edition.issue_year', 'desc')
+            ->orderby('journal.sort_order', 'desc')
+            ->orderby('journal_edition.number_in_year', 'desc')
+            ->get();
     }
 
     static function findById($id)
