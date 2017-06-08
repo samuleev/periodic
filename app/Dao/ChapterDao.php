@@ -18,4 +18,9 @@ class ChapterDao {
         return DaoUtil::returnSingleElement($chapter);
     }
 
+    static function findByJournal($journal_id) {
+        return DB::table('chapter')
+            ->where('journal_id', $journal_id)
+            ->orderby('sort_order')->get();
+    }
 }

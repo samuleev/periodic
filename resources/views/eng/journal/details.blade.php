@@ -61,7 +61,8 @@
                         <br><br>
                     @endif
                     <strong>Subject:</strong>
-                    <i>{{{ $journal->subject_eng}}}</i>
+                    <i>{{{ $journal->subject_eng}}};</i>
+                    &nbsp;<a href={{{route('eng.chapter.journal', $journal->prefix)}}}>details</a>
                     <br><br>
                     <a target="_blank" href={{{ url('/public/data/submission-guidelines-eng.pdf') }}}>
                         <img src={{{ url('/public/img/pdf_icon.ico') }}} />

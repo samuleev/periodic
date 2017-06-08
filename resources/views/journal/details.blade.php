@@ -61,7 +61,8 @@
                         <br><br>
                     @endif
                     <strong>Тематика:</strong>
-                    <i>{{{ $journal->subject}}}</i>
+                    <i>{{{ $journal->subject}}};</i>
+                    &nbsp;<a href={{{route('chapter.journal', $journal->prefix)}}}>детальніше</a>
                     <br><br>
 
                     <a target="_blank" href={{{ url('/public/data/submission-guidelines.pdf') }}}>

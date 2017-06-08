@@ -47,4 +47,24 @@ class ChapterController extends Controller {
         return view('chapter.details')->with(array('chapter' => $chapter,
             'articles' => $articles));
     }
+
+    public function byJournal($prefix) {
+        return self::baseByJournal('chapter.journal', $prefix);
+    }
+
+    public function byJournalEng($prefix) {
+        return self::baseByJournal('eng.chapter.journal', $prefix);
+    }
+
+    private function baseByJournal($viewName, $prefix) {
+        $journal = JournalController::getJournal($prefix);
+        $journals = array();
+        $journals[] = $journal;
+
+        $chapters = ChapterDao::findByJournal($journal->journal_id);
+
+        self::assignChaptersToJournals($chapters, $journals);
+        return view($viewName)->with(array('journal' => $journals[0]));
+    }
+
 }

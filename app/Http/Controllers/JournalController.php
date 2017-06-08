@@ -60,7 +60,7 @@ class JournalController extends Controller
         return view('eng.journal.editor')->with(array('journal' => $journal));
     }
 
-    private function getJournal($prefix)
+    public static function getJournal($prefix)
     {
         try {
             return JournalDao::findByPrefix($prefix);
@@ -68,5 +68,6 @@ class JournalController extends Controller
             App::abort(404, 'Journal not found');
         }
     }
+
 }
 
