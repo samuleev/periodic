@@ -61,8 +61,8 @@
                         <br><br>
                     @endif
                     <strong>Тематика:</strong>
-                    <i>{{{ $journal->subject}}};</i>
-                    &nbsp;<a href={{{route('chapter.journal', $journal->prefix)}}}>детальніше</a>
+                    <i>{{{ $journal->subject}}}&nbsp;(<a href={{{route('chapter.journal', $journal->prefix)}}}>перелік тематик</a>);</i>
+
                     <br><br>
 
                     <a target="_blank" href={{{ url('/public/data/submission-guidelines.pdf') }}}>
@@ -178,6 +178,14 @@
                             </td>
                             <td>
                                 <i>{!! $journal->editorial_board !!}</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:33%;">
+                                <strong>Зовнішні рецензенти:</strong>
+                            </td>
+                            <td>
+                                <i>{!! $journal->external_reviewers !!}</i>
                             </td>
                         </tr>
                     </table>

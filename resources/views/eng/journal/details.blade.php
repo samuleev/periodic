@@ -61,8 +61,7 @@
                         <br><br>
                     @endif
                     <strong>Subject:</strong>
-                    <i>{{{ $journal->subject_eng}}};</i>
-                    &nbsp;<a href={{{route('eng.chapter.journal', $journal->prefix)}}}>details</a>
+                    <i>{{{ $journal->subject_eng}}}&nbsp;(<a href={{{route('eng.chapter.journal', $journal->prefix)}}}>subjects list</a>);</i>
                     <br><br>
                     <a target="_blank" href={{{ url('/public/data/submission-guidelines-eng.pdf') }}}>
                         <img src={{{ url('/public/img/pdf_icon.ico') }}} />
@@ -177,6 +176,14 @@
                                 <i>{!! $journal->editorial_board_eng !!}</i>
                             </td>
                         </tr>
+                            <tr>
+                                <td style="width:33%;">
+                                    <strong>External reviewers:</strong>
+                                </td>
+                                <td>
+                                    <i>{!! $journal->external_reviewers_eng !!}</i>
+                                </td>
+                            </tr>
                         @endif
                     </table>
                 </div>
