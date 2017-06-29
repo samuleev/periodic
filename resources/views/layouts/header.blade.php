@@ -49,6 +49,12 @@
                                         <span>ТОП-50 авторів</span>
                                     </a>
                                 </li>
+                                <li class="periodic-nav-li periodic-item-nav-1">
+                                    <a href="{{{route('article.top')}}}">
+                                        <i class="fa fa-star"></i>
+                                        <span>ТОП-50 публікацій</span>
+                                    </a>
+                                </li>
                                 <li class="periodic-nav-li periodic-item-nav-2">
                                     <a href="{{{route('page.cooperation')}}}">
                                         <i class="fa fa-handshake-o"></i>

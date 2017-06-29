@@ -105,7 +105,7 @@
                         <tbody>
                         @foreach($articles as $article)
                                 <tr>
-                                    <td style="width:45%;"><i><a href="{{{ route('article.details', array($article->article_id)) }}}">{{{ $article->name.'.' }}}</a></i></td>
+                                    <td style="width:45%;"><i><a href="{{{ route('article.details', array($article->article_id)) }}}">{{{ $article->name }}}</a></i></td>
                                     <td style="width:20%; text-align:center;"><small>@if(count($article->authors)>0) @include('article.authors') @endif</small></td>
                                     <td style="width:25%; text-align:center;"><small>{{{ $article->journal_name }}}</small></td>
                                     <td style="width:15%; text-align:center;"><small><strong>{{{$article->issue_year}}}</strong></small> / <small><strong>№ {{{$article->number_in_year}}}</strong></small></td>

@@ -28,6 +28,8 @@ Route::get('/journal/{prefix}/chapter/eng', array('uses' => 'ChapterController@b
 Route::get('/article/{id}', array('uses' => 'ArticleController@show', 'as' => 'article.details'))->where('id', '[1-9][0-9]*');
 Route::get('/article/{id}/{language}', array('uses' => 'ArticleController@alternative', 'as' => 'alternative.details'))->where(array('id' => '[1-9][0-9]*', 'language' => 'ukr|rus|eng'));
 Route::get('/article/{id}/{fileName}', array('uses' => 'ArticleController@download', 'as' => 'article.download'))->where('id', '[1-9][0-9]*');
+Route::get('/article/top', array('uses' => 'ArticleController@top', 'as' => 'article.top'));
+//Route::get('/article/top/eng', array('uses' => 'ArticleController@topEng', 'as' => 'eng.article.top'));
 Route::get('/import', array('uses' => 'ImportController@import', 'as' => 'import.main'));
 Route::get('/author', array('uses' => 'AuthorController@index', 'as' => 'author.index'));
 Route::get('/author/by_letter/{letter}', array('uses' => 'AuthorController@showByFirstSurnameLetter', 'as' => 'author.show_by_letter'))->where('letter', '[\w\W]{1,2}');

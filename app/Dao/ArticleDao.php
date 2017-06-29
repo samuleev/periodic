@@ -7,6 +7,18 @@ use Illuminate\Support\Facades\DB;
 
 class ArticleDao implements Dao, CustomPaging {
 
+    static function getArticlesByIds($ids) {
+        return self::getArticleContentPredicat()
+            ->whereIn('article.article_id', $ids)
+//            ->orderByRaw("case
+//    when article.article_id = 17599 then 1
+//    when article.article_id = 17598 then 2
+//    when article.article_id = 17597 then 3
+//    else 4
+//    end")
+            ->get();
+    }
+
     static function findContentCustomPaginated($skip, $take, $from, $until)
     {
         return self::getArticleContentPredicat()

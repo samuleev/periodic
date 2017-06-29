@@ -105,4 +105,29 @@ class ArticleController extends Controller {
             'articles' => $articles));
     }
 
+    public function top() {
+        $lines = file(public_path().'/data/'.'top-articles.txt');
+        $ids = array();
+        foreach($lines as $line) {
+            $trimmedLine = trim($line);
+            if (is_numeric($trimmedLine)) {
+                $ids[] = $trimmedLine;
+            }
+        }
+
+        $articles = ArticleDao::getArticlesByIds($ids);
+        $articles = ArticleService::getEnrichedArticles($articles);
+
+        $sortedArticles = array();
+        foreach($ids as $id) {
+            foreach ($articles as $article) {
+                if ($article->article_id == $id) {
+                    $sortedArticles[] = $article;
+                }
+            }
+        }
+
+        return view('article.top')->with(array('articles' => $sortedArticles));
+    }
+
 }
