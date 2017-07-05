@@ -157,7 +157,7 @@
                                     <strong>Deputy Editor-in-Chief:</strong>
                                 </td>
                                 <td>
-                                    {{{ $journal->deputy_editor_eng}}}
+                                    <a href="{{{route('eng.journal.deputy-editor', array($journal->prefix))}}}">{{{ $journal->deputy_editor_eng}}}</a>
                                 </td>
                         </tr>
                         <tr>

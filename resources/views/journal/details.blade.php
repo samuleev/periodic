@@ -161,7 +161,7 @@
                                     <strong>Заступник головного редактора:</strong>
                                 </td>
                                 <td>
-                                    {{{ $journal->deputy_editor}}}
+                                    <a href="{{{route('journal.deputy-editor', array($journal->prefix))}}}">{{{ $journal->deputy_editor}}}</a>
                                 </td>
                             </tr>
                         <tr>

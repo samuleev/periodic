@@ -60,6 +60,18 @@ class JournalController extends Controller
         return view('eng.journal.editor')->with(array('journal' => $journal));
     }
 
+    public function deputyEditor($prefix)
+    {
+        $journal = self::getJournal($prefix);
+        return view('journal.deputy-editor')->with(array('journal' => $journal));
+    }
+
+    public function deputyEditorEng($prefix)
+    {
+        $journal = self::getJournal($prefix);
+        return view('eng.journal.deputy-editor')->with(array('journal' => $journal));
+    }
+
     public static function getJournal($prefix)
     {
         try {
