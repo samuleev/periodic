@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('seo_headers')
-    <title>{{{ $journal->chief_editor }}}</title>
+    <title>{{{ $journal->deputy_editor }}}</title>
     <meta name="keywords" content="{{{ $journal->deputy_editor}}}" >
     <meta name="description" content="Заступник головного редактора {{{ $journal->name}}}" >
 @stop
