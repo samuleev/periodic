@@ -3,14 +3,12 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     @yield('seo_headers')
-    <!-- Bootstrap 3.3.2 -->
-    <link href="{{ asset('/public/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- Main Stylesheets -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="{{ asset('/public/css/main.css') }}" rel="stylesheet" type="text/css" />
-    <!-- JQuery Core JavaScript -->
-    <script async src="{{ asset('/public/js/jquery-1.11.3.min.js') }}"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script async src="{{ asset('/public/js/bootstrap.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <!-- Awesome Icons -->
     <link rel="stylesheet" href="{{ asset('/public/css/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <link rel="shortcut icon" href={{{ url('/public/img/favicon.png') }}}>

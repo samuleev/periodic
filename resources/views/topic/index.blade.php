@@ -12,7 +12,7 @@
     @if(count($topics))
         <div class="container">
 
-            <div class="col-md-12 text-center" style="margin-top:21px; background: url(/public/img/icon-line.png) repeat-x;"><span style="font-size:18px;" class="glyphicon glyphicon-tags" aria-hidden="true"></span></div>
+            <div class="col-md-12 text-center" style="margin-top:21px; background: {{{url('/public/img/icon-line.png')}}} repeat-x;"><span style="font-size:18px;" class="glyphicon glyphicon-tags" aria-hidden="true"></span></div>
 
             <div class="row top10">
                 <div class="col-md-12">

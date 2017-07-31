@@ -126,12 +126,12 @@
 
         </div>
 
-    <div class="col-md-12 text-center" style="background: url(/public/img/icon-line.png) repeat-x; margin: 15px 0;"><span style="font-size:18px;" class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true"></span></div>
+    <div class="col-md-12 text-center" style="background: {{{url('/public/img/icon-line.png')}}} repeat-x; margin: 15px 0;"><span style="font-size:18px;" class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true"></span></div>
 
     <div id="authors_by_letter">
         <div class="container">
             <div class="row top10">
-                <div style="margin:30px auto; width: 390px; height: 200px; background: url(/public/img/author-arrow.png) no-repeat;"></div>
+                <div style="margin:30px auto; width: 390px; height: 200px; background: {{{url('/public/img/author-arrow.png')}}} no-repeat;"></div>
             </div>
         </div>
     </div>

@@ -85,7 +85,7 @@
 
         @if((!empty($name) || !empty($author) || !empty($year)) && (!isset($articles) || count($articles) == 0))
             <div class="row top10">
-                <div class="col-md-12 text-center" style="background: url(/public/img/icon-line.png) repeat-x;"><span style="font-size:20px;" class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
+                <div class="col-md-12 text-center" style="background: {{{url('/public/img/icon-line.png')}}} repeat-x;"><span style="font-size:20px;" class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
                 <div class="col-md-12" style="margin:21px 0 0 0;">
                     <div class="alert alert-info" role="alert"><strong><i>За вказаними критеріями публікаціїй не знайдено.</i></strong></div>
                 </div>
@@ -93,7 +93,7 @@
         @endif
 
         @if(isset($articles))
-                <div class="col-md-12 text-center" style="background: url(/public/img/icon-line.png) repeat-x; margin:21px 0;"><span style="font-size:18px;" class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></div>
+                <div class="col-md-12 text-center" style="background: {{{url('/public/img/icon-line.png')}}} repeat-x; margin:21px 0;"><span style="font-size:18px;" class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></div>
             <div class="row top10">
                     <table class="table table-hover">
                         <thead>

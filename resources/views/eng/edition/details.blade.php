@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 text-center" style="margin:21px 0; background: url(/public/img/icon-line.png) repeat-x;"><span class="glyphicon glyphicon-book" style="font-size:18px;" aria-hidden="true"></span></div>
+            <div class="col-md-12 text-center" style="margin:21px 0; background: {{{url('/public/img/icon-line.png')}}} repeat-x;"><span class="glyphicon glyphicon-book" style="font-size:18px;" aria-hidden="true"></span></div>
             <?php  $currentTopicId = null; ?>
 
             <table class="table table-hover">

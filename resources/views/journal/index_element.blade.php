@@ -30,7 +30,7 @@
                         <small>Свідоцтво про державну реєстрацію друкованого засобу масової інформації - <a target="_blank" href={{{ url('/public/data/'.$journal->prefix.'/'.$journal->gov_registration_file) }}}>{{{ $journal->gov_registration }}}</a></small>
                     </div>
                     <div class="col-md-12 top10">
-                        <div class="col-md-12 text-center" style="background: url(/public/img/icon-line.png) repeat-x;"><span style="margin-right:50px;" class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></div>
+                        <div class="col-md-12 text-center" style="background: {{{url('/public/img/icon-line.png')}}} repeat-x;"><span style="margin-right:50px;" class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></div>
                         <div class="row">
                             <div class="col-md-6">
                                 <strong>Прийом статей до наступних номерів: </strong>
