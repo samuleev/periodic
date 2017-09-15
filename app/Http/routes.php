@@ -22,7 +22,7 @@ Route::get('/journal/{prefix}/{selectedYear}/{number}', array('uses' => 'Edition
 Route::get('/journal/{prefix}/{selectedYear}/{number}/eng', array('uses' => 'EditionController@showEng', 'as' => 'eng.edition.details'))->where(array('prefix' => '[a-z]*', 'selectedYear' => '[1-2][0-9]{3}', 'number' => '[1-9][0-9]*'));
 Route::get('/journal/{prefix}/{selectedYear}/{number}/raw', array('uses' => 'EditionController@raw', 'as' => 'edition.raw'))->where(array('prefix' => '[a-z]*', 'selectedYear' => '[1-2][0-9]{3}', 'number' => '[1-9][0-9]*'));
 Route::get('/journal/{prefix}/editor', array('uses' => 'JournalController@editor', 'as' => 'journal.editor'))->where('prefix', '[a-z]*');
-Route::get('/journal/{prefix}/deputyeditor/eng', array('uses' => 'JournalController@editorEng', 'as' => 'eng.journal.editor'))->where('prefix', '[a-z]*');
+Route::get('/journal/{prefix}/editor/eng', array('uses' => 'JournalController@editorEng', 'as' => 'eng.journal.editor'))->where('prefix', '[a-z]*');
 Route::get('/journal/{prefix}/deputy-editor', array('uses' => 'JournalController@deputyEditor', 'as' => 'journal.deputy-editor'))->where('prefix', '[a-z]*');
 Route::get('/journal/{prefix}/deputy-editor/eng', array('uses' => 'JournalController@deputyEditorEng', 'as' => 'eng.journal.deputy-editor'))->where('prefix', '[a-z]*');
 Route::get('/journal/{prefix}/chapter', array('uses' => 'ChapterController@byJournal', 'as' => 'chapter.journal'))->where('prefix', '[a-z]*');

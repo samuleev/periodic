@@ -53,7 +53,7 @@
                                 @if($journal->google_metric)
                                     <br>
                                     <small>
-                                    <a href="https://scholar.google.com.ua/citations?view_op=top_venues&hl=en&vq=uk">
+                                    <a target="_blank" href="https://scholar.google.com.ua/citations?view_op=top_venues&hl=en&vq=uk">
                                         Google Scholar Top 100 publications (Ukrainian)
                                     </a>
                                      – {{{ $journal->google_metric }}}</small>
@@ -61,7 +61,11 @@
 
                                 @if($journal->icv)
                                     <br>
-                                    <small>ICV (Index Copernicus Value) – {{{ $journal->icv }}}</small>
+                                    <small>
+                                    <a target="_blank" href={{{ $journal->copernicus_url }}}>
+                                        ICV (Index Copernicus Value)
+                                    </a>
+                                     – {{{ $journal->icv }}}</small>
                                 @endif
 
                                 <br><br>
